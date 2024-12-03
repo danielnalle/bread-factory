@@ -34,8 +34,8 @@
         {{-- Informasi --}}
         <div
             class="px-5 py-2.5 bg-white dark:bg-gray-900 antialiased relative overflow-x-auto shadow-sm sm:rounded-lg mb-8">
-            <div class="grid grid-cols-6">
-                <div class="px-5 py-4 border-r border-gray-200">
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
+                <div class="px-0 md:px-5 py-3 md:py-4 border-r border-gray-200">
                     <p class="font-medium text-sm text-dark-secondary">
                         Total Pesanan
                     </p>
@@ -43,7 +43,7 @@
                         6
                     </h3>
                 </div>
-                <div class="px-5 py-4 border-r border-gray-200">
+                <div class="px-0 md:px-5 py-3 md:py-4 md:border-r md:border-gray-200">
                     <p class="font-medium text-sm text-dark-secondary">
                         Pesanan Baru
                     </p>
@@ -51,7 +51,8 @@
                         2
                     </h3>
                 </div>
-                <div class="px-5 py-4 border-r border-gray-200">
+                <div
+                    class="px-0 md:px-5 py-3 md:py-4 border-r border-gray-200 md:border-none xl:border-r xl:border-r xl:border-solid xl:border-gray-200">
                     <p class="font-medium text-sm text-dark-secondary">
                         Pesanan Diproses
                     </p>
@@ -59,7 +60,7 @@
                         1
                     </h3>
                 </div>
-                <div class="px-5 py-4 border-r border-gray-200">
+                <div class="px-0 md:px-5 py-3 md:py-4 md:border-r md:border-gray-200">
                     <p class="font-medium text-sm text-dark-secondary">
                         Dalam Pengiriman
                     </p>
@@ -67,7 +68,7 @@
                         1
                     </h3>
                 </div>
-                <div class="px-5 py-4 border-r border-gray-200">
+                <div class="px-0 md:px-5 py-3 md:py-4 border-r border-gray-200">
                     <p class="font-medium text-sm text-dark-secondary">
                         Sampai di Tujuan
                     </p>
@@ -75,7 +76,7 @@
                         1
                     </h3>
                 </div>
-                <div class="px-5 py-4">
+                <div class="px-0 md:px-5 py-3 md:py-4">
                     <p class="font-medium text-sm text-dark-secondary">
                         Pesanan Berhasil
                     </p>
@@ -87,43 +88,44 @@
         </div>
 
         {{-- Filter --}}
-
-        <div class="flex space-x-5 text-sm font-medium border-b mb-5">
-            <button class="relative py-2 text-primary  hover:text-primary group">
-                Semua
-                <span
-                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-100 transition-transform origin-left"></span>
-            </button>
-            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
-                Baru
-                <span
-                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full  bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-            </button>
-            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
-                Diproses
-                <span
-                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-            </button>
-            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
-                Pengiriman
-                <span
-                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-            </button>
-            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
-                Sampai
-                <span
-                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-            </button>
-            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
-                Selesai
-                <span
-                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-            </button>
-            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
-                Ditolak
-                <span
-                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-            </button>
+        <div class="overflow-x-auto">
+            <div class="flex space-x-5 text-sm font-medium border-b mb-5">
+                <button class="relative py-2 text-primary  hover:text-primary group">
+                    Semua
+                    <span
+                        class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-100 transition-transform origin-left"></span>
+                </button>
+                <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                    Baru
+                    <span
+                        class="absolute left-0 bottom-0 h-0.5 w-full rounded-full  bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                </button>
+                <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                    Diproses
+                    <span
+                        class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                </button>
+                <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                    Pengiriman
+                    <span
+                        class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                </button>
+                <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                    Sampai
+                    <span
+                        class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                </button>
+                <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                    Selesai
+                    <span
+                        class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                </button>
+                <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                    Ditolak
+                    <span
+                        class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                </button>
+            </div>
         </div>
 
 
