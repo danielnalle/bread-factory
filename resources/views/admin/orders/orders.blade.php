@@ -31,8 +31,103 @@
         </div>
 
 
+        {{-- Informasi --}}
+        <div
+            class="px-5 py-2.5 bg-white dark:bg-gray-900 antialiased relative overflow-x-auto shadow-sm sm:rounded-lg mb-8">
+            <div class="grid grid-cols-6">
+                <div class="px-5 py-4 border-r border-gray-200">
+                    <p class="font-medium text-sm text-dark-secondary">
+                        Total Pesanan
+                    </p>
+                    <h3 class="font-bold text-dark-primary text-xl">
+                        6
+                    </h3>
+                </div>
+                <div class="px-5 py-4 border-r border-gray-200">
+                    <p class="font-medium text-sm text-dark-secondary">
+                        Pesanan Baru
+                    </p>
+                    <h3 class="font-bold text-dark-primary text-xl">
+                        2
+                    </h3>
+                </div>
+                <div class="px-5 py-4 border-r border-gray-200">
+                    <p class="font-medium text-sm text-dark-secondary">
+                        Pesanan Diproses
+                    </p>
+                    <h3 class="font-bold text-dark-primary text-xl">
+                        1
+                    </h3>
+                </div>
+                <div class="px-5 py-4 border-r border-gray-200">
+                    <p class="font-medium text-sm text-dark-secondary">
+                        Dalam Pengiriman
+                    </p>
+                    <h3 class="font-bold text-dark-primary text-xl">
+                        1
+                    </h3>
+                </div>
+                <div class="px-5 py-4 border-r border-gray-200">
+                    <p class="font-medium text-sm text-dark-secondary">
+                        Sampai di Tujuan
+                    </p>
+                    <h3 class="font-bold text-dark-primary text-xl">
+                        1
+                    </h3>
+                </div>
+                <div class="px-5 py-4">
+                    <p class="font-medium text-sm text-dark-secondary">
+                        Pesanan Berhasil
+                    </p>
+                    <h3 class="font-bold text-dark-primary text-xl">
+                        1
+                    </h3>
+                </div>
+            </div>
+        </div>
 
-        <!-- Cards -->
+        {{-- Filter --}}
+
+        <div class="flex space-x-5 text-sm font-medium border-b mb-5">
+            <button class="relative py-2 text-primary  hover:text-primary group">
+                Semua
+                <span
+                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-100 transition-transform origin-left"></span>
+            </button>
+            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                Baru
+                <span
+                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full  bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+            </button>
+            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                Diproses
+                <span
+                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+            </button>
+            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                Pengiriman
+                <span
+                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+            </button>
+            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                Sampai
+                <span
+                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+            </button>
+            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                Selesai
+                <span
+                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+            </button>
+            <button class="relative py-2 text-dark-tertiary hover:text-primary group">
+                Ditolak
+                <span
+                    class="absolute left-0 bottom-0 h-0.5 w-full rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+            </button>
+        </div>
+
+
+        <!-- Table -->
 
         <div class="p-5 bg-white dark:bg-gray-900 antialiased relative overflow-x-auto shadow-sm sm:rounded-lg">
             <div class="mb-4 bg-white dark:bg-gray-900 sm:flex sm:justify-between sm:items-center">
@@ -120,8 +215,8 @@
                                         fill="white" />
                                     <mask id="mask0_249_7933" style="mask-type:luminance" maskUnits="userSpaceOnUse"
                                         x="1" y="3" width="16" height="13">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 3H16.4999V15.0787H1.5V3Z"
-                                            fill="white" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M1.5 3H16.4999V15.0787H1.5V3Z" fill="white" />
                                     </mask>
                                     <g mask="url(#mask0_249_7933)">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
