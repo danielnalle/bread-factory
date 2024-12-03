@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="mb-4 sm:mb-0">
-                    <a href="{{ route('customers.create') }}"
+                    <a href="{{ route('categories.create') }}"
                         class="text-white bg-primary hover:bg-primary-hoverfont-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover">
                         <svg class="me-2" width="12" height="12" viewBox="0 0 10 10" fill="none"
                             xmlns="http://www.w3.org/2000/svg">

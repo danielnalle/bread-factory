@@ -12,10 +12,10 @@ class CategoryController extends Controller
     }
     public function create()
     {
-        return view('admin/products/create');
+        return view('admin/categories/create');
     }
     public function edit()
     {
-        return view('admin/products/edit');
+        return view('admin/categories/edit');
     }
 }
