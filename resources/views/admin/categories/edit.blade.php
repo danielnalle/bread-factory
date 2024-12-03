@@ -21,7 +21,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m1 9 4-4-4-4" />
                                 </svg>
-                                <a href="{{ route('users') }}"
+                                <a href="{{ route('categories') }}"
                                     class="inline-flex ms-1 md:ms-2 items-center text-sm font-medium text-dark-primary hover:text-primary-hover dark:text-gray-400 dark:hover:text-white">
                                     Kategori
                                 </a>
@@ -61,12 +61,13 @@
                         </div>
 
                         <div>
-                            <label for="name"
+                            <label for="active"
                                 class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Is
                                 Active<span class="text-red-600">*</span></label>
 
                             <label class="inline-flex items-center cursor-pointer mb-5">
-                                <input type="checkbox" value="" class="sr-only peer" checked>
+                                <input type="checkbox" name="active" id="active" value="" class="sr-only peer"
+                                    checked>
                                 <div
                                     class="relative w-11 h-6 bg-gray-200  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary">
                                 </div>
