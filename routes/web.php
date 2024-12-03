@@ -34,6 +34,7 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('categorie
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::get('/categories/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+Route::get('/orders/detail', [OrderController::class, 'detail'])->name('orders.detail');
 Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
 Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
 Route::get('/payment-method/edit', [PaymentController::class, 'edit'])->name('payment-method.edit');

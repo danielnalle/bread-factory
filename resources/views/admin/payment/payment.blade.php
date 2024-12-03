@@ -56,7 +56,7 @@
                 </div>
                 <div class="mb-4 sm:mb-0">
                     <a href="{{ route('payment-method.create') }}"
-                        class="text-white bg-primary hover:bg-primary-hoverfont-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover">
+                        class="text-white bg-primary hover:bg-primary-hover font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover">
                         <svg class="me-2" width="12" height="12" viewBox="0 0 10 10" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -126,8 +126,8 @@
                         </td>
                         <td class="flex items-center px-6 py-4">
                             <a href="{{ route('payment-method.edit') }}"
-                                class="font-medium bg-yellow-300 p-2 rounded-md hover:underline"><svg width="18"
-                                    height="18" viewBox="0 0 24 24" fill="none"
+                                class="font-medium bg-yellow-300 hover:bg-yellow-400 p-2 rounded-md hover:underline"><svg
+                                    width="18" height="18" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M16.5771 22.3686H7.75312C4.31212 22.3686 2.00012 19.9536 2.00012 16.3596V8.04562C2.00012 4.45162 4.31212 2.03662 7.75312 2.03662H11.4921C11.9061 2.03662 12.2421 2.37262 12.2421 2.78662C12.2421 3.20062 11.9061 3.53662 11.4921 3.53662H7.75312C5.16912 3.53662 3.50012 5.30662 3.50012 8.04562V16.3596C3.50012 19.0986 5.16912 20.8686 7.75312 20.8686H16.5771C19.1611 20.8686 20.8311 19.0986 20.8311 16.3596V12.3316C20.8311 11.9176 21.1671 11.5816 21.5811 11.5816C21.9951 11.5816 22.3311 11.9176 22.3311 12.3316V16.3596C22.3311 19.9536 20.0181 22.3686 16.5771 22.3686Z"
@@ -140,7 +140,8 @@
                                         fill="black" />
                                 </svg>
                             </a>
-                            <a href="#" class="font-medium bg-red-600 p-2 rounded-md hover:underline ms-3"><svg
+                            <a href="#"
+                                class="font-medium bg-red-600 hover:bg-red-700 p-2 rounded-md hover:underline ms-3"><svg
                                     width="20" height="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -193,8 +194,8 @@
                         </td>
                         <td class="flex items-center px-6 py-4">
                             <a href="{{ route('payment-method.edit') }}"
-                                class="font-medium bg-yellow-300 p-2 rounded-md hover:underline"><svg width="18"
-                                    height="18" viewBox="0 0 24 24" fill="none"
+                                class="font-medium bg-yellow-300 hover:bg-yellow-400 p-2 rounded-md hover:underline"><svg
+                                    width="18" height="18" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M16.5771 22.3686H7.75312C4.31212 22.3686 2.00012 19.9536 2.00012 16.3596V8.04562C2.00012 4.45162 4.31212 2.03662 7.75312 2.03662H11.4921C11.9061 2.03662 12.2421 2.37262 12.2421 2.78662C12.2421 3.20062 11.9061 3.53662 11.4921 3.53662H7.75312C5.16912 3.53662 3.50012 5.30662 3.50012 8.04562V16.3596C3.50012 19.0986 5.16912 20.8686 7.75312 20.8686H16.5771C19.1611 20.8686 20.8311 19.0986 20.8311 16.3596V12.3316C20.8311 11.9176 21.1671 11.5816 21.5811 11.5816C21.9951 11.5816 22.3311 11.9176 22.3311 12.3316V16.3596C22.3311 19.9536 20.0181 22.3686 16.5771 22.3686Z"
@@ -207,7 +208,8 @@
                                         fill="black" />
                                 </svg>
                             </a>
-                            <a href="#" class="font-medium bg-red-600 p-2 rounded-md hover:underline ms-3"><svg
+                            <a href="#"
+                                class="font-medium bg-red-600 hover:bg-red-700 p-2 rounded-md hover:underline ms-3"><svg
                                     width="20" height="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -235,7 +237,7 @@
                 <!-- Buttons -->
                 <div class="inline-flex mt-2 xs:mt-0">
                     <button
-                        class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-dark-primary rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-dark-primary rounded-s hover:bg-gray-800 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                         <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -244,7 +246,7 @@
                         Prev
                     </button>
                     <button
-                        class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-dark-primary border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-dark-primary border-0 border-s border-gray-700 rounded-e hover:bg-gray-800 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                         Next
                         <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

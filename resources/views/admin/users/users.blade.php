@@ -113,8 +113,8 @@
                         </td>
                         <td class="flex items-center px-6 py-4">
                             <a href="{{ route('users.edit') }}"
-                                class="font-medium bg-yellow-300 p-2 rounded-md hover:underline"><svg width="18"
-                                    height="18" viewBox="0 0 24 24" fill="none"
+                                class="font-medium bg-yellow-300 hover:bg-yellow-400 p-2 rounded-md hover:underline"><svg
+                                    width="18" height="18" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M16.5771 22.3686H7.75312C4.31212 22.3686 2.00012 19.9536 2.00012 16.3596V8.04562C2.00012 4.45162 4.31212 2.03662 7.75312 2.03662H11.4921C11.9061 2.03662 12.2421 2.37262 12.2421 2.78662C12.2421 3.20062 11.9061 3.53662 11.4921 3.53662H7.75312C5.16912 3.53662 3.50012 5.30662 3.50012 8.04562V16.3596C3.50012 19.0986 5.16912 20.8686 7.75312 20.8686H16.5771C19.1611 20.8686 20.8311 19.0986 20.8311 16.3596V12.3316C20.8311 11.9176 21.1671 11.5816 21.5811 11.5816C21.9951 11.5816 22.3311 11.9176 22.3311 12.3316V16.3596C22.3311 19.9536 20.0181 22.3686 16.5771 22.3686Z"
@@ -127,7 +127,8 @@
                                         fill="black" />
                                 </svg>
                             </a>
-                            <a href="#" class="font-medium bg-red-600 p-2 rounded-md hover:underline ms-3"><svg
+                            <a href="#"
+                                class="font-medium bg-red-600 hover:bg-red-700 p-2 rounded-md hover:underline ms-3"><svg
                                     width="20" height="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"

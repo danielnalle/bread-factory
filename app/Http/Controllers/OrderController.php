@@ -10,4 +10,8 @@ class OrderController extends Controller
     {
         return view('admin/orders/orders');
     }
+    public function detail()
+    {
+        return view('admin/orders/detail');
+    }
 }
