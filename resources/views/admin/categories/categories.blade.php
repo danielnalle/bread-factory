@@ -3,20 +3,15 @@
 
         <div class="sm:flex sm:justify-between sm:items-center mb-6">
             <div class="mb-4 sm:mb-0">
-                <h1 class="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">Categories</h1>
+                <h1 class="text-2xl md:text-3xl text-dark-primary dark:text-gray-100 font-bold">Kategori</h1>
             </div>
             <div class="mb-4 sm:mb-0">
                 <nav class="flex" aria-label="Breadcrumb">
                     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                         <li class="inline-flex items-center">
                             <a href="#"
-                                class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary-hover dark:text-gray-400 dark:hover:text-white">
-                                <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                                </svg>
-                                Users
+                                class="inline-flex items-center text-sm font-medium text-dark-primary hover:text-primary-hover dark:text-gray-400 dark:hover:text-white">
+                                Katalog
                             </a>
                         </li>
                         <li aria-current="page">
@@ -27,7 +22,8 @@
                                         stroke-width="2" d="m1 9 4-4-4-4" />
                                 </svg>
                                 <span
-                                    class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Products</span>
+                                    class="ms-1 text-sm font-medium text-dark-secondary md:ms-2 dark:text-gray-400">Kategori
+                                </span>
                             </div>
                         </li>
                     </ol>
@@ -46,20 +42,20 @@
                     <div class="relative mt-1">
                         <div
                             class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            <svg class="w-4 h-4 text-dark-secondary dark:text-gray-400" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
                         <input type="text" id="table-search"
-                            class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                            placeholder="Search for categories">
+                            class="block pt-2 ps-10 text-sm text-dark-primary border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 placeholder-dark-secondary dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                            placeholder="Cari kategori...">
                     </div>
                 </div>
                 <div class="mb-4 sm:mb-0">
-                    <button type="button"
-                        class="text-white bg-primary hover:bg-primary-hover focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover dark:focus:ring-blue-800">
+                    <a href="{{ route('customers.create') }}"
+                        class="text-white bg-primary hover:bg-primary-hoverfont-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover">
                         <svg class="me-2" width="12" height="12" viewBox="0 0 10 10" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -69,48 +65,68 @@
                                 d="M8.4165 5.49023H1.0835C0.668496 5.49023 0.333496 5.15423 0.333496 4.74023C0.333496 4.32623 0.668496 3.99023 1.0835 3.99023H8.4165C8.8305 3.99023 9.1665 4.32623 9.1665 4.74023C9.1665 5.15423 8.8305 5.49023 8.4165 5.49023"
                                 fill="white" />
                         </svg>
-                        Add New
-                    </button>
+                        Kategori Baru
+                    </a>
                 </div>
             </div>
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mb-4">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right text-dark-secondary dark:text-gray-400 mb-4">
+                <thead
+                    class="text-xs font-semibold text-dark-primary uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="p-4">
                             No
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Name
+                            Nama
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Email
+                            is active
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Phone
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Actions
+                            Aksi
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class=" text-dark-secondary bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="w-4 p-4 text-center">
                             1
                         </td>
                         <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Udin Surudin
+                            class="px-6 py-4 font-semibold text-dark-primary whitespace-nowrap dark:text-white">
+                            Roti Tawar
                         </th>
                         <td class="px-6 py-4">
-                            udinganteng@gmail.com
-                        </td>
-                        <td class="px-6 py-4">
-                            081234567891
+                            {{-- Active --}}
+                            <svg width="24" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.3315 3.5C5.8015 3.5 4.1665 5.233 4.1665 7.916V16.084C4.1665 18.767 5.8015 20.5 8.3315 20.5H16.9995C19.5305 20.5 21.1665 18.767 21.1665 16.084V7.916C21.1665 5.233 19.5305 3.5 17.0005 3.5H8.3315ZM16.9995 22H8.3315C4.9425 22 2.6665 19.622 2.6665 16.084V7.916C2.6665 4.378 4.9425 2 8.3315 2H17.0005C20.3895 2 22.6665 4.378 22.6665 7.916V16.084C22.6665 19.622 20.3895 22 16.9995 22Z"
+                                    fill="#0E9F6E" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.7903 15.2457C11.5993 15.2457 11.4063 15.1727 11.2603 15.0258L8.88625 12.6528C8.59325 12.3598 8.59325 11.8858 8.88625 11.5928C9.17925 11.2998 9.65325 11.2998 9.94625 11.5928L11.7903 13.4348L16.0063 9.21975C16.2993 8.92675 16.7733 8.92675 17.0663 9.21975C17.3593 9.51275 17.3593 9.98675 17.0663 10.2797L12.3203 15.0258C12.1743 15.1727 11.9823 15.2457 11.7903 15.2457Z"
+                                    fill="#0E9F6E" />
+                            </svg>
+                            {{-- Deactive --}}
+                            {{-- <svg width="24" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M10.2688 15.1365C10.0768 15.1365 9.88479 15.0635 9.73879 14.9165C9.44579 14.6235 9.44579 14.1495 9.73879 13.8565L14.5308 9.06448C14.8238 8.77148 15.2978 8.77148 15.5908 9.06448C15.8838 9.35748 15.8838 9.83148 15.5908 10.1245L10.7988 14.9165C10.6528 15.0635 10.4608 15.1365 10.2688 15.1365Z"
+                                    fill="#E02424" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M15.0628 15.1395C14.8708 15.1395 14.6788 15.0665 14.5328 14.9195L9.73684 10.1225C9.44384 9.82952 9.44384 9.35552 9.73684 9.06252C10.0308 8.76952 10.5048 8.76952 10.7968 9.06252L15.5928 13.8595C15.8858 14.1525 15.8858 14.6265 15.5928 14.9195C15.4468 15.0665 15.2538 15.1395 15.0628 15.1395Z"
+                                    fill="#E02424" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.3315 3.5C5.8015 3.5 4.1665 5.233 4.1665 7.916V16.084C4.1665 18.767 5.8015 20.5 8.3315 20.5H16.9995C19.5305 20.5 21.1665 18.767 21.1665 16.084V7.916C21.1665 5.233 19.5305 3.5 17.0005 3.5H8.3315ZM16.9995 22H8.3315C4.9425 22 2.6665 19.622 2.6665 16.084V7.916C2.6665 4.378 4.9425 2 8.3315 2H17.0005C20.3895 2 22.6665 4.378 22.6665 7.916V16.084C22.6665 19.622 20.3895 22 16.9995 22Z"
+                                    fill="#E02424" />
+                            </svg> --}}
+
+
                         </td>
                         <td class="flex items-center px-6 py-4">
-                            <a href="#" class="font-medium bg-yellow-300 p-2 rounded-md hover:underline"><svg
-                                    width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            <a href="{{ route('categories') }}"
+                                class="font-medium bg-yellow-300 p-2 rounded-md hover:underline"><svg width="18"
+                                    height="18" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M16.5771 22.3686H7.75312C4.31212 22.3686 2.00012 19.9536 2.00012 16.3596V8.04562C2.00012 4.45162 4.31212 2.03662 7.75312 2.03662H11.4921C11.9061 2.03662 12.2421 2.37262 12.2421 2.78662C12.2421 3.20062 11.9061 3.53662 11.4921 3.53662H7.75312C5.16912 3.53662 3.50012 5.30662 3.50012 8.04562V16.3596C3.50012 19.0986 5.16912 20.8686 7.75312 20.8686H16.5771C19.1611 20.8686 20.8311 19.0986 20.8311 16.3596V12.3316C20.8311 11.9176 21.1671 11.5816 21.5811 11.5816C21.9951 11.5816 22.3311 11.9176 22.3311 12.3316V16.3596C22.3311 19.9536 20.0181 22.3686 16.5771 22.3686Z"
@@ -139,23 +155,45 @@
                             </a>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class=" text-dark-secondary bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="w-4 p-4 text-center">
                             2
                         </td>
                         <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Malik Rumilik
+                            class="px-6 py-4 font-semibold text-dark-primary whitespace-nowrap dark:text-white">
+                            Roti Manis
                         </th>
                         <td class="px-6 py-4">
-                            malikkece@gmail.com
-                        </td>
-                        <td class="px-6 py-4">
-                            081234567892
+                            {{-- Active --}}
+                            <svg width="24" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.3315 3.5C5.8015 3.5 4.1665 5.233 4.1665 7.916V16.084C4.1665 18.767 5.8015 20.5 8.3315 20.5H16.9995C19.5305 20.5 21.1665 18.767 21.1665 16.084V7.916C21.1665 5.233 19.5305 3.5 17.0005 3.5H8.3315ZM16.9995 22H8.3315C4.9425 22 2.6665 19.622 2.6665 16.084V7.916C2.6665 4.378 4.9425 2 8.3315 2H17.0005C20.3895 2 22.6665 4.378 22.6665 7.916V16.084C22.6665 19.622 20.3895 22 16.9995 22Z"
+                                    fill="#0E9F6E" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.7903 15.2457C11.5993 15.2457 11.4063 15.1727 11.2603 15.0258L8.88625 12.6528C8.59325 12.3598 8.59325 11.8858 8.88625 11.5928C9.17925 11.2998 9.65325 11.2998 9.94625 11.5928L11.7903 13.4348L16.0063 9.21975C16.2993 8.92675 16.7733 8.92675 17.0663 9.21975C17.3593 9.51275 17.3593 9.98675 17.0663 10.2797L12.3203 15.0258C12.1743 15.1727 11.9823 15.2457 11.7903 15.2457Z"
+                                    fill="#0E9F6E" />
+                            </svg>
+                            {{-- Deactive --}}
+                            {{-- <svg width="24" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M10.2688 15.1365C10.0768 15.1365 9.88479 15.0635 9.73879 14.9165C9.44579 14.6235 9.44579 14.1495 9.73879 13.8565L14.5308 9.06448C14.8238 8.77148 15.2978 8.77148 15.5908 9.06448C15.8838 9.35748 15.8838 9.83148 15.5908 10.1245L10.7988 14.9165C10.6528 15.0635 10.4608 15.1365 10.2688 15.1365Z"
+                                    fill="#E02424" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M15.0628 15.1395C14.8708 15.1395 14.6788 15.0665 14.5328 14.9195L9.73684 10.1225C9.44384 9.82952 9.44384 9.35552 9.73684 9.06252C10.0308 8.76952 10.5048 8.76952 10.7968 9.06252L15.5928 13.8595C15.8858 14.1525 15.8858 14.6265 15.5928 14.9195C15.4468 15.0665 15.2538 15.1395 15.0628 15.1395Z"
+                                    fill="#E02424" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.3315 3.5C5.8015 3.5 4.1665 5.233 4.1665 7.916V16.084C4.1665 18.767 5.8015 20.5 8.3315 20.5H16.9995C19.5305 20.5 21.1665 18.767 21.1665 16.084V7.916C21.1665 5.233 19.5305 3.5 17.0005 3.5H8.3315ZM16.9995 22H8.3315C4.9425 22 2.6665 19.622 2.6665 16.084V7.916C2.6665 4.378 4.9425 2 8.3315 2H17.0005C20.3895 2 22.6665 4.378 22.6665 7.916V16.084C22.6665 19.622 20.3895 22 16.9995 22Z"
+                                    fill="#E02424" />
+                            </svg> --}}
+
+
                         </td>
                         <td class="flex items-center px-6 py-4">
-                            <a href="#" class="font-medium bg-yellow-300 p-2 rounded-md hover:underline"><svg
-                                    width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            <a href="{{ route('categories') }}"
+                                class="font-medium bg-yellow-300 p-2 rounded-md hover:underline"><svg width="18"
+                                    height="18" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M16.5771 22.3686H7.75312C4.31212 22.3686 2.00012 19.9536 2.00012 16.3596V8.04562C2.00012 4.45162 4.31212 2.03662 7.75312 2.03662H11.4921C11.9061 2.03662 12.2421 2.37262 12.2421 2.78662C12.2421 3.20062 11.9061 3.53662 11.4921 3.53662H7.75312C5.16912 3.53662 3.50012 5.30662 3.50012 8.04562V16.3596C3.50012 19.0986 5.16912 20.8686 7.75312 20.8686H16.5771C19.1611 20.8686 20.8311 19.0986 20.8311 16.3596V12.3316C20.8311 11.9176 21.1671 11.5816 21.5811 11.5816C21.9951 11.5816 22.3311 11.9176 22.3311 12.3316V16.3596C22.3311 19.9536 20.0181 22.3686 16.5771 22.3686Z"
@@ -188,15 +226,15 @@
             </table>
             <div class="flex sm:flex-row flex-col items-center justify-between">
                 <!-- Help text -->
-                <span class="text-sm text-gray-700 dark:text-gray-400">
-                    Showing <span class="font-semibold text-gray-900 dark:text-white">1</span> to <span
-                        class="font-semibold text-gray-900 dark:text-white">10</span> of <span
-                        class="font-semibold text-gray-900 dark:text-white">100</span> Entries
+                <span class="text-sm text-dark-secondary dark:text-gray-400">
+                    Showing <span class="font-semibold text-dark-primary dark:text-white">1</span> to <span
+                        class="font-semibold text-dark-primary dark:text-white">10</span> of <span
+                        class="font-semibold text-dark-primary dark:text-white">100</span> Entries
                 </span>
                 <!-- Buttons -->
                 <div class="inline-flex mt-2 xs:mt-0">
                     <button
-                        class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-dark-primary rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                         <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -205,7 +243,7 @@
                         Prev
                     </button>
                     <button
-                        class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-dark-primary border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                         Next
                         <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

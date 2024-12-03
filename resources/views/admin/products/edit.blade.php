@@ -107,6 +107,13 @@ Segera coba croissant kami dan rasakan sensasi roti premium yang istimewa!
                                 </template> --}}
                                 <!-- Preview Gambar -->
 
+                                {{-- <template x-if="fileSrc">
+                                    <div class="mt-4">
+                                        <img :src="fileSrc" alt="Uploaded Preview"
+                                            class="w-full rounded-lg border">
+                                    </div>
+                                </template> --}}
+
                                 <div class="mt-4">
                                     <img src="{{ asset('images/produk.png') }}" alt="Uploaded Preview"
                                         class="w-full rounded-lg border">
