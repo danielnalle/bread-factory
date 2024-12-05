@@ -100,8 +100,7 @@ export default {
             // },
             fontFamily: {
                 main: ["Playfair Display", "sans-serif"],
-                secondary: ["Montserrat", "sans-serif"],
-                tertiary: ["Inter", "sans-serif"],
+                secondary: ["Inter", "sans-serif"],
             },
             colors: {
                 primary: "#295F98",

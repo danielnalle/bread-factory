@@ -62,7 +62,7 @@
                                     placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600
                                     dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary
                                     dark:focus:border-primary"
-                                    placeholder="Masukan nama produk" value="White Bread" required />
+                                    placeholder="Masukan nama produk" value="Croissant" required />
                             </div>
                             <div>
                                 <label for="desc"
