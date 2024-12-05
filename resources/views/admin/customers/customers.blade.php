@@ -80,13 +80,13 @@
                             Nama
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Alamat
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Email
                         </th>
                         <th scope="col" class="px-6 py-3">
                             No HP
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Alamat
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Aksi
@@ -103,13 +103,13 @@
                             Monkey D Luffy
                         </th>
                         <td class="px-6 py-4">
-                            Jalan Gunung Agung, Gg. Kojek, No. 30
-                        </td>
-                        <td class="px-6 py-4">
                             luffyganteng@gmail.com
                         </td>
                         <td class="px-6 py-4">
                             081234567893
+                        </td>
+                        <td class="px-6 py-4">
+                            Jalan Gunung Agung, Gg. Kojek, No. 30
                         </td>
                         <td class="flex items-center px-6 py-4">
                             <a href="{{ route('customers.edit') }}"
