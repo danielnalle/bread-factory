@@ -51,7 +51,7 @@
             <form class="max-w-full mx-auto">
                 <div class="md:grid md:grid-cols-3 gap-5 mb-5">
                     <div class="gap-5 col-span-2">
-                        <div class="bg-white p-5 rounded-lg shadow-sm">
+                        <div class="bg-white p-5 rounded-lg shadow-sm mb-5 md:mb-0">
                             <div class="mb-5">
                                 <label for="name"
                                     class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Nama
@@ -113,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-white p-5 rounded-lg shadow-sm mb-5">
+                <div class="bg-white p-5 rounded-lg shadow-sm mb-5 overflow-x-auto">
                     <p class="block mb-5 text-base font-semibold text-dark-primary dark:text-white">Produk Pesanan</p>
                     <hr class="mb-5">
                     <table class="w-full text-sm text-left rtl:text-right text-dark-secondary dark:text-gray-400 mb-5">
@@ -161,7 +161,7 @@
                     <p class="block mb-1 text-sm font-medium text-dark-primary dark:text-white">Total Keseluruhan</p>
                     <h3 class="text-base font-semibold text-dark-primary dark:text-white">Rp. 800.000</h3>
                 </div>
-                <div class="bg-white p-5 rounded-lg shadow-sm mb-5">
+                <div class="bg-white p-5 rounded-lg shadow-sm mb-5 overflow-x-auto">
                     <p class="block mb-5 text-base font-semibold text-dark-primary dark:text-white">Alamat Pelanggan
                     </p>
                     <hr class="mb-5">
