@@ -49,7 +49,7 @@
                             </svg>
                         </div>
                         <input type="text" id="table-search"
-                            class="block pt-2 ps-10 text-sm text-dark-primary border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 placeholder-dark-secondary dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                            class="block pt-2 ps-10 text-sm text-dark-primary border border-gray-300 rounded-lg w-full sm:w-96 bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 placeholder-dark-secondary dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                             placeholder="Cari produk...">
                     </div>
                 </div>
