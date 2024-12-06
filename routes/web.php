@@ -23,6 +23,7 @@ Route::get('/utility/404', function () {
 
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
 Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
 Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
