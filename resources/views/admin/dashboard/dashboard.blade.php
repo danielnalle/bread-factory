@@ -52,7 +52,7 @@
                     </h3>
                 </div>
                 <div
-                    class="px-0 md:px-5 py-3 md:py-4 border-r border-gray-200 md:border-none xl:border-r xl:border-r xl:border-solid xl:border-gray-200">
+                    class="px-0 md:px-5 py-3 md:py-4 border-r border-gray-200 md:border-none xl:border-r xl:border-solid xl:border-gray-200">
                     <p class="font-medium text-sm text-dark-secondary">
                         Produk
                     </p>

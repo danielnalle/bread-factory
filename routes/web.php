@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
@@ -21,6 +22,7 @@ Route::get('/utility/404', function () {
 })->name('404');
 
 
+Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
 Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
 Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
