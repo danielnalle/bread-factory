@@ -24,7 +24,7 @@
     @livewireStyles
 </head>
 
-<body class="font-secondary antialiased bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 ">
+<body class="font-secondary antialiased">
 
     <div class="container max-w-full relative">
 
