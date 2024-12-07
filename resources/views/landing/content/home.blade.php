@@ -23,7 +23,80 @@
                 Jelajahi Koleksi Roti
             </button>
         </div>
-
+    </section>
+    <section id="featured" class="px-5 md:px-24 xl:px-44 w-full my-24">
+        <div class="flex flex-col space-y-5">
+            <div class="flex items-end justify-between font-semibold text-primary font-main">
+                <h3 class="text-4xl">Produk Terlaris</h3>
+                <a href="" class="text-base underline underline-offset-4">See all</a>
+            </div>
+            <div class="flex flex-wrap justify-between">
+                <div
+                    class="max-w-sm bg-white border border-gray-200 rounded-md overflow-hidden h-[300px] w-[270px] shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+                    <a href="#" class="flex-1">
+                        <img class="h-full object-cover" src="{{ asset('images/produk.png') }}" alt="" />
+                    </a>
+                    <div class="px-3 py-2.5 flex-none">
+                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">White
+                            Bread
+                        </h5>
+                        <p class="mb-1 font-normal text-xs text-dark-secondary dark:text-gray-400">Roti tawar putih
+                            dengan tekstur lembut dan rasa ringan.</p>
+                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs text-dark-primary">Min. order: <span
+                                class="text-dark-secondary font-normal">100 pcs</span></p>
+                    </div>
+                </div>
+                <div
+                    class="max-w-sm bg-white border border-gray-200 rounded-md overflow-hidden h-[300px] w-[270px] shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+                    <a href="#" class="flex-1">
+                        <img class="h-full object-cover" src="{{ asset('images/produk.png') }}" alt="" />
+                    </a>
+                    <div class="px-3 py-2.5 flex-none">
+                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">White
+                            Bread
+                        </h5>
+                        <p class="mb-1 font-normal text-xs text-dark-secondary dark:text-gray-400">Roti tawar putih
+                            dengan tekstur lembut dan rasa ringan.</p>
+                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs text-dark-primary">Min. order: <span
+                                class="text-dark-secondary font-normal">100 pcs</span></p>
+                    </div>
+                </div>
+                <div
+                    class="max-w-sm bg-white border border-gray-200 rounded-md overflow-hidden h-[300px] w-[270px] shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+                    <a href="#" class="flex-1">
+                        <img class="h-full object-cover" src="{{ asset('images/produk.png') }}" alt="" />
+                    </a>
+                    <div class="px-3 py-2.5 flex-none">
+                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">White
+                            Bread
+                        </h5>
+                        <p class="mb-1 font-normal text-xs text-dark-secondary dark:text-gray-400">Roti tawar putih
+                            dengan tekstur lembut dan rasa ringan.</p>
+                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs text-dark-primary">Min. order: <span
+                                class="text-dark-secondary font-normal">100 pcs</span></p>
+                    </div>
+                </div>
+                <div
+                    class="max-w-sm bg-white border border-gray-200 rounded-md overflow-hidden h-[300px] w-[270px] shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+                    <a href="#" class="flex-1">
+                        <img class="h-full object-cover" src="{{ asset('images/produk.png') }}" alt="" />
+                    </a>
+                    <div class="px-3 py-2.5 flex-none">
+                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">White
+                            Bread
+                        </h5>
+                        <p class="mb-1 font-normal text-xs text-dark-secondary dark:text-gray-400">Roti tawar putih
+                            dengan tekstur lembut dan rasa ringan.</p>
+                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs text-dark-primary">Min. order: <span
+                                class="text-dark-secondary font-normal">100 pcs</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </section>
 </x-guest-layout>
