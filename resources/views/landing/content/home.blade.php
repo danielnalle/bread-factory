@@ -103,9 +103,9 @@
         </div>
 
     </section>
-    <section id="advantages" class="px-5 md:px-16 xl:px-36 w-full py-24 bg-tertiary">
+    <section id="advantages" class="px-5 md:px-16 xl:px-36 w-full pt-10 pb-14 bg-tertiary">
         <div class="flex flex-col items-center gap-5">
-            <h3 class="text-3xl md:text-4xl mb-7 font-semibold text-primary font-main ">Mengapa Bakeru?</h3>
+            <h3 class="text-3xl md:text-4xl mb-3 md:mb-7 font-semibold text-primary font-main ">Mengapa Bakeru?</h3>
             <div class="flex flex-wrap justify-center gap-7">
                 <div
                     class="bg-white rounded-lg p-4 sm:p-6 overflow-hidden w-full sm:w-[460px] shadow-lg flex gap-5 items-center">
@@ -161,6 +161,65 @@
                         <p class="font-normal text-sm text-dark-secondary dark:text-gray-400 hidden sm:block">Setiap
                             roti dipersiapkan
                             di lingkungan yang higienis, dengan menjaga standar kebersihan dan kualitas tertinggi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section id="howToOrder" class="px-5 md:px-16 xl:px-36 w-full py-24 bg-white">
+        <div class="flex flex-col items-center gap-5">
+            <h3 class="text-3xl md:text-4xl mb- font-semibold text-primary font-main">Cara Pemesanan
+            </h3>
+            <p class="text-dark-secondary text-base font-normal max-w-[600px] text-center mb-12">Pesan, terima, dan
+                bayar
+                roti
+                segar dengan
+                mudah.
+                Produk berkualitas langsung diantar
+                ke pintu Anda.</p>
+            <div class="flex flex-wrap justify-center gap-20 md:gap-10">
+                <div class="w-[320px] flex flex-col gap-7 items-center">
+                    <div class="rounded-full w-40 h-40 bg-tertiary flex justify-center items-center">
+                        <img src="{{ asset('images/icons/Pesan.png') }}" alt="" class="w-24">
+                    </div>
+                    <div class="text-center w-full flex flex-col items-center gap-5">
+                        <div class="rounded-full border-primary border-2 w-12 h-12 flex justify-center items-center">
+                            <p class="text-primary text-3xl font-semibold">1</p>
+                        </div>
+                        <h3 class="text-dark-primary text-2xl font-medium">Pesan Produk</h3>
+                        <p class="text-base text-dark-secondary w-full font-normal">Pilih roti favorit Anda
+                            dan tambahkan
+                            ke
+                            keranjang.
+                            Sesuaikan pesanan sesuai
+                            kebutuhan.</p>
+                    </div>
+                </div>
+                <div class="w-[360px] flex flex-col gap-7 items-center">
+                    <div class="rounded-full w-40 h-40 bg-tertiary flex justify-center items-center">
+                        <img src="{{ asset('images/icons/Delivery.png') }}" alt="" class="w-24">
+                    </div>
+                    <div class="text-center w-full flex flex-col items-center gap-5">
+                        <div class="rounded-full border-primary border-2 w-12 h-12 flex justify-center items-center">
+                            <p class="text-primary text-3xl font-semibold">2</p>
+                        </div>
+                        <h3 class="text-dark-primary text-2xl font-medium">Dikirim kepada Anda</h3>
+                        <p class="text-base text-dark-secondary w-full font-normal">Setelah dikonfirmasi, pesanan Anda
+                            segera dipersiapkan dan dikirim ke lokasi Anda, tetap segar dan siap dinikmati.</p>
+                    </div>
+                </div>
+                <div class="w-[320px] flex flex-col gap-7 items-center">
+                    <div class="rounded-full w-40 h-40 bg-tertiary flex justify-center items-center">
+                        <img src="{{ asset('images/icons/Pay.png') }}" alt="" class="w-24">
+                    </div>
+                    <div class="text-center w-full flex flex-col items-center gap-5">
+                        <div class="rounded-full border-primary border-2 w-12 h-12 flex justify-center items-center">
+                            <p class="text-primary text-3xl font-semibold">3</p>
+                        </div>
+                        <h3 class="text-dark-primary text-2xl font-medium">Bayar Pesanan</h3>
+                        <p class="text-base text-dark-secondary w-full font-normal">Selesaikan pembelian dengan opsi
+                            pembayaran aman dan fleksibel. Cepat dan mudah.</p>
                     </div>
                 </div>
             </div>
