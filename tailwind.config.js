@@ -109,6 +109,7 @@ export default {
                 "dark-primary": "#0C1C2EDE",
                 "dark-secondary": "#0C1C2E99",
                 "dark-tertiary": "#0C1C2E61",
+                tertiary: "#F1E1C6",
             },
             // fontSize: {
             //     xs: ["0.75rem", { lineHeight: "1.5" }],
