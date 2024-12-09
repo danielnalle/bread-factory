@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('landing/content/home');
 })->name('landing-page');
 
+Route::get('/produk', function () {
+    return view('landing/content/produk');
+})->name('produk');
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/utility/404', function () {

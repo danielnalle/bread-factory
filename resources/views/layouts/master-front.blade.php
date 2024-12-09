@@ -26,7 +26,7 @@
 
 <body class="font-secondary antialiased">
 
-    <div class="container max-w-full relative">
+    <div class="container max-w-full relative h-screen">
 
 
         <x-landing.navbar />
