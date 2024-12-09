@@ -5,7 +5,7 @@
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <span
-                    class="self-center text-2xl font-main text-gray-200 hover:text-white tracking-widest font-bold whitespace-nowrap dark:text-white">Bakeru</span>
+                    class=" text-2xl font-main text-gray-200 hover:text-white tracking-widest font-bold whitespace-nowrap dark:text-white">Bakeru</span>
             </a>
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <div class="flex items-center justify-between">
@@ -117,24 +117,24 @@
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 bg-white bg-opacity-80 rounded-lg mt-2 md:rounded-none md:mt-0 md:bg-transparent"
                 id="navbar-user">
                 <ul
-                    class="flex flex-col font-regular text-sm tracking-wide p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 ">
+                    class="flex flex-col text-base tracking-wide p-4 md:p-0 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 ">
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 text-white md:text-gray-200 md:hover:text-white bg-primary rounded md:bg-transparent md:p-0"
+                            class="block py-2 px-3 font-normal text-dark-primary md:text-gray-200 md:hover:text-white @if (in_array(Request::segment(1), [''])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0"
                             aria-current="page">Home</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 md:text-gray-200 md:hover:text-white rounded md:bg-transparent md:p-0">Produk</a>
+                            class="block py-2 px-3 text-dark-primary font-normal md:text-gray-200 md:hover:text-white @if (in_array(Request::segment(1), [''])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Produk</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 md:text-gray-200 md:hover:text-white rounded md:bg-transparent md:p-0">Tentang
+                            class="block py-2 px-3 text-dark-primary font-normal md:text-gray-200 md:hover:text-white @if (in_array(Request::segment(1), [''])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Tentang
                             Kami</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 md:text-gray-200 md:hover:text-white rounded md:bg-transparent md:p-0">Kontak</a>
+                            class="block py-2 px-3 text-dark-primary font-normal md:text-gray-200 md:hover:text-white @if (in_array(Request::segment(1), [''])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Kontak</a>
                     </li>
                 </ul>
             </div>

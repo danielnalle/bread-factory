@@ -36,6 +36,7 @@
             {{ $slot }}
         </main>
 
+        <x-landing.footer />
 
 
     </div>
