@@ -13,15 +13,15 @@
                     Yang Tak
                     <span class="inline-block mt-2">Tertandingi!</span>
                 </h1>
-                <p class="text-sm text-center sm:text-start md:text-base font-normal max-w-xl">
+                <p class="text-center sm:text-start text-base font-normal max-w-xl">
                     Dengan bahan alami dan proses yang penuh keahlian, kami menciptakan roti dengan tekstur sempurna dan
                     rasa yang tak terlupakan. Bakeru - lebih dari sekadar roti.
                 </p>
             </div>
-            <button type="submit"
+            <a href="{{ route('produk') }}"
                 class="text-white mx-auto sm:mx-0 mt-7 text-base bg-primary hover:bg-primary-hover font-medium rounded-full px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
                 Jelajahi Koleksi Roti
-            </button>
+            </a>
         </div>
     </section>
     <section id="featured" class="px-5 md:px-24 xl:px-44 w-full py-24">

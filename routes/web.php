@@ -19,6 +19,10 @@ Route::get('/produk', function () {
     return view('landing/content/produk');
 })->name('produk');
 
+Route::get('/about', function () {
+    return view('landing/content/about');
+})->name('about');
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/utility/404', function () {

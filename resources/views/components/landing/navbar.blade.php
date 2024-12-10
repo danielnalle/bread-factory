@@ -129,8 +129,8 @@
                             class="block py-2 px-3 text-dark-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @else{{ 'md:text-gray-200 md:hover:text-white' }} @endif @if (in_array(Request::segment(1), ['produk'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Produk</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-dark-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @else{{ 'md:text-gray-200 md:hover:text-white' }} @endif @if (in_array(Request::segment(1), ['abouts'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Tentang
+                        <a href="{{ route('about') }}"
+                            class="block py-2 px-3 text-dark-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @else{{ 'md:text-gray-200 md:hover:text-white' }} @endif @if (in_array(Request::segment(1), ['about'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Tentang
                             Kami</a>
                     </li>
                     <li>
