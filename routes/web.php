@@ -23,6 +23,10 @@ Route::get('/about', function () {
     return view('landing/content/about');
 })->name('about');
 
+Route::get('/contact', function () {
+    return view('landing/content/contact');
+})->name('contact');
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/utility/404', function () {

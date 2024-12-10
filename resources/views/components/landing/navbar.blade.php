@@ -26,14 +26,15 @@
                             fill="currentColor" />
                     </svg>
 
-                    {{-- <button type="button"
-                        class="flex ml-5 text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    <button type="button"
+                        class="flex ml-5 text-sm bg-gray-800 rounded-full md:me-0 focus:ring-2 focus:ring-primary dark:focus:ring-gray-600"
                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                         data-dropdown-placement="bottom">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full" src="{{ asset('images/user-36-05.jpg') }}" alt="user photo">
-                    </button> --}}
-                    <button type="submit"
+                        <img class="w-8 h-8 rounded-full object-cover" src="{{ asset('images/team/1.jpg') }}"
+                            alt="user photo">
+                    </button>
+                    {{-- <button type="submit"
                         class="text-white text-base bg-primary tracking-wide ml-6 hover:bg-primary-hover font-normal rounded-full px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="mr-2"
                             xmlns="http://www.w3.org/2000/svg">
@@ -75,35 +76,38 @@
                                 fill="white" mask="url(#path-5-outside-3_470_5810)" />
                         </svg>
                         Login
-                    </button>
+                    </button> --}}
                 </div>
                 <!-- Dropdown menu -->
-                {{-- <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                <div class="z-50 hidden my-4 text-base max-w-56 list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                     id="user-dropdown">
                     <div class="px-4 py-3">
-                        <span class="block text-sm text-gray-900 dark:text-white">Yogi Pradnyana</span>
-                        <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">Administrator</span>
+                        <span class="block text-base font-medium text-dark-primary dark:text-white">Hy, Yogi
+                            Pradnyana</span>
                     </div>
                     <ul class="py-2" aria-labelledby="user-menu-button">
+                        {{-- <li>
+                            <a href="#"
+                                class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Dashboard</a>
+                        </li> --}}
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                                class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                                class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Akun</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                                class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Alamat</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                out</a>
+                                class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Sign Out</a>
                         </li>
                     </ul>
-                </div> --}}
+                </div>
                 <button data-collapse-toggle="navbar-user" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center fill-current text-sm @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif  rounded-lg md:hidden dark:text-gray-400"
                     aria-controls="navbar-user" aria-expanded="false">
@@ -134,7 +138,7 @@
                             Kami</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('contact') }}"
                             class="block py-2 px-3 text-dark-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @else{{ 'md:text-gray-200 md:hover:text-white' }} @endif @if (in_array(Request::segment(1), ['contact'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Kontak</a>
                     </li>
                 </ul>

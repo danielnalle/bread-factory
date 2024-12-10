@@ -20,7 +20,7 @@
                             kebahagiaan ke setiap santapan.
                         </p>
                         <a href="{{ route('produk') }}"
-                            class="text-white mx-auto sm:mx-0 text-base bg-primary hover:bg-primary-hover font-medium rounded-full px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
+                            class="text-white mx-auto sm:mx-0 text-base bg-primary hover:bg-primary-hover rounded-full px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
                             Lihat Produk Kami
                         </a>
                     </div>
