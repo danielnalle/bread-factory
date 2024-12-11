@@ -6,7 +6,7 @@
             <div class="bg-black absolute bg-opacity-40 inset-0"></div>
         </div> --}}
         <div
-            class="px-5 md:px-24 xl:px-44 w-full flex flex-col items-start justify-center h-full bg-black bg-opacity-40 text-white">
+            class="px-5 md:px-24 xl:px-44 w-full flex flex-col items-start justify-center h-full  bg-gradient-to-r from-[rgba(0,0,0,0.7)] md:to-[rgba(0,0,0,0.1)] to-[rgba(0,0,0,0.2)] text-white">
             <div class="max-w-[800px]">
                 <h1 class="text-4xl text-center sm:text-start sm:text-5xl md:text-[56px] font-main font-semibold mb-4">
                     Kelezatan Roti

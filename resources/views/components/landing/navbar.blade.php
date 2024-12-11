@@ -27,7 +27,7 @@
                     </svg>
 
                     <button type="button"
-                        class="flex ml-5 text-sm bg-gray-800 rounded-full md:me-0 focus:ring-2 focus:ring-primary dark:focus:ring-gray-600"
+                        class="flex ml-5 text-sm rounded-full md:me-0 focus:ring-2 focus:ring-primary dark:focus:ring-gray-600"
                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                         data-dropdown-placement="bottom">
                         <span class="sr-only">Open user menu</span>

@@ -27,6 +27,10 @@ Route::get('/contact', function () {
     return view('landing/content/contact');
 })->name('contact');
 
+Route::get('/produk/detail', function () {
+    return view('landing/content/detail');
+})->name('detail-produk');
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/utility/404', function () {
