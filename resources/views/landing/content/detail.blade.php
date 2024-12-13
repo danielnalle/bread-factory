@@ -1,14 +1,15 @@
 <x-guest-layout>
     <section id="detail" class="px-5 md:px-24 xl:px-44 w-full pt-[116px] pb-10 bg-[#F5F5F5]">
-        <div class="flex flex-col items-center lg:flex-row h-full gap-8 p-5 mb-5 rounded-lg bg-white shadow-sm">
+        <div
+            class="flex flex-col items-center lg:items-start lg:flex-row h-full gap-8 p-5 mb-5 rounded-lg bg-white shadow-sm">
             <div class="sm:w-[400px] sm:shrink-0 sm:h-[400px] overflow-hidden rounded-sm">
                 <div class="relative h-full w-full bg-[#f8f8f8]">
                     <img src="{{ asset('images/products/1.jpg') }}" class="w-full h-full object-contain" alt="">
                 </div>
             </div>
             <div class="w-full">
-                <h1 class="font-semibold text-2xl md:text-3xl text-dark-primary mb-1">White Bread</h1>
-                <h3 class="font-medium text-3xl md:text-4xl text-primary mb-2">Rp. <span>8.000</span></h3>
+                <h1 class="font-semibold text-xl md:text-2xl text-dark-primary mb-1">White Bread</h1>
+                <h3 class="font-medium text-2xl md:text-3xl text-primary mb-5">Rp. <span>8.000</span></h3>
                 <ul class="flex flex-col gap-5 text-[#0C1C2ECC] text-sm md:text-base font-normal mb-7">
                     <li class="flex gap-2 w-full">
                         <div class="max-w-20 sm:max-w-28 lg:max-w-20 xl:max-w-36 w-full">
@@ -53,7 +54,8 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </button>
-                            <input type="text" class="max-w-20 w-14 text-center border-dark-tertiary text-primary"
+                            <input type="text"
+                                class="max-w-20 w-14 text-center border-dark-tertiary focus:ring-transparent focus:border-primary text-primary"
                                 value="1">
                             <button
                                 class="inline-flex items-center justify-center p-1 w-8 h-8 border-t border-r border-b border-dark-tertiary"><svg

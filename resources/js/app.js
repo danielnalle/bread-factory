@@ -93,3 +93,57 @@ document.addEventListener("alpine:init", () => {
         },
     }));
 });
+
+const stickyElement = document.getElementById("sticky-element");
+const stickyElementM = document.getElementById("sticky-element-mobile");
+
+window.addEventListener("scroll", () => {
+    // Mendapatkan bounding rect dari elemen sticky
+    const rect = stickyElement.getBoundingClientRect();
+
+    if (rect.bottom >= window.innerHeight) {
+        // Jika elemen sticky di posisi bawah viewport
+        stickyElement.classList.add("shadow-custom-sticky");
+        stickyElement.classList.remove("shadow-sm");
+    } else {
+        // Jika elemen sticky kembali normal
+        stickyElement.classList.remove("shadow-custom-sticky");
+        stickyElement.classList.add("shadow-sm");
+    }
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    // Mendapatkan bounding rect dari elemen sticky
+    const rect = stickyElement.getBoundingClientRect();
+    const rectM = stickyElementM.getBoundingClientRect();
+
+    if (rect.bottom >= window.innerHeight) {
+        // Jika elemen sticky di posisi bawah viewport
+        stickyElement.classList.add("shadow-custom-sticky");
+        stickyElement.classList.remove("shadow-sm");
+    } else if (rectM.bottom >= window.innerHeight) {
+        stickyElementM.classList.add("shadow-custom-sticky");
+        stickyElementM.classList.remove("shadow-sm");
+    } else {
+        // Jika elemen sticky kembali normal
+        stickyElement.classList.remove("shadow-custom-sticky");
+        stickyElement.classList.add("shadow-sm");
+        stickyElementM.classList.remove("shadow-custom-sticky");
+        stickyElementM.classList.add("shadow-sm");
+    }
+});
+
+window.addEventListener("scroll", () => {
+    // Mendapatkan bounding rect dari elemen sticky
+    const rect = stickyElementM.getBoundingClientRect();
+
+    if (rect.bottom >= window.innerHeight) {
+        // Jika elemen sticky di posisi bawah viewport
+        stickyElementM.classList.add("shadow-custom-sticky");
+        stickyElementM.classList.remove("shadow-sm");
+    } else {
+        // Jika elemen sticky kembali normal
+        stickyElementM.classList.remove("shadow-custom-sticky");
+        stickyElementM.classList.add("shadow-sm");
+    }
+});

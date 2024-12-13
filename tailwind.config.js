@@ -111,6 +111,9 @@ export default {
                 "dark-tertiary": "#0C1C2E61",
                 tertiary: "#F1E1C6",
             },
+            boxShadow: {
+                "custom-sticky": "0 -4px 10px rgba(0, 0, 0, 0.1)", // Shadow mengarah ke atas
+            },
             // fontSize: {
             //     xs: ["0.75rem", { lineHeight: "1.5" }],
             //     sm: ["0.875rem", { lineHeight: "1.5715" }],
@@ -144,9 +147,9 @@ export default {
             //         { lineHeight: "1.2", letterSpacing: "-0.02em" },
             //     ],
             // },
-            // screens: {
-            //     xs: "480px",
-            // },
+            screens: {
+                xs: "480px",
+            },
             // borderWidth: {
             //     3: "3px",
             // },

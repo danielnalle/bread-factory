@@ -1,5 +1,5 @@
 <div
-    class="w-full z-[999] @if (!in_array(Request::segment(1), [''])) {{ 'bg-white border border-b-2 shadow-sm' }} @else{{ 'bg-gradient-to-b from-[rgba(0,0,0,0.4)] via-[rgba(0,0,0,0.2)] to-[rgba(0,0,0,0)]' }} @endif fixed top-0 left-0">
+    class="w-full z-[999] @if (!in_array(Request::segment(1), [''])) {{ 'bg-white border border-b-2 shadow-sm' }} @else{{ 'bg-gradient-to-b from-[rgba(0,0,0,0.4)] via-[rgba(0,0,0,0.2)] to-[rgba(0,0,0,0)]' }} @endif fixed top-0 left-0 right-0">
 
     <nav class="px-5 md:px-24 xl:px-44">
         <div class="max-w-screen-xl relative flex flex-wrap items-center justify-between mx-auto py-4">
@@ -8,7 +8,7 @@
                     class=" text-2xl font-main @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200 hover:text-white' }} @endif tracking-widest font-bold whitespace-nowrap dark:text-white">Bakeru</span>
             </a>
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                <div
+                <a href="{{ route('cart') }}"
                     class="flex items-center justify-between fill-current @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif">
                     <svg width="24" height="24" viewBox="0 0 28 28" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +77,7 @@
                         </svg>
                         Login
                     </button> --}}
-                </div>
+                </a>
                 <!-- Dropdown menu -->
                 <div class="z-50 hidden my-4 text-base max-w-56 list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                     id="user-dropdown">
