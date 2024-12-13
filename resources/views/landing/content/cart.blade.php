@@ -1,25 +1,31 @@
 <x-guest-layout>
-    <section id="detail" class="px-5 md:px-24 xl:px-44 w-full pt-[96px] lg:pt-[116px] pb-10 bg-[#F5F5F5]">
+    <section id="detail" class="px-5 md:px-24 xl:px-44 w-full pt-[96px] pb-10 bg-[#F5F5F5]" x-data="stickyHandler">
         <div class="w-full mb-6">
             <!-- Header -->
-            <div
-                class="hidden lg:grid grid-cols-[32px_repeat(6,_1fr)] gap-5 bg-white px-5 py-6 shadow-sm rounded-lg text-sm sm:text-base font-normal text-dark-primary mb-5">
-                <div class="inline-flex items-center justify-center">
-                    <input
-                        class="rounded-sm border-gray-300 focus:ring-0 checked:bg-primary focus:ring-transparent hover:scale-105 focus:outline-none"
-                        id="checkbox" name="checkbox" type="checkbox" value="">
+            <div class="hidden lg:block bg-white  px-5 py-6 shadow-sm rounded-lg mb-5">
+                <h1 class="text-primary font-main text-2xl font-semibold pb-3 border-b">Keranjang Belanja</h1>
+                <div
+                    class="grid grid-cols-[32px_repeat(6,_1fr)] gap-5 text-sm sm:text-base font-normal text-dark-primary mt-5">
+                    <div class="inline-flex items-center justify-center">
+                        <input
+                            class="rounded-sm border-gray-300 focus:ring-0 checked:bg-primary focus:ring-transparent hover:scale-105 focus:outline-none"
+                            id="checkbox" name="checkbox" type="checkbox" value="">
+                    </div>
+                    <div class="col-span-2">Produk</div>
+                    <div class="text-center">Harga Satuan</div>
+                    <div class="text-center">Jumlah</div>
+                    <div class="text-center">Total Harga</div>
+                    <div class="text-center">Aksi</div>
                 </div>
-                <div class="col-span-2">Produk</div>
-                <div class="text-center">Harga Satuan</div>
-                <div class="text-center">Kuantitas</div>
-                <div class="text-center">Total Harga</div>
-                <div class="text-center">Aksi</div>
             </div>
 
             <!-- Item -->
             <div class="flex flex-col bg-white rounded-lg overflow-hidden shadow-sm">
                 {{-- Mobile --}}
                 <div class="px-3 sm:px-5 block lg:hidden">
+                    <h1 class="text-primary font-main text-xl sm:text-2xl font-semibold pb-3 border-b mt-3 sm:mt-5">
+                        Keranjang
+                        Belanja</h1>
                     <div class="flex gap-5 border-b py-3 sm:py-5">
                         <div class="inline-flex items-center justify-center">
                             <input
@@ -66,8 +72,6 @@
 
                         </div>
                     </div>
-                </div>
-                <div class="px-3 sm:px-5 block lg:hidden">
                     <div class="flex gap-5 border-b py-3 sm:py-5">
                         <div class="inline-flex items-center justify-center">
                             <input
@@ -114,8 +118,6 @@
 
                         </div>
                     </div>
-                </div>
-                <div class="px-3 sm:px-5 block lg:hidden">
                     <div class="flex gap-5 border-b py-3 sm:py-5">
                         <div class="inline-flex items-center justify-center">
                             <input
@@ -162,8 +164,6 @@
 
                         </div>
                     </div>
-                </div>
-                <div class="px-3 sm:px-5 block lg:hidden">
                     <div class="flex gap-5 border-b py-3 sm:py-5">
                         <div class="inline-flex items-center justify-center">
                             <input
@@ -210,8 +210,6 @@
 
                         </div>
                     </div>
-                </div>
-                <div class="px-3 sm:px-5 block lg:hidden">
                     <div class="flex gap-5 border-b py-3 sm:py-5">
                         <div class="inline-flex items-center justify-center">
                             <input
@@ -258,8 +256,6 @@
 
                         </div>
                     </div>
-                </div>
-                <div class="px-3 sm:px-5 block lg:hidden">
                     <div class="flex gap-5 border-b py-3 sm:py-5">
                         <div class="inline-flex items-center justify-center">
                             <input
@@ -687,45 +683,12 @@
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
-        {{-- <div class="flex flex-col-reverse gap-5 sm:flex-row sm:justify-between items-start">
-            <a href="{{ route('produk') }}"
-                class="text-white leading-relaxed text-sm md:text-base bg-primary font-medium hover:bg-primary-hover rounded-full px-7 py-2 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
-                Kembali
-            </a>
-            <div class="bg-white p-5 rounded-lg shadow-sm w-full sm:w-[400px] sm:max-w-md">
-                <div class="flex flex-col gap-5">
-                    <h3 class="text-base sm:text-lg font-medium text-dark-primary">Detail Harga</h3>
-                    <div
-                        class="flex justify-between items-center text-sm sm:text-base text-dark-primary pb-4 border-b">
-                        <p>Total Pesanan:</p>
-                        <p>Rp. <span>800.000</span></p>
-                    </div>
-                    <div
-                        class="flex justify-between items-center text-sm sm:text-base text-dark-primary pb-4 border-b">
-                        <p>Jumlah Pesanan:</p>
-                        <p><span>1</span> Item</p>
-                    </div>
-                    <div
-                        class="flex justify-between items-center text-sm sm:text-base text-dark-primary pb-4 border-b">
-                        <p>Pengiriman:</p>
-                        <p>Gratis</p>
-                    </div>
-                    <div class="flex justify-between items-center text-sm sm:text-base text-dark-primary">
-                        <p>Total:</p>
-                        <p class="text-primary font-medium">Rp. <span>800.000</span></p>
-                    </div>
-                    <button type="submit"
-                        class="text-white leading-relaxed text-sm md:text-base bg-primary font-medium hover:bg-primary-hover rounded-full px-7 py-2 text-center inline-flex justify-center items-center dark:bg-primary dark:hover:bg-primary-hover ">
-                        Checkout
-                    </button>
-                </div>
-            </div>
-        </div> --}}
 
         {{-- Mobile --}}
-        <div id="sticky-element-mobile"
+        <div id="sticky-element-mobile" x-init="checkSticky"
             class="lg:hidden sticky bottom-0 bg-white w-full mt-6 rounded-lg transition-all duration-300">
             <div class="p-3 sm:p-5">
                 <div class="flex items-center flex-wrap gap-0 xs:gap-5 justify-between">
@@ -760,10 +723,10 @@
                             <p class="text-primary text-xs font-medium">Rp<span class="text-sm">800.000</span>
                             </p>
                         </div>
-                        <button type="submit"
+                        <a href="{{ route('checkout') }}"
                             class="text-white leading-relaxed w-fit text-sm md:text-base bg-primary font-medium hover:bg-primary-hover rounded-full px-7 py-2 text-center inline-flex justify-center items-center dark:bg-primary dark:hover:bg-primary-hover ">
                             Checkout (5)
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -771,7 +734,7 @@
 
         {{-- Desktop --}}
         <div class="hidden lg:block sticky bottom-0 bg-white w-full mt-6 rounded-lg p-5 transition-all duration-300"
-            id="sticky-element">
+            id="sticky-element" x-init="checkSticky">
             <div class="grid grid-cols-[32px_fit-content(150px)_fit-content(100px)_repeat(5,_1fr)] gap-5 items-center">
                 <div class="inline-flex items-center justify-center">
                     <input
@@ -799,13 +762,12 @@
                         class="text-primary text-sm font-medium">Rp<span class="text-base">800.000</span>
                     </span>
                 </div>
-                <button type="submit"
+                <a href="{{ route('checkout') }}"
                     class="text-white leading-relaxed text-sm md:text-base bg-primary font-medium hover:bg-primary-hover rounded-full px-7 py-2 text-center inline-flex justify-center items-center dark:bg-primary dark:hover:bg-primary-hover ">
                     Checkout
-                </button>
+                </a>
             </div>
         </div>
-
     </section>
     <section id="featured" class="px-5 md:px-24 xl:px-44 w-full pt-10 pb-20">
         <div class="flex flex-col gap-5">

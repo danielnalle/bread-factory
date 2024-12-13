@@ -94,56 +94,29 @@ document.addEventListener("alpine:init", () => {
     }));
 });
 
-const stickyElement = document.getElementById("sticky-element");
-const stickyElementM = document.getElementById("sticky-element-mobile");
-
-window.addEventListener("scroll", () => {
-    // Mendapatkan bounding rect dari elemen sticky
-    const rect = stickyElement.getBoundingClientRect();
-
-    if (rect.bottom >= window.innerHeight) {
-        // Jika elemen sticky di posisi bawah viewport
-        stickyElement.classList.add("shadow-custom-sticky");
-        stickyElement.classList.remove("shadow-sm");
-    } else {
-        // Jika elemen sticky kembali normal
-        stickyElement.classList.remove("shadow-custom-sticky");
-        stickyElement.classList.add("shadow-sm");
-    }
-});
-
-window.addEventListener("DOMContentLoaded", () => {
-    // Mendapatkan bounding rect dari elemen sticky
-    const rect = stickyElement.getBoundingClientRect();
-    const rectM = stickyElementM.getBoundingClientRect();
-
-    if (rect.bottom >= window.innerHeight) {
-        // Jika elemen sticky di posisi bawah viewport
-        stickyElement.classList.add("shadow-custom-sticky");
-        stickyElement.classList.remove("shadow-sm");
-    } else if (rectM.bottom >= window.innerHeight) {
-        stickyElementM.classList.add("shadow-custom-sticky");
-        stickyElementM.classList.remove("shadow-sm");
-    } else {
-        // Jika elemen sticky kembali normal
-        stickyElement.classList.remove("shadow-custom-sticky");
-        stickyElement.classList.add("shadow-sm");
-        stickyElementM.classList.remove("shadow-custom-sticky");
-        stickyElementM.classList.add("shadow-sm");
-    }
-});
-
-window.addEventListener("scroll", () => {
-    // Mendapatkan bounding rect dari elemen sticky
-    const rect = stickyElementM.getBoundingClientRect();
-
-    if (rect.bottom >= window.innerHeight) {
-        // Jika elemen sticky di posisi bawah viewport
-        stickyElementM.classList.add("shadow-custom-sticky");
-        stickyElementM.classList.remove("shadow-sm");
-    } else {
-        // Jika elemen sticky kembali normal
-        stickyElementM.classList.remove("shadow-custom-sticky");
-        stickyElementM.classList.add("shadow-sm");
-    }
+document.addEventListener("alpine:init", () => {
+    Alpine.data("stickyHandler", () => ({
+        checkSticky() {
+            const stickyElements = [
+                document.getElementById("sticky-element"),
+                document.getElementById("sticky-element-mobile"),
+            ];
+            stickyElements.forEach((element) => {
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.bottom >= window.innerHeight) {
+                        element.classList.add("shadow-custom-sticky");
+                        element.classList.remove("shadow-sm");
+                    } else {
+                        element.classList.remove("shadow-custom-sticky");
+                        element.classList.add("shadow-sm");
+                    }
+                }
+            });
+        },
+        init() {
+            window.addEventListener("scroll", this.checkSticky);
+            this.checkSticky(); // Check on load
+        },
+    }));
 });

@@ -35,6 +35,10 @@ Route::get('/cart', function () {
     return view('landing/content/cart');
 })->name('cart');
 
+Route::get('/checkout', function () {
+    return view('landing/content/checkout');
+})->name('checkout');
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/utility/404', function () {

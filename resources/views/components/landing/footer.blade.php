@@ -44,7 +44,7 @@
         </div>
         <div>
             <h3 class="text-md md:text-lg font-semibold mb-5 md:mb-7">Navigasi</h3>
-            <ul class="text-base font-light flex flex-col gap-4 md:gap-5 text-white text-opacity-80">
+            <ul class="text-sm md:text-base font-light flex flex-col gap-4 md:gap-5 text-white text-opacity-80">
                 <li><a href="/" class="hover:underline hover:underline-offset-4 inline-block">Home</a></li>
                 <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Produk</a></li>
                 <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Tentang
@@ -54,7 +54,7 @@
         </div>
         <div>
             <h3 class="text-md md:text-lg font-semibold mb-5 md:mb-7">Bantuan</h3>
-            <ul class="text-base font-light flex flex-col gap-4 md:gap-5 text-white text-opacity-80">
+            <ul class="text-sm md:text-base font-light flex flex-col gap-4 md:gap-5 text-white text-opacity-80">
                 <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Hubungi
                         Kami</a></li>
                 <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Syarat &
@@ -65,7 +65,7 @@
         </div>
         <div>
             <h3 class="text-md md:text-lg font-semibold mb-5 md:mb-7">Media Sosial</h3>
-            <ul class="text-base flex gap-4 md:gap-5 font-light text-white text-opacity-80">
+            <ul class="text-sm md:text-base flex gap-4 md:gap-5 font-light text-white text-opacity-80">
                 <li><a href="#" class="hover:underline inline-block mb-5"><img
                             src="{{ asset('images/icons/facebook.png') }}" width="24" alt=""></a></li>
                 <li><a href="#" class="hover:underline inline-block mb-5"><img
