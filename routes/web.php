@@ -39,6 +39,10 @@ Route::get('/checkout', function () {
     return view('landing/content/checkout');
 })->name('checkout');
 
+Route::get('/berhasil', function () {
+    return view('landing/content/berhasil');
+})->name('berhasil');
+
 Route::get('/my-account/orders', function () {
     return view('landing/my-account/orders');
 })->name('my-account.orders');
