@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <section id="detail" class="px-5 md:px-24 xl:px-44 w-full pt-[96px] pb-10 bg-[#F5F5F5]" x-data="stickyHandler">
+    <section id="detail" class="px-5 md:px-24 xl:px-44 w-full pt-[84px] pb-10 bg-[#F5F5F5]" x-data="stickyHandler">
         <div class="w-full mb-6">
             <!-- Header -->
             <div class="hidden lg:block bg-white  px-5 py-6 shadow-sm rounded-lg mb-5">

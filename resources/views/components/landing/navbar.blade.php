@@ -72,43 +72,45 @@
                 <button type="button"
                     class="flex text-sm rounded-full md:me-0 focus:ring-2 focus:ring-primary dark:focus:ring-gray-600"
                     id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-                    data-dropdown-placement="bottom">
+                    data-dropdown-placement="bottom-end">
                     <span class="sr-only">Open user menu</span>
                     <img class="w-8 h-8 rounded-full object-cover" src="{{ asset('images/team/1.jpg') }}"
                         alt="user photo">
                 </button>
                 <!-- Dropdown menu -->
-                <div class="z-50 hidden my-4 text-base max-w-56 list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-                    id="user-dropdown">
-                    <div class="px-4 py-3">
-                        <span class="block text-base font-medium text-dark-primary dark:text-white">Hy, Yogi
-                            Pradnyana</span>
-                    </div>
-                    <ul class="py-2" aria-labelledby="user-menu-button">
-                        {{-- <li>
+                <div class="z-50 hidden text-base max-w-56 list-none" id="user-dropdown">
+                    <div class="bg-white mt-2 divide-y divide-gray-100 rounded-lg shadow-lg">
+                        <div class="px-4 py-3">
+                            <span class="block text-base font-medium text-dark-primary dark:text-white">Hy, Yogi
+                                Pradnyana</span>
+                        </div>
+                        <ul class="py-2" aria-labelledby="user-menu-button">
+                            {{-- <li>
                             <a href="#"
                                 class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Dashboard</a>
                         </li> --}}
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Akun</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Alamat</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Sign Out</a>
-                        </li>
-                    </ul>
+                            <li>
+                                <a href="{{ route('my-account.orders') }}"
+                                    class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Akun</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Alamat</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Sign
+                                    Out</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <button data-collapse-toggle="navbar-user" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center fill-current text-sm @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif rounded-lg md:hidden dark:text-gray-400"
+                    class="inline-flex items-center w-8 h-8 justify-center fill-current text-sm @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif rounded-lg md:hidden dark:text-gray-400"
                     aria-controls="navbar-user" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -118,7 +120,7 @@
                     </svg>
                 </button>
             </div>
-            <div class="md:items-center absolute top-20 md:static md:justify-between hidden w-full md:flex md:w-auto md:order-1 bg-[#F1E1C6] bg-opacity-80 rounded-lg mt-2 md:rounded-none md:mt-0 md:bg-transparent"
+            <div class="md:items-center absolute top-16 md:static md:justify-between hidden w-full md:flex md:w-auto md:order-1 bg-[#F1E1C6] bg-opacity-80 rounded-lg mt-2 md:rounded-none md:mt-0 md:bg-transparent"
                 id="navbar-user">
                 <ul
                     class="flex flex-col text-base tracking-wide p-4 md:p-0 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 ">

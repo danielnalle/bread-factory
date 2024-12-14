@@ -39,6 +39,10 @@ Route::get('/checkout', function () {
     return view('landing/content/checkout');
 })->name('checkout');
 
+Route::get('/my-account/orders', function () {
+    return view('landing/my-account/orders');
+})->name('my-account.orders');
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/utility/404', function () {
@@ -65,7 +69,3 @@ Route::get('/orders/detail', [OrderController::class, 'detail'])->name('orders.d
 Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
 Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
 Route::get('/payment-method/edit', [PaymentController::class, 'edit'])->name('payment-method.edit');
-
-Route::get('/account', function () {
-    return view('admin/account/account');
-})->name('account');

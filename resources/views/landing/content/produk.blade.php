@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <section id="searchSection" class="px-5 md:px-24 xl:px-44 w-full pt-[76px] pb-20 border border-b">
+    <section id="searchSection" class="px-5 md:px-24 xl:px-44 w-full pt-[74px] pb-20 border border-b">
         <div class="flex flex-col items-center">
             <h3 class="text-3xl md:text-4xl mb-8 text-center md:mb-12 mt-10 font-semibold text-primary font-main ">Roti
                 Pilihan untuk

@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <section id="contact" class="px-5 md:px-24 xl:px-44 w-full pt-[76px] bg-[#F5F5F5]">
+    <section id="contact" class="px-5 md:px-24 xl:px-44 w-full pt-[64px] bg-[#F5F5F5]">
         <div class="flex flex-col lg:flex-row lg:justify-between gap-10 py-14">
             <div class="max-w-xl">
                 <h1 class="text-3xl text-start sm:text-4xl font-main text-primary mb-5 font-semibold">
