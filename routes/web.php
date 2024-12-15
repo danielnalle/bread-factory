@@ -51,6 +51,10 @@ Route::get('/my-account/account', function () {
     return view('landing/my-account/account');
 })->name('my-account.account');
 
+Route::get('/my-account/address', function () {
+    return view('landing/my-account/address');
+})->name('my-account.address');
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/utility/404', function () {

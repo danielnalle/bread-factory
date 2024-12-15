@@ -91,11 +91,11 @@
 
         <!-- Alamat -->
         <li
-            class="px-2 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(2), ['users'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
-            <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(2), ['users'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
-                href="{{ route('users') }}">
+            class="px-2 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(2), ['address'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
+            <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(2), ['address'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
+                href="{{ route('my-account.address') }}">
                 <div class="flex items-center">
-                    <svg class="shrink-0 fill-current @if (in_array(Request::segment(2), ['admin'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
+                    <svg class="shrink-0 fill-current @if (in_array(Request::segment(2), ['address'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
                         width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_291_7918" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="1" y="0"
