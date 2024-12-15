@@ -40,11 +40,13 @@
                         </div>
                         <div class="cols-span-2 flex flex-col justify-between w-full">
                             <div>
-                                <h3 class="text-base text-dark-primary font-medium">White Bread</h3>
-                                <p class="text-sm text-dark-primary">Rp. <span>8000</span></p>
+                                <h3 class="text-sm sm:text-base text-dark-primary font-medium">White Bread</h3>
+                                <p class="text-xs sm:text-sm text-dark-primary">Rp<span
+                                        class="text-sm sm:text-base">8000</span></p>
                             </div>
                             <div class="flex justify-between items-center gap-2 mt-4 flex-wrap">
-                                <p class="text-base text-primary font-medium">Rp. 800.000</p>
+                                <p class="text-xs sm:text-sm text-primary font-medium">Rp<span
+                                        class="text-sm sm:text-base">800.000</span></p>
                                 <div class="flex h-6 lg:h-8">
                                     <button
                                         class="inline-flex items-center justify-center p-1 w-6 lg:w-8 h-6 lg:h-8 border-t border-l border-b border-dark-tertiary"><svg
@@ -86,11 +88,13 @@
                         </div>
                         <div class="cols-span-2 flex flex-col justify-between w-full">
                             <div>
-                                <h3 class="text-base text-dark-primary font-medium">White Bread</h3>
-                                <p class="text-sm text-dark-primary">Rp. <span>8000</span></p>
+                                <h3 class="text-sm sm:text-base text-dark-primary font-medium">White Bread</h3>
+                                <p class="text-xs sm:text-sm text-dark-primary">Rp<span
+                                        class="text-sm sm:text-base">8000</span></p>
                             </div>
                             <div class="flex justify-between items-center gap-2 mt-4 flex-wrap">
-                                <p class="text-base text-primary font-medium">Rp. 800.000</p>
+                                <p class="text-xs sm:text-sm text-primary font-medium">Rp<span
+                                        class="text-sm sm:text-base">800.000</span></p>
                                 <div class="flex h-6 lg:h-8">
                                     <button
                                         class="inline-flex items-center justify-center p-1 w-6 lg:w-8 h-6 lg:h-8 border-t border-l border-b border-dark-tertiary"><svg
@@ -132,11 +136,13 @@
                         </div>
                         <div class="cols-span-2 flex flex-col justify-between w-full">
                             <div>
-                                <h3 class="text-base text-dark-primary font-medium">White Bread</h3>
-                                <p class="text-sm text-dark-primary">Rp. <span>8000</span></p>
+                                <h3 class="text-sm sm:text-base text-dark-primary font-medium">White Bread</h3>
+                                <p class="text-xs sm:text-sm text-dark-primary">Rp<span
+                                        class="text-sm sm:text-base">8000</span></p>
                             </div>
                             <div class="flex justify-between items-center gap-2 mt-4 flex-wrap">
-                                <p class="text-base text-primary font-medium">Rp. 800.000</p>
+                                <p class="text-xs sm:text-sm text-primary font-medium">Rp<span
+                                        class="text-sm sm:text-base">800.000</span></p>
                                 <div class="flex h-6 lg:h-8">
                                     <button
                                         class="inline-flex items-center justify-center p-1 w-6 lg:w-8 h-6 lg:h-8 border-t border-l border-b border-dark-tertiary"><svg
@@ -178,11 +184,13 @@
                         </div>
                         <div class="cols-span-2 flex flex-col justify-between w-full">
                             <div>
-                                <h3 class="text-base text-dark-primary font-medium">White Bread</h3>
-                                <p class="text-sm text-dark-primary">Rp. <span>8000</span></p>
+                                <h3 class="text-sm sm:text-base text-dark-primary font-medium">White Bread</h3>
+                                <p class="text-xs sm:text-sm text-dark-primary">Rp<span
+                                        class="text-sm sm:text-base">8000</span></p>
                             </div>
                             <div class="flex justify-between items-center gap-2 mt-4 flex-wrap">
-                                <p class="text-base text-primary font-medium">Rp. 800.000</p>
+                                <p class="text-xs sm:text-sm text-primary font-medium">Rp<span
+                                        class="text-sm sm:text-base">800.000</span></p>
                                 <div class="flex h-6 lg:h-8">
                                     <button
                                         class="inline-flex items-center justify-center p-1 w-6 lg:w-8 h-6 lg:h-8 border-t border-l border-b border-dark-tertiary"><svg
@@ -224,11 +232,13 @@
                         </div>
                         <div class="cols-span-2 flex flex-col justify-between w-full">
                             <div>
-                                <h3 class="text-base text-dark-primary font-medium">White Bread</h3>
-                                <p class="text-sm text-dark-primary">Rp. <span>8000</span></p>
+                                <h3 class="text-sm sm:text-base text-dark-primary font-medium">White Bread</h3>
+                                <p class="text-xs sm:text-sm text-dark-primary">Rp<span
+                                        class="text-sm sm:text-base">8000</span></p>
                             </div>
                             <div class="flex justify-between items-center gap-2 mt-4 flex-wrap">
-                                <p class="text-base text-primary font-medium">Rp. 800.000</p>
+                                <p class="text-xs sm:text-sm text-primary font-medium">Rp<span
+                                        class="text-sm sm:text-base">800.000</span></p>
                                 <div class="flex h-6 lg:h-8">
                                     <button
                                         class="inline-flex items-center justify-center p-1 w-6 lg:w-8 h-6 lg:h-8 border-t border-l border-b border-dark-tertiary"><svg
@@ -270,11 +280,13 @@
                         </div>
                         <div class="cols-span-2 flex flex-col justify-between w-full">
                             <div>
-                                <h3 class="text-base text-dark-primary font-medium">White Bread</h3>
-                                <p class="text-sm text-dark-primary">Rp. <span>8000</span></p>
+                                <h3 class="text-sm sm:text-base text-dark-primary font-medium">White Bread</h3>
+                                <p class="text-xs sm:text-sm text-dark-primary">Rp<span
+                                        class="text-sm sm:text-base">8000</span></p>
                             </div>
                             <div class="flex justify-between items-center gap-2 mt-4 flex-wrap">
-                                <p class="text-base text-primary font-medium">Rp. 800.000</p>
+                                <p class="text-xs sm:text-sm text-primary font-medium">Rp<span
+                                        class="text-sm sm:text-base">800.000</span></p>
                                 <div class="flex h-6 lg:h-8">
                                     <button
                                         class="inline-flex items-center justify-center p-1 w-6 lg:w-8 h-6 lg:h-8 border-t border-l border-b border-dark-tertiary"><svg
@@ -771,73 +783,81 @@
     </section>
     <section id="featured" class="px-5 md:px-24 xl:px-44 w-full pt-10 pb-20">
         <div class="flex flex-col gap-5">
-            <h3 class="font-semibold text-primary font-main text-2xl md:text-3xl">Produk Lain</h3>
+            <h3 class="font-semibold text-primary font-main text-xl sm:text-2xl md:text-3xl">Produk Lain</h3>
             <div class="flex flex-wrap justify-center xl:justify-between gap-5 lg:gap-10 xl:gap-0">
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>

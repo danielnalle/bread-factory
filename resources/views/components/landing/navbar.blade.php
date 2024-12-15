@@ -98,7 +98,7 @@
                                     class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Akun</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{ route('my-account.address') }}"
                                     class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Alamat</a>
                             </li>
                             <li>

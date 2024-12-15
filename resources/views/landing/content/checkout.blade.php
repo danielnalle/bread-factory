@@ -40,11 +40,13 @@
                     </div>
                     <div class="cols-span-2 flex flex-col justify-between w-full">
                         <div>
-                            <h3 class="text-base text-dark-primary font-medium">White Bread</h3>
-                            <p class="text-sm text-dark-primary">Rp. <span>8000</span></p>
+                            <h3 class="text-sm sm:text-base text-dark-primary font-medium">White Bread</h3>
+                            <p class="text-xs sm:text-sm text-dark-primary">Rp<span
+                                    class="text-sm sm:text-base">8000</span></p>
                         </div>
                         <div class="flex justify-between items-center gap-2 mt-4 flex-wrap">
-                            <p class="text-base text-primary font-medium">Rp. 800.000</p>
+                            <p class="text-xs sm:text-sm text-primary font-medium">Rp<span
+                                    class="text-sm sm:base">800.000</span></p>
                             <span class="text-sm text-dark-primary">x100</span>
                         </div>
                     </div>
