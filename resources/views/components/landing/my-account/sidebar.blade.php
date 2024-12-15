@@ -15,7 +15,7 @@
         <li
             class="px-2 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(2), ['orders'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
             <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(2), ['orders'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
-                href="{{ route('orders') }}">
+                href="{{ route('my-account.orders') }}">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
                         <svg class="shrink-0 fill-current @if (in_array(Request::segment(2), ['orders'])) {{ 'text-primary' }}@else{{ 'text-gray-400 dark:text-gray-500' }} @endif"
@@ -58,7 +58,7 @@
                     <!-- Badge -->
                     <div class="flex flex-shrink-0 ml-2">
                         <span
-                            class="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-primary px-2 rounded">1</span>
+                            class="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-primary px-2 rounded">3</span>
                     </div>
                 </div>
 
@@ -66,11 +66,11 @@
         </li>
         <!-- Akun -->
         <li
-            class="px-2 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(2), ['customers'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
-            <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(2), ['customers'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
-                href="{{ route('customers') }}">
+            class="px-2 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(2), ['account'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
+            <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(2), ['account'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
+                href="{{ route('my-account.account') }}">
                 <div class="flex items-center">
-                    <svg class="shrink-0 fill-current @if (in_array(Request::segment(2), ['customers'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
+                    <svg class="shrink-0 fill-current @if (in_array(Request::segment(2), ['account'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
                         width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
