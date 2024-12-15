@@ -15,6 +15,50 @@ Route::get('/', function () {
     return view('landing/content/home');
 })->name('landing-page');
 
+Route::get('/produk', function () {
+    return view('landing/content/produk');
+})->name('produk');
+
+Route::get('/about', function () {
+    return view('landing/content/about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('landing/content/contact');
+})->name('contact');
+
+Route::get('/produk/detail', function () {
+    return view('landing/content/detail');
+})->name('detail-produk');
+
+Route::get('/cart', function () {
+    return view('landing/content/cart');
+})->name('cart');
+
+Route::get('/checkout', function () {
+    return view('landing/content/checkout');
+})->name('checkout');
+
+Route::get('/berhasil', function () {
+    return view('landing/content/berhasil');
+})->name('berhasil');
+
+Route::get('/my-account/orders', function () {
+    return view('landing/my-account/orders');
+})->name('my-account.orders');
+
+Route::get('/my-account/account', function () {
+    return view('landing/my-account/account');
+})->name('my-account.account');
+
+Route::get('/my-account/address', function () {
+    return view('landing/my-account/address');
+})->name('my-account.address');
+
+Route::get('/my-account/orders/detail', function () {
+    return view('landing/my-account/detail');
+})->name('my-account.orders.detail');
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/utility/404', function () {
@@ -41,7 +85,3 @@ Route::get('/orders/detail', [OrderController::class, 'detail'])->name('orders.d
 Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
 Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
 Route::get('/payment-method/edit', [PaymentController::class, 'edit'])->name('payment-method.edit');
-
-Route::get('/account', function () {
-    return view('admin/account/account');
-})->name('account');
