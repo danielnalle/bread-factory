@@ -7,10 +7,10 @@
             </h3>
             <div class="relative max-w-3xl w-full">
                 <input type="text"
-                    class="inline-block py-5 ps-4 pe-40 text-base leading-snug border border-dark-secondary font-normal text-dark-primary rounded-full w-full focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 placeholder-dark-tertiary dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                    class="inline-block py-5 ps-4 pe-40 text-sm sm:text-base leading-snug border border-dark-secondary font-normal text-dark-primary rounded-full w-full focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 placeholder-dark-tertiary dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                     placeholder="Cari Roti Favorite...">
                 <button type="submit"
-                    class="text-white absolute top-[10px] right-[10px] text-base leading-relaxed bg-primary tracking-wide hover:bg-primary-hover font-normal rounded-full px-6 py-2 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
+                    class="text-white absolute top-[11px] sm:top-[10px] right-[10px] text-sm sm:text-base leading-relaxed bg-primary tracking-wide hover:bg-primary-hover font-normal rounded-full px-6 py-2 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="mr-2"
                         xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_269_9118" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="1" y="1"
@@ -40,216 +40,241 @@
     </section>
     <section id="products" class="px-5 md:px-24 xl:px-44 w-full py-5 bg-[#F5F5F5]">
         <div class="flex flex-col">
-            <div class="font-medium text-primary text-base mb-7">
-                <ul class="flex items-center gap-2.5 flex-wrap">
-                    <li class="px-5 py-2.5 rounded-full bg-primary text-white"><a href="#">Semua Produk</a></li>
-                    <li class="px-5 py-2.5 rounded-full bg-none"><a href="#">Roti Tawar</a></li>
-                    <li class="px-5 py-2.5 rounded-full bg-none"><a href="#">Roti Manis</a></li>
-                    <li class="px-5 py-2.5 rounded-full bg-none"><a href="#">Roti Sobek</a></li>
+            <div class="font-medium text-primary text-sm sm:text-base mb-7">
+                <ul class="flex items-center gap-2.5 overflow-x-auto">
+                    <li class="px-5 py-2.5 rounded-full whitespace-nowrap bg-primary text-white"><a href="#">Semua
+                            Produk</a></li>
+                    <li class="px-5 py-2.5 rounded-full whitespace-nowrap bg-none"><a href="#">Roti Tawar</a></li>
+                    <li class="px-5 py-2.5 rounded-full whitespace-nowrap bg-none"><a href="#">Roti Manis</a></li>
+                    <li class="px-5 py-2.5 rounded-full whitespace-nowrap bg-none"><a href="#">Roti Sobek</a></li>
                 </ul>
             </div>
             <div class="flex flex-wrap justify-center xl:justify-between gap-5 lg:gap-10 xl:gap-0">
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
-                <div
-                    class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-7">
+                <div class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
+                    x-data="{ goToDetail: '{{ route('detail-produk') }}' }" @click="window.location.href = goToDetail">
                     <a href="#" class="h-40">
                         <img class="h-full w-full object-center object-cover" src="{{ asset('images/produk.png') }}"
                             alt="" />
                     </a>
                     <div class="px-3 py-2.5 flex-[4] h-auto">
-                        <h5 class="mb-1 text-base font-semibold text-dark-primary dark:text-white">Croissant
+                        <h5 class="mb-1 text-sm sm:text-base font-semibold text-dark-primary dark:text-white">Croissant
                         </h5>
-                        <p class="mb-1 font-normal text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">Lorem
+                        <p
+                            class="mb-1 font-normal text-xs sm:text-sm text-dark-secondary dark:text-gray-400 line-clamp-2">
+                            Lorem
                             ipsum dolor sit
                             amet consectetur adipisicing elit. Libero, architecto?</p>
-                        <h3 class="mb-1 font-bold text-lg text-primary">Rp 8.000</h3>
-                        <p class="font-medium text-sm text-dark-primary">Min. order: <span
+                        <h3 class="mb-1 font-bold text-base sm:text-lg text-primary">Rp 8.000</h3>
+                        <p class="font-medium text-xs sm:text-sm text-dark-primary">Min. order: <span
                                 class="text-dark-secondary font-normal">100 pcs</span></p>
                     </div>
                 </div>
