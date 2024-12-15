@@ -107,7 +107,8 @@
 
                     {{-- Mobile --}}
                     <div class="block md:hidden">
-                        <div class="flex gap-5 border-b pt-3 pb-5">
+                        <div class="flex gap-5 border-b pt-3 pb-5 cursor-pointer" x-data="{ goToDetail: '{{ route('my-account.orders.detail') }}' }"
+                            @click="window.location.href = goToDetail">
                             <div
                                 class="text-sm sm:text-base inline-flex mt-[2px] justify-center w-12 text-dark-secondary">
                                 1
@@ -136,7 +137,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex gap-5 border-b pt-3 pb-5">
+
+                        <div class="flex gap-5 border-b pt-3 pb-5" x-data="{ goToDetail: '{{ route('my-account.orders.detail') }}' }"
+                            @click="window.location.href = goToDetail">
                             <div
                                 class="text-sm sm:text-base inline-flex mt-[2px] justify-center w-12 text-dark-secondary">
                                 2
@@ -165,7 +168,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex gap-5 border-b pt-3 pb-5">
+                        <div class="flex gap-5 border-b pt-3 pb-5" x-data="{ goToDetail: '{{ route('my-account.orders.detail') }}' }"
+                            @click="window.location.href = goToDetail">
                             <div
                                 class="text-sm sm:text-base inline-flex mt-[2px] justify-center w-12 text-dark-secondary">
                                 3
@@ -241,7 +245,7 @@
                                     Unpaid
                                 </td>
                                 <td class="flex items-center px-6 py-4">
-                                    <a href="{{ route('orders.detail') }}"
+                                    <a href="{{ route('my-account.orders.detail') }}"
                                         class="font-medium bg-primary hover:bg-primary-hover p-2 rounded-md hover:underline"><svg
                                             width="18" height="18" viewBox="0 0 18 18" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -291,7 +295,7 @@
                                     Unpaid
                                 </td>
                                 <td class="flex items-center px-6 py-4">
-                                    <a href="{{ route('orders.detail') }}"
+                                    <a href="{{ route('my-account.orders.detail') }}"
                                         class="font-medium bg-primary hover:bg-primary-hover p-2 rounded-md hover:underline"><svg
                                             width="18" height="18" viewBox="0 0 18 18" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -341,7 +345,7 @@
                                     Pay
                                 </td>
                                 <td class="flex items-center px-6 py-4">
-                                    <a href="{{ route('orders.detail') }}"
+                                    <a href="{{ route('my-account.orders.detail') }}"
                                         class="font-medium bg-primary hover:bg-primary-hover p-2 rounded-md hover:underline"><svg
                                             width="18" height="18" viewBox="0 0 18 18" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
