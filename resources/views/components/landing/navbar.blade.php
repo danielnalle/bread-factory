@@ -1,14 +1,23 @@
-<div
-    class="w-full z-[999] @if (!in_array(Request::segment(1), [''])) {{ 'bg-white border border-b-2 shadow-sm' }} @else{{ 'bg-gradient-to-b from-[rgba(0,0,0,0.4)] via-[rgba(0,0,0,0.2)] to-[rgba(0,0,0,0)]' }} @endif fixed top-0 left-0 right-0">
+<div x-data="{ scrolled: false }" x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 64)" @if (in_array(Request::segment(1), ['']))
+    :class="scrolled ? 'bg-white text-primary border-b-2 shadow-sm' :
+        'bg-gradient-to-b from-[rgba(0,0,0,0.4)] via-[rgba(0,0,0,0.2)] to-[rgba(0,0,0,0)] border-none'"
+    @endif
+    class="w-full z-[999] @if (!in_array(Request::segment(1), ['']))
+{{ 'bg-white border-b-2 shadow-sm' }}
+@endif text-white fixed top-0 left-0 right-0 transition-all duration-300">
 
     <nav class="px-5 md:px-24 xl:px-44">
         <div class="max-w-screen-xl relative flex flex-wrap items-center justify-between mx-auto py-4">
             <a href="/" class="flex items-center p-0 lg:pr-14">
                 <span
-                    class=" text-2xl font-main @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200 hover:text-white' }} @endif tracking-widest font-bold whitespace-nowrap dark:text-white">Bakeru</span>
+                    @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'text-primary' :
+                    'text-gray-200 hover:text-white'" @endif
+                    class="text-2xl font-main @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @endif tracking-widest font-bold whitespace-nowrap dark:text-white">Bakeru</span>
             </a>
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <a href="{{ route('cart') }}"
+                    @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'text-primary' :
+                    'text-gray-200 hover:text-white'" @endif
                     class="flex items-center mr-2 md:mr-5 justify-between fill-current @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif">
                     <svg width="24" height="24" viewBox="0 0 28 28" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -110,7 +119,9 @@
                     </div>
                 </div>
                 <button data-collapse-toggle="navbar-user" type="button"
-                    class="inline-flex items-center w-8 h-8 justify-center fill-current text-sm @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif rounded-lg md:hidden dark:text-gray-400"
+                    @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'text-primary' :
+                    'text-gray-200 hover:text-white'" @endif
+                    class="inline-flex items-center w-8 h-8 justify-center fill-current text-sm @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @endif rounded-lg md:hidden"
                     aria-controls="navbar-user" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -120,27 +131,35 @@
                     </svg>
                 </button>
             </div>
-            <div class="md:items-center absolute top-16 md:static md:justify-between hidden w-full md:flex md:w-auto md:order-1 bg-[#F1E1C6] bg-opacity-80 rounded-lg mt-2 md:rounded-none md:mt-0 md:bg-transparent"
+            <div class="md:items-center absolute top-16 md:static md:justify-between hidden w-full md:flex md:w-auto md:order-1 bg-white md:bg-none shadow-spread md:shadow-none rounded-lg mt-2 md:rounded-none md:mt-0 md:bg-transparent"
                 id="navbar-user">
                 <ul
                     class="flex flex-col text-base tracking-wide p-4 md:p-0 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 ">
                     <li>
                         <a href="{{ route('landing-page') }}"
-                            class="block py-2 px-3 font-normal text-dark-primary @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @else{{ 'md:text-gray-200 md:hover:text-white' }} @endif  @if (in_array(Request::segment(1), [''])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0"
+                            @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'md:text-primary md:hover:text-opacity-80' :
+                    'md:text-gray-200 md:hover:text-white'" @endif
+                            class="block py-2 px-3 font-normal text-primary @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @endif  @if (in_array(Request::segment(1), [''])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0"
                             aria-current="page">Home</a>
                     </li>
                     <li>
                         <a href="{{ route('produk') }}"
-                            class="block py-2 px-3 text-dark-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @else{{ 'md:text-gray-200 md:hover:text-white' }} @endif @if (in_array(Request::segment(1), ['produk'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Produk</a>
+                            @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'md:text-primary md:hover:text-opacity-80' :
+                    'md:text-gray-200 md:hover:text-white'" @endif
+                            class="block py-2 px-3 text-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @endif @if (in_array(Request::segment(1), ['produk'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Produk</a>
                     </li>
                     <li>
                         <a href="{{ route('about') }}"
-                            class="block py-2 px-3 text-dark-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @else{{ 'md:text-gray-200 md:hover:text-white' }} @endif @if (in_array(Request::segment(1), ['about'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Tentang
+                            @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'md:text-primary md:hover:text-opacity-80' :
+                    'md:text-gray-200 md:hover:text-white'" @endif
+                            class="block py-2 px-3 text-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @endif @if (in_array(Request::segment(1), ['about'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Tentang
                             Kami</a>
                     </li>
                     <li>
                         <a href="{{ route('contact') }}"
-                            class="block py-2 px-3 text-dark-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @else{{ 'md:text-gray-200 md:hover:text-white' }} @endif @if (in_array(Request::segment(1), ['contact'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Kontak</a>
+                            @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'md:text-primary md:hover:text-opacity-80' :
+                    'md:text-gray-200 md:hover:text-white'" @endif
+                            class="block py-2 px-3 text-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @endif @if (in_array(Request::segment(1), ['contact'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Kontak</a>
                     </li>
                 </ul>
             </div>

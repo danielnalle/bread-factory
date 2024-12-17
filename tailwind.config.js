@@ -113,6 +113,7 @@ export default {
             },
             boxShadow: {
                 "custom-sticky": "0 -4px 10px rgba(0, 0, 0, 0.1)", // Shadow mengarah ke atas
+                spread: "0 0 10px 2px rgba(0, 0, 0, 0.1)",
             },
             // fontSize: {
             //     xs: ["0.75rem", { lineHeight: "1.5" }],
