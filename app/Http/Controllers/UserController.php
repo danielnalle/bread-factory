@@ -16,9 +16,12 @@ class UserController extends Controller
     {
         return view('admin/users/create');
     }
-    public function edit()
+    public function edit($id)
     {
-        return view('admin/users/edit');
+        $user = User::where('id', $id)->first();
+        return view('admin/users/edit', [
+            'user' => $user,
+        ]);
     }
 
     public function store(Request $request)

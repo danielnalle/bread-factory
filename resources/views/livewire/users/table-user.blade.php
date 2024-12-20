@@ -69,7 +69,7 @@
                         {{ $user->role }}
                     </td>
                     <td class="flex items-center px-6 py-4">
-                        <a href="{{ route('users.edit') }}"
+                        <a href="{{ route('users.edit', $user->id) }}"
                             class="font-medium bg-yellow-300 hover:bg-yellow-400 p-2 rounded-md hover:underline"><svg
                                 width="18" height="18" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">

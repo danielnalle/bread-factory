@@ -36,6 +36,6 @@ class CreateUser extends Component
         ]);
 
         session()->flash('message', 'Data berhasil ditambahkan.');
-        return redirect()->route('users');
+        redirect()->route('users');
     }
 }

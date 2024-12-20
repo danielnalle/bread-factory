@@ -73,7 +73,7 @@ Route::get('/customers/create', [CustomerController::class, 'create'])->name('cu
 Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
 Route::get('/users', [UserController::class, 'index'])->name('users');
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-Route::get('/users/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::get('/products/edit', [ProductController::class, 'edit'])->name('products.edit');
