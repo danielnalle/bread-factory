@@ -48,7 +48,7 @@
         <!-- Cards -->
 
         <div class="antialiased relative">
-            @livewire('create-user')
+            @livewire('users.create-user')
 
         </div>
 
