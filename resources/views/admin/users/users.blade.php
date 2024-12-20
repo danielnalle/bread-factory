@@ -36,6 +36,7 @@
         <!-- Cards -->
 
         <div class="p-5 bg-white dark:bg-gray-900 antialiased relative overflow-x-auto shadow-sm sm:rounded-lg">
+
             <div class="mb-4 bg-white dark:bg-gray-900 sm:flex sm:justify-between sm:items-center">
                 <div class="mb-4 sm:mb-0">
                     <label for="table-search" class="sr-only">Search</label>
@@ -83,9 +84,6 @@
                             Email
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            No HP
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Jabatan
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -104,9 +102,6 @@
                         </th>
                         <td class="px-6 py-4">
                             udinganteng@gmail.com
-                        </td>
-                        <td class="px-6 py-4">
-                            081234567891
                         </td>
                         <td class="px-6 py-4">
                             Pegawai
