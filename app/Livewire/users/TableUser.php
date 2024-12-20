@@ -9,11 +9,17 @@ use Livewire\WithPagination;
 class TableUser extends Component
 {
     use WithPagination;
+    public $search = '';
     public function render()
     {
 
         return view('livewire.users.table-user', [
-            'users' => User::orderBy('id', 'desc')->paginate(10)
+            'users' => User::orderBy('id', 'desc')->where('name', 'like', '%' . $this->search . '%')->paginate(10)
         ]);
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }
