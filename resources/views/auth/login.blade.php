@@ -1,7 +1,8 @@
 <x-authentication-layout>
     <div
         class="px-7 py-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full max-w-md">
-        <form>
+        <form action="{{ route('login.getUsers') }}" method="POST">
+            @csrf
             <div class="mb-6">
                 <h1 class="text-center tracking-wider text-3xl text-primary font-main dark:text-gray-100 font-extrabold">
                     Login
@@ -16,19 +17,24 @@
                     Login Customer 
                     Silakan masuk ke akun Anda dan mulai memesan  --}}
             </div>
+            @if (session('failed'))
+                <div id="flash" class="p-4 text-center bg-red-50 text-red-500 font-bold">
+                    {{ session('failed') }}
+                </div>
+            @endif
             <div class="mb-5">
                 <label for="email"
                     class="block mb-2.5 text-base font-normal text-dark-secondary dark:text-white">Email</label>
                 <input type="email" id="email"
                     class=" border border-gray-300 text-dark-primary text-base rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-dark-tertiary dark:placeholder-gray-400 dark:text-white  dark:focus:ring-primary dark:focus:border-primary"
-                    placeholder="Masukan email" required />
+                    placeholder="Masukan email" name="email" required />
             </div>
             <div class="mb-5">
                 <label for="password"
                     class="block mb-2.5 text-base font-normal text-dark-secondary dark:text-white">Password</label>
                 <input type="password" id="password"
                     class=" border border-gray-300 text-dark-primary text-base rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-dark-tertiary dark:placeholder-gray-400 dark:text-white  dark:focus:ring-primary dark:focus:border-primary"
-                    placeholder="Masukan password" required />
+                    placeholder="Masukan password" name="password" required />
             </div>
             <div class="mb-5 w-full flex justify-end">
                 <a href="" class="text-primary hover:underline font-normal text-base">Lupa Kata Sandi?</a>
