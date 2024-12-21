@@ -1,6 +1,35 @@
 import "./bootstrap";
 import "flowbite";
 
+// const modal = document.getElementById("btn_modal");
+// modal.addEventListener("click", () => {
+//     Swal.fire({
+//         html: document.getElementById("popup-modal").innerHTML, // Ambil HTML dari modal custom
+//         showConfirmButton: false, // Nonaktifkan tombol bawaan
+//         customClass: {
+//             popup: "swal2-no-padding", // Kelas untuk memodifikasi desain modal
+//         },
+//         backdrop: true, // Aktifkan backdrop
+//         willOpen: () => {
+//             // Aktifkan fungsionalitas modal, jika perlu
+//             document.querySelectorAll(".data-modal-hide").forEach((button) => {
+//                 button.addEventListener("click", () => Swal.close());
+//             });
+
+//             const confirmButton = document.querySelectorAll(".confirm-delete"); // Tambahkan class unik pada tombol "Ya, Saya Yakin"
+//             confirmButton.forEach((btn) => {
+//                 btn.addEventListener("click", () => {
+//                     const userId = btn.getAttribute("data-id"); // Ambil ID dari atribut data-id
+//                     // Panggil backend atau Livewire menggunakan @this.call (jika pakai Livewire)
+//                     // Livewire.dispatch("delete", userId); // Emit event ke Livewire
+
+//                     // Swal.close(); // Tutup modal setelah aksi
+//                 });
+//             });
+//         },
+//     });
+// });
+
 document.addEventListener("DOMContentLoaded", () => {
     // Light switcher
     const lightSwitches = document.querySelectorAll(".light-switch");
@@ -15,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (n !== i) {
                         el.checked = checked;
                     }
+                    s;
                 });
                 document.documentElement.classList.add(
                     "[&_*]:!transition-none"

@@ -84,7 +84,7 @@
                                     fill="black" />
                             </svg>
                         </a>
-                        <a href="#"
+                        <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                             class="font-medium bg-red-600 hover:bg-red-700 p-2 rounded-md hover:underline ms-3"><svg
                                 width="20" height="20" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +98,95 @@
                                     d="M17.4405 6.98924C16.3025 6.98924 15.3145 6.17824 15.0905 5.06224L14.8475 3.84624C14.7965 3.66124 14.5855 3.50024 14.3455 3.50024H10.1125C9.87246 3.50024 9.66146 3.66124 9.60046 3.89224L9.36746 5.06224C9.14446 6.17824 8.15546 6.98924 7.01746 6.98924C6.60346 6.98924 6.26746 6.65324 6.26746 6.23924C6.26746 5.82524 6.60346 5.48924 7.01746 5.48924C7.44346 5.48924 7.81346 5.18524 7.89746 4.76724L8.14046 3.55124C8.38746 2.61924 9.19446 2.00024 10.1125 2.00024H14.3455C15.2635 2.00024 16.0705 2.61924 16.3075 3.50624L16.5615 4.76724C16.6445 5.18524 17.0145 5.48924 17.4405 5.48924C17.8545 5.48924 18.1905 5.82524 18.1905 6.23924C18.1905 6.65324 17.8545 6.98924 17.4405 6.98924Z"
                                     fill="white" />
                             </svg>
-                        </a>
+                        </button>
+                        <div id="popup-modal" tabindex="-1"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-md max-h-full">
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <button type="button"
+                                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-hide="popup-modal">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"
+                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                    <div class="p-4 md:p-5 text-center">
+                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"
+                                                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
+                                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Kamu
+                                            yakin ingin menghapus data ini?</h3>
+                                        <button data-modal-hide="popup-modal" type="button"
+                                            wire:click="delete('{{ $user->id }}')"
+                                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                            Ya, Saya Yakin
+                                        </button>
+                                        <button data-modal-hide="popup-modal" type="button"
+                                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak,
+                                            Batal</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <button type="button" id="btn_modal" wire:click="delete({{ $user->id }})"
+                            class="font-medium bg-red-600 hover:bg-red-700 p-2 rounded-md hover:underline ms-3"><svg
+                                width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.8626 20.2804C10.5076 20.2804 9.18656 20.2654 7.87957 20.2384C6.20756 20.2054 5.05057 19.1214 4.86156 17.4094C4.54656 14.5694 4.00756 7.87542 4.00256 7.80842C3.96856 7.39542 4.27657 7.03342 4.68957 7.00042C5.09657 6.98942 5.46457 7.27542 5.49757 7.68742C5.50257 7.75542 6.04057 14.4264 6.35257 17.2444C6.45957 18.2174 6.98456 18.7194 7.91056 18.7384C10.4106 18.7914 12.9616 18.7944 15.7116 18.7444C16.6956 18.7254 17.2276 18.2334 17.3376 17.2374C17.6476 14.4434 18.1876 7.75542 18.1936 7.68742C18.2266 7.27542 18.5916 6.98742 19.0006 7.00042C19.4136 7.03442 19.7216 7.39542 19.6886 7.80842C19.6826 7.87642 19.1406 14.5874 18.8286 17.4024C18.6346 19.1494 17.4806 20.2124 15.7386 20.2444C14.4056 20.2674 13.1196 20.2804 11.8626 20.2804Z"
+                                    fill="white" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M20.708 6.98926H3.75C3.336 6.98926 3 6.65326 3 6.23926C3 5.82526 3.336 5.48926 3.75 5.48926H20.708C21.122 5.48926 21.458 5.82526 21.458 6.23926C21.458 6.65326 21.122 6.98926 20.708 6.98926Z"
+                                    fill="white" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M17.4405 6.98924C16.3025 6.98924 15.3145 6.17824 15.0905 5.06224L14.8475 3.84624C14.7965 3.66124 14.5855 3.50024 14.3455 3.50024H10.1125C9.87246 3.50024 9.66146 3.66124 9.60046 3.89224L9.36746 5.06224C9.14446 6.17824 8.15546 6.98924 7.01746 6.98924C6.60346 6.98924 6.26746 6.65324 6.26746 6.23924C6.26746 5.82524 6.60346 5.48924 7.01746 5.48924C7.44346 5.48924 7.81346 5.18524 7.89746 4.76724L8.14046 3.55124C8.38746 2.61924 9.19446 2.00024 10.1125 2.00024H14.3455C15.2635 2.00024 16.0705 2.61924 16.3075 3.50624L16.5615 4.76724C16.6445 5.18524 17.0145 5.48924 17.4405 5.48924C17.8545 5.48924 18.1905 5.82524 18.1905 6.23924C18.1905 6.65324 17.8545 6.98924 17.4405 6.98924Z"
+                                    fill="white" />
+                            </svg>
+                        </button>
+                        <div tabindex="-1"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-md max-h-full">
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700" id="popup-modal">
+                                    <button type="button"
+                                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white data-modal-hide">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"
+                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                    <div class="p-4 md:p-5 text-center">
+                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"
+                                                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
+                                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Kamu
+                                            yakin ingin menghapus data ini?</h3>
+                                        <button type="button" data-id="{{ $user->id }}"
+                                            wire:click="delete({{ $user->id }})"
+                                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center confirm-delete">
+                                            Ya, Saya Yakin
+                                        </button>
+                                        <button type="button"
+                                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 data-modal-hide">Tidak,
+                                            Batal</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
                     </td>
                 </tr>
             @endforeach

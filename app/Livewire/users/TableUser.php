@@ -10,6 +10,9 @@ class TableUser extends Component
 {
     use WithPagination;
     public $search = '';
+    protected $listeners = ['delete'];
+    public $user_id;
+
     public function render()
     {
 
@@ -21,5 +24,14 @@ class TableUser extends Component
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function delete($id)
+    {
+        // $this->user_id = $id;
+        $user = User::find($id);
+        $user->delete();
+
+        session()->flash('message', 'Data berhasil dihapus.');
     }
 }
