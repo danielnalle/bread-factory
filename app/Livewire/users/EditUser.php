@@ -42,7 +42,7 @@ class EditUser extends Component
 
         $this->reset();
 
-        session()->flash('message', 'Data berhasil diupdate.');
-        redirect()->route('users');
+        flash('User Berhasil Diupdate', 'success');
+        return redirect()->route('users');
     }
 }

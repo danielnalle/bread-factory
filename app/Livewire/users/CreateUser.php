@@ -35,7 +35,7 @@ class CreateUser extends Component
             'role' => $this->role,
         ]);
 
-        session()->flash('message', 'Data berhasil ditambahkan.');
-        redirect()->route('users');
+        flash("User Berhasil Ditambahkan", "success");
+        return redirect()->route('users');
     }
 }

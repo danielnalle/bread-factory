@@ -34,7 +34,6 @@
 
 <body class="font-secondary antialiased bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400"
     :class="{ 'sidebar-expanded': sidebarExpanded }" x-data="{ sidebarOpen: false, sidebarExpanded: localStorage.getItem('sidebar-expanded') == 'true' }" x-init="$watch('sidebarExpanded', value => localStorage.setItem('sidebar-expanded', value))">
-
     <script>
         if (localStorage.getItem('sidebar-expanded') == 'true') {
             document.querySelector('body').classList.add('sidebar-expanded');
@@ -42,6 +41,27 @@
             document.querySelector('body').classList.remove('sidebar-expanded');
         }
     </script>
+    @if (flash()->message)
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    },
+                });
+                Toast.fire({
+                    icon: '{{ flash()->class }}',
+                    title: "{{ flash()->message }}",
+                });
+            });
+        </script>
+    @endif
 
     <!-- Page wrapper -->
     <div class="flex h-[100dvh] overflow-hidden">
@@ -66,29 +86,7 @@
 
 
     @livewireScripts
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        // window.addEventListener('userDeleteConfirmation', event => {
-        //     console.log(event);
-        //     // Swal.fire({
-        //     //     title: "Are you sure?",
-        //     //     text: "You won't be able to revert this!",
-        //     //     icon: "warning",
-        //     //     showCancelButton: true,
-        //     //     confirmButtonColor: "#3085d6",
-        //     //     cancelButtonColor: "#d33",
-        //     //     confirmButtonText: "Yes, delete it!"
-        //     // }).then((result) => {
-        //     //     if (result.isConfirmed) {
-        //     //         Swal.fire({
-        //     //             title: "Deleted!",
-        //     //             text: "Your file has been deleted.",
-        //     //             icon: "success"
-        //     //         });
-        //     //     }
-        //     // });
-        // });
-    </script>
+
 </body>
 
 </html>

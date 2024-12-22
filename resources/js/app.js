@@ -1,34 +1,52 @@
 import "./bootstrap";
 import "flowbite";
+import Swal from "sweetalert2";
 
-// const modal = document.getElementById("btn_modal");
-// modal.addEventListener("click", () => {
-//     Swal.fire({
-//         html: document.getElementById("popup-modal").innerHTML, // Ambil HTML dari modal custom
-//         showConfirmButton: false, // Nonaktifkan tombol bawaan
-//         customClass: {
-//             popup: "swal2-no-padding", // Kelas untuk memodifikasi desain modal
-//         },
-//         backdrop: true, // Aktifkan backdrop
-//         willOpen: () => {
-//             // Aktifkan fungsionalitas modal, jika perlu
-//             document.querySelectorAll(".data-modal-hide").forEach((button) => {
-//                 button.addEventListener("click", () => Swal.close());
-//             });
+window.Swal = Swal;
 
-//             const confirmButton = document.querySelectorAll(".confirm-delete"); // Tambahkan class unik pada tombol "Ya, Saya Yakin"
-//             confirmButton.forEach((btn) => {
-//                 btn.addEventListener("click", () => {
-//                     const userId = btn.getAttribute("data-id"); // Ambil ID dari atribut data-id
-//                     // Panggil backend atau Livewire menggunakan @this.call (jika pakai Livewire)
-//                     // Livewire.dispatch("delete", userId); // Emit event ke Livewire
+window.addEventListener("alert", (event) => {
+    let data = event.detail[0];
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        },
+    });
+    Toast.fire({
+        icon: data.type,
+        title: data.message,
+    });
+});
 
-//                     // Swal.close(); // Tutup modal setelah aksi
-//                 });
-//             });
-//         },
-//     });
-// });
+window.addEventListener("deleteConfirm", (event) => {
+    Swal.fire({
+        html: document.getElementById("popup-modal").innerHTML,
+        showConfirmButton: false,
+        customClass: {
+            popup: "swal2-no-padding",
+        },
+        backdrop: true,
+        willOpen: () => {
+            document.querySelectorAll(".data-modal-hide").forEach((button) => {
+                button.addEventListener("click", () => Swal.close());
+            });
+
+            const confirmButton = document.querySelectorAll(".confirm-delete"); // Tambahkan class unik pada tombol "Ya, Saya Yakin"
+            confirmButton.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    // Panggil backend atau Livewire menggunakan @this.call (jika pakai Livewire)
+                    Livewire.dispatch(event.detail[0].user); // Emit event ke Livewire
+                    Swal.close(); // Tutup modal setelah aksi
+                });
+            });
+        },
+    });
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     // Light switcher

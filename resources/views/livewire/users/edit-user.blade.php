@@ -1,4 +1,4 @@
-<form class="max-w-full mx-auto" wire:submit.prevent="update">
+<form class="max-w-full mx-auto" wire:submit="update">
     <div class="md:grid md:grid-cols-2 gap-5">
         <div>
             <div class="mb-5">

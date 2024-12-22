@@ -5,12 +5,12 @@ namespace App\Livewire\Users;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\On;
 
 class TableUser extends Component
 {
     use WithPagination;
     public $search = '';
-    protected $listeners = ['delete'];
     public $user_id;
 
     public function render()
@@ -26,12 +26,21 @@ class TableUser extends Component
         $this->resetPage();
     }
 
-    public function delete($id)
+    public function deleteConfirm($id)
     {
-        // $this->user_id = $id;
-        $user = User::find($id);
+        $this->user_id = $id;
+
+        // $user->delete();
+
+        // session()->flash('message', 'Data berhasil dihapus.');
+        $this->dispatch('deleteConfirm', ['user' => 'userDelete']);
+    }
+    #[On('userDelete')]
+    public function delete()
+    {
+        $user = User::find($this->user_id);
         $user->delete();
 
-        session()->flash('message', 'Data berhasil dihapus.');
+        $this->dispatch("alert", ['type' => 'success', 'message' => "User Berhasil dihapus"]);
     }
 }
