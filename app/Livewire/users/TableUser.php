@@ -17,7 +17,7 @@ class TableUser extends Component
     {
 
         return view('livewire.users.table-user', [
-            'users' => User::orderBy('id', 'desc')->where('name', 'like', '%' . $this->search . '%')->orWhere('email', 'like', '%' . $this->search . '%')->paginate(10)
+            'users' => User::orderBy('id', 'desc')->whereAny(['name', 'email'], 'like', '%' . $this->search . '%')->paginate(10)
         ]);
     }
 
