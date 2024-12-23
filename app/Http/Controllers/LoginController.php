@@ -36,6 +36,6 @@ class LoginController extends Controller
             }
         }
 
-        return redirect()->route('login.index')->with('failed', 'Username atau password tidak ada');
+        return redirect()->route('login.index')->with('failed', 'Akun dan/atau password Anda salah, silakan coba lagi');
     }
 }
