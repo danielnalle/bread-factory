@@ -24,23 +24,23 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(Request $request)
-    {
-        // Validasi data
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:employees',
-            'position' => 'required|string|max:255',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     // Validasi data
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|email|unique:employees',
+    //         'position' => 'required|string|max:255',
+    //     ]);
 
-        // Simpan data pegawai
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'position' => $request->position,
-        ]);
+    //     // Simpan data pegawai
+    //     User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'position' => $request->position,
+    //     ]);
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('admin.employees.index')->with('success', 'Pegawai berhasil ditambahkan!');
-    }
+    //     // Redirect dengan pesan sukses
+    //     return redirect()->route('admin.employees.index')->with('success', 'Pegawai berhasil ditambahkan!');
+    // }
 }

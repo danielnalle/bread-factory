@@ -40,7 +40,7 @@ window.addEventListener("deleteConfirm", (event) => {
             confirmButton.forEach((btn) => {
                 btn.addEventListener("click", () => {
                     // Panggil backend atau Livewire menggunakan @this.call (jika pakai Livewire)
-                    Livewire.dispatch(event.detail[0].user); // Emit event ke Livewire
+                    Livewire.dispatch(event.detail[0].trigger); // Emit event ke Livewire
                     Swal.close(); // Tutup modal setelah aksi
                 });
             });

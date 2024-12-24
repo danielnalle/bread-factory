@@ -37,43 +37,43 @@ Route::middleware([UserAuthentication::class])->group(function () {
     Route::get('/produk', function () {
         return view('landing/content/produk');
     })->name('produk');
-    
+
     Route::get('/about', function () {
         return view('landing/content/about');
     })->name('about');
-    
+
     Route::get('/contact', function () {
         return view('landing/content/contact');
     })->name('contact');
-    
+
     Route::get('/produk/detail', function () {
         return view('landing/content/detail');
     })->name('detail-produk');
-    
+
     Route::get('/cart', function () {
         return view('landing/content/cart');
     })->name('cart');
-    
+
     Route::get('/checkout', function () {
         return view('landing/content/checkout');
     })->name('checkout');
-    
+
     Route::get('/berhasil', function () {
         return view('landing/content/berhasil');
     })->name('berhasil');
-    
+
     Route::get('/my-account/orders', function () {
         return view('landing/my-account/orders');
     })->name('my-account.orders');
-    
+
     Route::get('/my-account/account', function () {
         return view('landing/my-account/account');
     })->name('my-account.account');
-    
+
     Route::get('/my-account/address', function () {
         return view('landing/my-account/address');
     })->name('my-account.address');
-    
+
     Route::get('/my-account/orders/detail', function () {
         return view('landing/my-account/detail');
     })->name('my-account.orders.detail');
@@ -91,7 +91,7 @@ Route::middleware([UserAuthentication::class])->group(function () {
     Route::get('/products/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
-    Route::get('/categories/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+    Route::get('/categories/edit/{category}', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders');
     Route::get('/orders/detail', [OrderController::class, 'detail'])->name('orders.detail');
     Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');

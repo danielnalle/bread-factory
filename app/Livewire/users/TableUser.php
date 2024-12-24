@@ -33,7 +33,7 @@ class TableUser extends Component
         // $user->delete();
 
         // session()->flash('message', 'Data berhasil dihapus.');
-        $this->dispatch('deleteConfirm', ['user' => 'userDelete']);
+        $this->dispatch('deleteConfirm', ['trigger' => 'userDelete']);
     }
     #[On('userDelete')]
     public function delete()

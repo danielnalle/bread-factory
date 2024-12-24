@@ -21,5 +21,11 @@ class UserSeeder extends Seeder
             'email' => 'admin@example.com',
             'role' => 'admin'
         ]);
+        User::factory()->create([
+            'name' => 'Yogi Pradnyana',
+            'email' => 'yogi@gmail.com',
+            'role' => 'admin',
+            'password' => 'asdasd',
+        ]);
     }
 }
