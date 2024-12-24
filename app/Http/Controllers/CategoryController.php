@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,8 +15,11 @@ class CategoryController extends Controller
     {
         return view('admin/categories/create');
     }
-    public function edit()
+    public function edit($id)
     {
-        return view('admin/categories/edit');
+        $category = Category::where('id', $id)->first();
+        return view('admin/categories/edit', [
+            'category' => $category,
+        ]);
     }
 }

@@ -10,8 +10,8 @@ class CreateCategory extends Component
 {
     #[Validate('required|string|max:255|unique:bread_types,name')]
     public $name;
-    #[Validate('required|boolean')]
-    public $isActive;
+    #[Validate('boolean')]
+    public $isActive = false;
 
     public function render()
     {
