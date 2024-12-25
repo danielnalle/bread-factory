@@ -21,14 +21,18 @@ Route::get('/utility/404', function () {
     return view('errors/404');
 })->name('404');
 
-Route::middleware([EnsureUserAuthenticated::class])->group(function () {
-    Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-    Route::post('/login', [LoginController::class, 'getUsersByLogin'])->name('login.getUsers');
-
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
 });
+// Route::middleware([EnsureUserAuthenticated::class])->group(function () {
+//     Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+//     Route::post('/login', [LoginController::class, 'getUsersByLogin'])->name('login.getUsers');
 
-Route::middleware([UserAuthentication::class])->group(function () {
+//     Route::get('/register', [AuthController::class, 'register'])->name('register');
+// });
+
+Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('landing/content/home');
     })->name('landing-page');

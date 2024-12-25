@@ -1,7 +1,7 @@
 <x-authentication-layout>
     <div
         class="px-7 py-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full max-w-md">
-        <form action="{{ route('login.getUsers') }}" method="POST">
+        <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="mb-6">
                 <h1 class="text-center tracking-wider text-3xl text-primary font-main dark:text-gray-100 font-extrabold">
@@ -43,13 +43,14 @@
                 class="text-white bg-primary w-full hover:bg-primary-hover font-normal rounded-lg text-base py-3 justify-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover tracking-widest">
                 SIGN IN
             </button>
-            {{--
-                Login Customer
-                <div class="font-normal text-base text-center">
-                <span>Belum punya akun?</span><a href="{{ route('register') }}" class="text-primary hover:underline ml-1">Buat akun</a>
+
+            {{-- Login Customer --}}
+            <div class="font-normal text-base text-center mt-6">
+                <span>Belum punya akun?</span><a href="{{ route('register') }}"
+                    class="text-primary hover:underline ml-1">Buat akun</a>
             </div>
-                Tambahkan mb-6 di button SIGN IN
-            --}}
+
+
 
         </form>
 

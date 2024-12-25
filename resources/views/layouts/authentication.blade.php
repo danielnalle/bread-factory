@@ -45,7 +45,7 @@
 
     </main>
 
-    @livewireScriptConfig
+    @livewireScripts
 </body>
 
 </html>

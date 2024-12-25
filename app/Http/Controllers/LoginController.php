@@ -14,28 +14,28 @@ class LoginController extends Controller
         return view('auth/login');
     }
 
-    public function getUsersByLogin(Request $request)
-    {
-        $validate = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ], [
-            'email.required' => 'Email wajib diisi',
-            'email.email' => 'Format email harus benar',
-            'password.required' => 'Password wajib diisi',
-        ]);
+    // public function getUsersByLogin(Request $request)
+    // {
+    //     $validate = $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required',
+    //     ], [
+    //         'email.required' => 'Email wajib diisi',
+    //         'email.email' => 'Format email harus benar',
+    //         'password.required' => 'Password wajib diisi',
+    //     ]);
 
-        $user = User::where('email', $validate['email'])->first();
+    //     $user = User::where('email', $validate['email'])->first();
 
-        if (isset($user)) {
-            $userPasswordMatch = Hash::check($validate['password'], $user->password);
+    //     if (isset($user)) {
+    //         $userPasswordMatch = Hash::check($validate['password'], $user->password);
 
-            if ($userPasswordMatch) {
-                session(['user' => $user]);
-                return redirect()->route('landing-page');
-            }
-        }
+    //         if ($userPasswordMatch) {
+    //             session(['user' => $user]);
+    //             return redirect()->route('landing-page');
+    //         }
+    //     }
 
-        return redirect()->route('login.index')->with('failed', 'Akun dan/atau password Anda salah, silakan coba lagi');
-    }
+    //     return redirect()->route('login.index')->with('failed', 'Akun dan/atau password Anda salah, silakan coba lagi');
+    // }
 }

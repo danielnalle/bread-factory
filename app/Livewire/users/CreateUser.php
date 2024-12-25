@@ -31,7 +31,7 @@ class CreateUser extends Component
         User::create([
             'name' => $this->name,
             'email' => $this->email,
-            'password' => Hash::make($this->password),
+            'password' => bcrypt($this->password),
             'role' => $this->role,
         ]);
 

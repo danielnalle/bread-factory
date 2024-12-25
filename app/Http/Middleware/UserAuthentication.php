@@ -25,15 +25,13 @@ class UserAuthentication
 
             $userPasswordMatch = Hash::check($userSession['password'], $user->password);
 
-            if(!isset($user) && !$userPasswordMatch) {
-                return redirect()->route('login.index');
+            if (!isset($user) && !$userPasswordMatch) {
+                return redirect()->route('login');
             }
 
             return $next($request);
-
         } else {
-            return redirect()->route('login.index');
+            return redirect()->route('login');
         }
-
     }
 }
