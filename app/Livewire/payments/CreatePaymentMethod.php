@@ -27,7 +27,7 @@ class CreatePaymentMethod extends Component
             'isActive' => $this->isActive,
         ]);
 
-        flash("Metode Berhasil Ditambah", "success");
+        flash("Payment Berhasil Ditambah", "success");
         return redirect()->route('payment-method');
     }
 }
