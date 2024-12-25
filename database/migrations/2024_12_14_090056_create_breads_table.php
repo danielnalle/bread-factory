@@ -19,8 +19,6 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('min_order');
             $table->decimal('price');
-            $table->date('produce_date');
-            $table->date('expiry_date');
             $table->timestamps();
         });
     }
