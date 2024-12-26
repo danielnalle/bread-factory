@@ -45,7 +45,28 @@
 
     </main>
 
-    @livewireScriptConfig
+    @livewireScripts
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const alert = document.getElementById('alert');
+
+            // Menampilkan alert dengan transisi
+            setTimeout(() => {
+                alert.classList.remove('opacity-0', 'scale-90');
+                alert.classList.add('opacity-100', 'scale-100');
+            }, 100); // Delay sedikit untuk efek transisi.
+
+            setTimeout(() => {
+                alert.classList.remove('opacity-100', 'scale-100');
+                alert.classList.add('opacity-0', 'scale-90');
+            }, 10000); // Durasi tampilan 5 detik.
+
+            setTimeout(() => {
+                alert.classList.add('hidden');
+            }, 10200); // Durasi tampilan 5 detik.
+        });
+    </script>
+
 </body>
 
 </html>

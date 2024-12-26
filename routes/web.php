@@ -6,49 +6,89 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
-
-// Midlewares
-use App\Http\Middleware\EnsureUserAuthenticated;
-use App\Http\Middleware\UserAuthentication;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Password;
 
 Route::get('/utility/404', function () {
     return view('errors/404');
 })->name('404');
 
-Route::middleware([EnsureUserAuthenticated::class])->group(function () {
-    Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-    Route::post('/login', [LoginController::class, 'getUsersByLogin'])->name('login.getUsers');
-
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
 });
 
-Route::middleware([UserAuthentication::class])->group(function () {
-    Route::get('/', function () {
-        return view('landing/content/home');
-    })->name('landing-page');
+Route::get('/email/verify', function (Request $request) {
+    if ($request->user()->hasVerifiedEmail()) {
+        return redirect()->route('landing-page'); // Redirect ke halaman home jika sudah terverifikasi
+    }
 
-    // For Customers
-    Route::get('/produk', function () {
-        return view('landing/content/produk');
-    })->name('produk');
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect()->route('landing-page');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
-    Route::get('/about', function () {
-        return view('landing/content/about');
-    })->name('about');
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    flash('Link verifikasi berhasil dikirim!');
+    return back();
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-    Route::get('/contact', function () {
-        return view('landing/content/contact');
-    })->name('contact');
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->middleware('guest')->name('password.request');
 
-    Route::get('/produk/detail', function () {
-        return view('landing/content/detail');
-    })->name('detail-produk');
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+    $status === Password::RESET_LINK_SENT ?
+        flash('Link reset password telah dikirim ke email Anda.', 'success')
+        :
+        flash('Tidak dapat mengirim link reset. Silakan coba lagi.', 'error');
+    return redirect()->back();
+})->middleware('guest')->name('password.email');
+
+Route::get('/reset-password/{token}', function (string $token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
+Route::get('/', function () {
+    return view('landing/content/home');
+})->name('landing-page');
+
+// For Customers
+Route::get('/produk', function () {
+    return view('landing/content/produk');
+})->name('produk');
+
+Route::get('/about', function () {
+    return view('landing/content/about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('landing/content/contact');
+})->name('contact');
+
+Route::get('/produk/detail', function () {
+    return view('landing/content/detail');
+})->name('detail-produk');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/cart', function () {
         return view('landing/content/cart');
