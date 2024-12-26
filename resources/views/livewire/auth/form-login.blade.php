@@ -47,7 +47,7 @@
     <div class="mb-5 w-full flex justify-between">
         <div class="flex gap-2 items-center">
             <input
-                class="rounded-sm border-gray-300 focus:ring-0 checked:bg-primary focus:ring-transparent hover:scale-105 focus:outline-none"
+                class="rounded-sm cursor-pointer border-gray-300 focus:ring-0 checked:bg-primary focus:ring-transparent hover:scale-105 focus:outline-none"
                 id="checkbox" name="remember" type="checkbox" wire:model='remember'>
             <label for="remember" class="text-sm sm:text-base font-normal text-dark-secondary">Remember me</label>
         </div>

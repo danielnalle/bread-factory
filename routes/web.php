@@ -13,6 +13,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Password;
 
 Route::get('/utility/404', function () {
@@ -63,28 +65,30 @@ Route::get('/reset-password/{token}', function (string $token) {
     return view('auth.reset-password', ['token' => $token]);
 })->middleware('guest')->name('password.reset');
 
+Route::get('/', function () {
+    return view('landing/content/home');
+})->name('landing-page');
+
+// For Customers
+Route::get('/produk', function () {
+    return view('landing/content/produk');
+})->name('produk');
+
+Route::get('/about', function () {
+    return view('landing/content/about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('landing/content/contact');
+})->name('contact');
+
+Route::get('/produk/detail', function () {
+    return view('landing/content/detail');
+})->name('detail-produk');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', function () {
-        return view('landing/content/home');
-    })->name('landing-page');
 
-    // For Customers
-    Route::get('/produk', function () {
-        return view('landing/content/produk');
-    })->name('produk');
-
-    Route::get('/about', function () {
-        return view('landing/content/about');
-    })->name('about');
-
-    Route::get('/contact', function () {
-        return view('landing/content/contact');
-    })->name('contact');
-
-    Route::get('/produk/detail', function () {
-        return view('landing/content/detail');
-    })->name('detail-produk');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/cart', function () {
         return view('landing/content/cart');
