@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
@@ -14,8 +13,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 
 // Midlewares
-use App\Http\Middleware\EnsureUserAuthenticated;
-use App\Http\Middleware\UserAuthentication;
+
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 Route::get('/utility/404', function () {
     return view('errors/404');
@@ -25,14 +25,26 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
 });
-// Route::middleware([EnsureUserAuthenticated::class])->group(function () {
-//     Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-//     Route::post('/login', [LoginController::class, 'getUsersByLogin'])->name('login.getUsers');
 
-//     Route::get('/register', [AuthController::class, 'register'])->name('register');
-// });
+Route::get('/email/verify', function (Request $request) {
+    if ($request->user()->hasVerifiedEmail()) {
+        return redirect()->route('landing-page'); // Redirect ke halaman home jika sudah terverifikasi
+    }
 
-Route::middleware('auth')->group(function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect()->route('landing-page');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    flash('Link verifikasi berhasil dikirim!');
+    return back();
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {
         return view('landing/content/home');
     })->name('landing-page');

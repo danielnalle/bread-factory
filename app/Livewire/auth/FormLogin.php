@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\RateLimiter;
 use Livewire\Component;
 
 class FormLogin extends Component
@@ -25,7 +26,17 @@ class FormLogin extends Component
     {
         $this->validate();
 
+
+        $decaySeconds = 300; // Format detik, misal 300 detik = 5 menit
+        $throttleKey = strtolower($this->email) . '|' . request()->ip();
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            $secondsRemaining = RateLimiter::availableIn($throttleKey);
+            $minutesRemaining = ceil($secondsRemaining / 60); // Konversi ke menit
+            flash('Login dengan password dinonaktifkan selama ' . $minutesRemaining . ' menit. Silahkan coba lagi nanti');
+            return null;
+        }
         if (!Auth::attempt($this->only(['email', 'password']), $this->remember)) {
+            RateLimiter::hit($throttleKey, $decaySeconds);
             // $this->addError('email', __('auth.failed'));
             flash('Email atau password salah, silahkan coba lagi');
             return null;

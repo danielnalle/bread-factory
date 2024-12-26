@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -33,6 +34,9 @@ class FormRegister extends Component
             'password' => bcrypt($this->password),
         ]);
 
-        return redirect()->route('login');
+        event(new Registered($user));
+        Auth::login($user);
+
+        return redirect()->route('verification.notice');
     }
 }
