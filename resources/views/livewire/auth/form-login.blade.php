@@ -1,6 +1,6 @@
 <form wire:submit='loginUser'>
     @csrf
-    @if (flash()->message)
+    @if (flash()->message && flash()->class !== 'success' && flash()->class !== 'error')
         <div
             class="flex gap-2.5 items-start border border-red-200 bg-red-50 p-3 mb-2 font-normal text-sm sm:text-base text-dark-primary">
             <svg class="w-4 sm:w-5 h-4 sm:h-5 shrink-0" viewBox="0 0 22 22" fill="none"
@@ -9,7 +9,18 @@
                     d="M10.0833 13.75H11.9167V15.5833H10.0833V13.75ZM10.0833 6.41665H11.9167V11.9166H10.0833V6.41665ZM10.9908 1.83331C5.93084 1.83331 1.83334 5.93998 1.83334 11C1.83334 16.06 5.93084 20.1666 10.9908 20.1666C16.06 20.1666 20.1667 16.06 20.1667 11C20.1667 5.93998 16.06 1.83331 10.9908 1.83331ZM11 18.3333C6.94834 18.3333 3.66668 15.0516 3.66668 11C3.66668 6.94831 6.94834 3.66665 11 3.66665C15.0517 3.66665 18.3333 6.94831 18.3333 11C18.3333 15.0516 15.0517 18.3333 11 18.3333Z"
                     fill="#dc2626" />
             </svg>
+            {{ flash()->message }}
+        </div>
+    @endif
 
+    @if (flash()->class == 'success')
+        <div class="p-4 mb-4 text-sm text-green-600 w-full font-medium text-center rounded-lg bg-green-500 bg-opacity-20 dark:bg-gray-800 transform transition-all duration-300 ease-in-out opacity-0 scale-90"
+            role="alert" id="alert">
+            {{ flash()->message }}
+        </div>
+    @elseif(flash()->class == 'error')
+        <div class="p-4 mb-4 text-sm text-red-600 w-full font-medium text-center rounded-lg bg-red-500 bg-opacity-20 dark:bg-gray-800 transform transition-all duration-300 ease-in-out opacity-0 scale-90"
+            role="alert" id="alert">
             {{ flash()->message }}
         </div>
     @endif
@@ -40,7 +51,8 @@
                 id="checkbox" name="remember" type="checkbox" wire:model='remember'>
             <label for="remember" class="text-sm sm:text-base font-normal text-dark-secondary">Remember me</label>
         </div>
-        <a href="" class="text-primary hover:underline font-normal text-sm sm:text-base">Lupa Kata Sandi?</a>
+        <a href="{{ route('password.request') }}"
+            class="text-primary hover:underline font-normal text-sm sm:text-base">Lupa Kata Sandi?</a>
     </div>
     <button type="submit"
         class="text-white bg-primary w-full hover:bg-primary-hover font-normal rounded-lg text-sm sm:text-base py-3 justify-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover tracking-widest">

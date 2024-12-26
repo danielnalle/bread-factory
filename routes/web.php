@@ -11,11 +11,9 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
-
-// Midlewares
-
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 
 Route::get('/utility/404', function () {
     return view('errors/404');
@@ -43,6 +41,28 @@ Route::post('/email/verification-notification', function (Request $request) {
     flash('Link verifikasi berhasil dikirim!');
     return back();
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+    $status === Password::RESET_LINK_SENT ?
+        flash('Link reset password telah dikirim ke email Anda.', 'success')
+        :
+        flash('Tidak dapat mengirim link reset. Silakan coba lagi.', 'error');
+    return redirect()->back();
+})->middleware('guest')->name('password.email');
+
+Route::get('/reset-password/{token}', function (string $token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {

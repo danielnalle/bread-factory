@@ -3,8 +3,8 @@
     <div
         class="p-6 flex items-center flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full max-w-md">
         @if (flash()->message)
-            <div class="p-4 mb-4 text-sm text-green-600 w-full font-medium text-center rounded-lg bg-green-500 bg-opacity-20 dark:bg-gray-800 dark:text-green-400"
-                role="alert">
+            <div class="p-4 mb-4 text-sm text-green-600 w-full font-medium text-center rounded-lg bg-green-500 bg-opacity-20 dark:bg-gray-800 dark:text-green-400 transform transition-all duration-300 ease-in-out opacity-0 scale-90"
+                role="alert" id="alert">
                 {{ flash()->message }}
             </div>
         @endif
