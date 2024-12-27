@@ -15,10 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->foreignId('bread_type_id')->constrained('bread_types')->onDelete('cascade');
+            $table->foreignId('bread_type_id')->constrained(
+                table: 'bread_types',
+                indexName: 'breads_category_id'
+            )->onDelete('cascade');
             $table->integer('quantity');
             $table->integer('min_order');
             $table->decimal('price');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
