@@ -35,8 +35,8 @@ class TableProduct extends Component
     #[On('productDelete')]
     public function delete()
     {
-        $user = Product::find($this->product_id);
-        $user->delete();
+        $product = Product::find($this->product_id);
+        $product->delete();
 
         $this->dispatch("alert", ['type' => 'success', 'message' => "Product Berhasil dihapus"]);
     }
