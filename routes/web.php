@@ -119,7 +119,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('my-account.orders.detail');
 
     // Admin Dashboard
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/dashboard', function () {
+        return view('dashboard/index');
+    })->name('dashboard');
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
     Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
@@ -137,8 +139,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
     Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
     Route::get('/payment-method/edit/{payment}', [PaymentController::class, 'edit'])->name('payment-method.edit');
-
-    Route::get('/account', function () {
-        return view('admin/account/account');
-    })->name('account');
 });

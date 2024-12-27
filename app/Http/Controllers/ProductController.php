@@ -8,14 +8,14 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('admin/products/products');
+        return view('dashboard/products/products');
     }
     public function create()
     {
-        return view('admin/products/create');
+        return view('dashboard/products/create');
     }
     public function edit()
     {
-        return view('admin/products/edit');
+        return view('dashboard/products/edit');
     }
 }

@@ -4,9 +4,7 @@
         :class="sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'" aria-hidden="true" x-cloak></div>
 
     <!-- Sidebar -->
-    <div id="sidebar"
-    {{-- Scroll bar sidebar --}}
-    {{-- overflow-y-scroll lg:overflow-y-auto --}}
+    <div id="sidebar" {{-- Scroll bar sidebar --}} {{-- overflow-y-scroll lg:overflow-y-auto --}}
         class="flex lg:!flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-[100dvh] no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-white dark:bg-dark-primary p-4 transition-all duration-200 ease-in-out {{ $variant === 'v2' ? 'border-r border-gray-200 dark:border-gray-700/60' : 'rounded-r-2xl shadow-sm' }}"
         :class="sidebarOpen ? 'max-lg:translate-x-0' : 'max-lg:-translate-x-64'" @click.outside="sidebarOpen = false"
         @keydown.escape.window="sidebarOpen = false">
@@ -22,7 +20,7 @@
                 </svg>
             </button>
             <!-- Logo -->
-            <a class="block" href="{{ route('admin') }}">
+            <a class="block" href="{{ route('landing-page') }}">
                 <span class=" text-2xl font-main font-extrabold dark:text-white text-primary">Bakeru</span>
             </a>
         </div>
@@ -39,11 +37,11 @@
                 <ul class="mt-3">
                     <!-- Dashboard -->
                     <li
-                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['admin'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
-                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['admin'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
-                            href="{{ route('admin') }}">
+                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['dashboard'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
+                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['dashboard'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
+                            href="{{ route('dashboard') }}">
                             <div class="flex items-center">
-                                <svg class="shrink-0 fill-current @if (in_array(Request::segment(1), ['admin'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
+                                <svg class="shrink-0 fill-current @if (in_array(Request::segment(1), ['dashboard'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
                                     width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <mask id="mask0_291_7918" style="mask-type:luminance" maskUnits="userSpaceOnUse"

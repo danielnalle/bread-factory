@@ -9,16 +9,16 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('admin/categories/categories');
+        return view('dashboard/categories/categories');
     }
     public function create()
     {
-        return view('admin/categories/create');
+        return view('dashboard/categories/create');
     }
     public function edit($id)
     {
         $category = Category::where('id', $id)->first();
-        return view('admin/categories/edit', [
+        return view('dashboard/categories/edit', [
             'category' => $category,
         ]);
     }
