@@ -71,9 +71,6 @@ class EditProduct extends Component
 
         Product::where('id', $this->product_id)->update($updated);
 
-
-
-
         $this->reset();
 
         flash('Product Berhasil Diupdate', 'success');
