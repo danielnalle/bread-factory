@@ -42,7 +42,7 @@
 
                     <input type="file" id="image" wire:model="image" class="w-full p-8 cursor-pointer" />
                     <div wire:loading wire:target="image" class="w-full text-center pb-8">Uploading...</div>
-                    @if ($image)
+                    @if ($image && in_array(strtolower($image->getClientOriginalExtension()), ['jpg', 'jpeg', 'png']))
                         <img src="{{ $image->temporaryUrl() }}" class="p-5 w-3/4 mx-auto">
                     @elseif($prevImage)
                         <img src="{{ Storage::url($prevImage) }}" class="p-5 w-3/4 mx-auto">

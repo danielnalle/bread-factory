@@ -42,7 +42,7 @@
 
                     <input type="file" id="image" wire:model="image" class="w-full p-8 cursor-pointer" />
                     <div wire:loading wire:target="image" class="w-full text-center pb-8">Uploading...</div>
-                    @if ($image)
+                    @if ($image && in_array(strtolower($image->getClientOriginalExtension()), ['jpg', 'jpeg', 'png']))
                         <button type="button" wire:click="removeImage"
                             class="flex items-center justify-end pr-10 w-full cursor-pointer"><svg width="24"
                                 height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

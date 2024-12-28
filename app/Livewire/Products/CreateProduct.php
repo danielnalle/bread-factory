@@ -24,7 +24,7 @@ class CreateProduct extends Component
             'quantity' => 'required|integer|min:1',
             'min_order' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0',
-            'image' => 'required|image|max:2048', // Max 2MB
+            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Max 2MB
         ];
     }
 

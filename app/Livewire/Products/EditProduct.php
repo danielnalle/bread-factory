@@ -44,11 +44,10 @@ class EditProduct extends Component
         ];
 
         if ($this->image) {
-            $rules['image'] = 'required|image|max:2048';
+            $rules['image'] = 'required|image|mimes:jpg,jpeg,png|max:2048';
         }
 
         $this->validate($rules);
-
         if ($this->image) {
             $this->path = $this->image->store('products', 'public');
             if ($this->path && $this->image) {
@@ -71,6 +70,7 @@ class EditProduct extends Component
         DB::statement("SET @current_user_email = ?", [Auth::user()->email]);
 
         Product::where('id', $this->product_id)->update($updated);
+
 
 
 
