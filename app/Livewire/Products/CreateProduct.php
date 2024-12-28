@@ -4,6 +4,8 @@ namespace App\Livewire\Products;
 
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -16,7 +18,7 @@ class CreateProduct extends Component
     protected function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:breads,name',
             'description' => 'required|string|max:600',
             'category' => 'required|exists:bread_types,id',
             'quantity' => 'required|integer|min:1',
@@ -35,9 +37,12 @@ class CreateProduct extends Component
     {
         $this->validate();
 
-        $path = $this->image->store('products', 'public');
+        if ($this->image) {
+            $path = $this->image->store('products', 'public');
+        }
 
 
+        DB::statement("SET @current_user_email = ?", [Auth::user()->email]);
         Product::create([
             'name' => $this->name,
             'description' => $this->description,
@@ -47,6 +52,8 @@ class CreateProduct extends Component
             'price' => $this->price,
             'image' => $path,
         ]);
+
+
 
         $this->reset();
         flash('Product berhasil ditambah', 'success');

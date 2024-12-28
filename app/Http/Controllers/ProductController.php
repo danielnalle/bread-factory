@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,8 +15,11 @@ class ProductController extends Controller
     {
         return view('dashboard/products/create');
     }
-    public function edit()
+    public function edit($id)
     {
-        return view('dashboard/products/edit');
+        $product = Product::where('id', $id)->first();
+        return view('dashboard/products/edit', [
+            'product' => $product,
+        ]);
     }
 }

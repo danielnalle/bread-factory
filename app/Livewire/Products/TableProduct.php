@@ -3,6 +3,9 @@
 namespace App\Livewire\Products;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\On;
@@ -36,6 +39,10 @@ class TableProduct extends Component
     public function delete()
     {
         $product = Product::find($this->product_id);
+        if ($product->image) {
+            Storage::disk('public')->delete($product->image);
+        }
+        DB::statement("SET @current_user_email = ?", [Auth::user()->email]);
         $product->delete();
 
         $this->dispatch("alert", ['type' => 'success', 'message' => "Product Berhasil dihapus"]);

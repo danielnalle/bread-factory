@@ -29,19 +29,19 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN
                 INSERT INTO log_breads (user, bread_id, action, changes, created_at)
-                VALUES (CURRENT_USER(), NEW.id, "Insert", NULL, NOW());
+                VALUES (@current_user_email, NEW.id, "Insert", NULL, NOW());
             END;
         ');
 
-        // Trigger untuk UPDATE
+        // // Trigger untuk UPDATE
         DB::unprepared('
             CREATE TRIGGER tg_update_bread
             AFTER UPDATE ON breads
             FOR EACH ROW
             BEGIN
                 INSERT INTO log_breads (user, bread_id, action, changes, created_at)
-                VALUES (NEW.id, "UPDATE", CONCAT_WS(", ", 
-                    CONCAT("Updated by: ", CURRENT_USER()),
+                VALUES (@current_user_email, NEW.id, "UPDATE", CONCAT_WS(", ", 
+                    CONCAT("Updated by: ", @current_user_email),
                     CONCAT("name: ", OLD.name, " -> ", NEW.name),
                     CONCAT("desc: ", OLD.description, " -> ", NEW.description),
                     CONCAT("bread_type: ", OLD.bread_type_id, " -> ", NEW.bread_type_id),
@@ -59,7 +59,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN
                 INSERT INTO log_breads (user, bread_id, action, changes, created_at)
-                VALUES (CURRENT_USER(), OLD.id, "DELETE", NULL, NOW());
+                VALUES (@current_user_email, OLD.id, "DELETE", NULL, NOW());
             END;
         ');
     }
