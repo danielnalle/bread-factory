@@ -9,16 +9,16 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        return view('admin/payment/payment');
+        return view('dashboard/payment/payment');
     }
     public function create()
     {
-        return view('admin/payment/create');
+        return view('dashboard/payment/create');
     }
     public function edit($id)
     {
         $payment = PaymentMethod::where('id', $id)->first();
-        return view('admin/payment/edit', [
+        return view('dashboard/payment/edit', [
             'payment' => $payment,
         ]);
     }

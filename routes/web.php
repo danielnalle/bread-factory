@@ -119,7 +119,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('my-account.orders.detail');
 
     // Admin Dashboard
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/dashboard', function () {
+        return view('dashboard/index');
+    })->name('dashboard');
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
     Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
@@ -128,7 +130,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
     Route::get('/products', [ProductController::class, 'index'])->name('products');
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-    Route::get('/products/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::get('/products/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::get('/categories/edit/{category}', [CategoryController::class, 'edit'])->name('categories.edit');
@@ -137,8 +139,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
     Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
     Route::get('/payment-method/edit/{payment}', [PaymentController::class, 'edit'])->name('payment-method.edit');
-
-    Route::get('/account', function () {
-        return view('admin/account/account');
-    })->name('account');
 });

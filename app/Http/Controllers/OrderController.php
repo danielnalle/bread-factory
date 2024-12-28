@@ -8,10 +8,10 @@ class OrderController extends Controller
 {
     public function index()
     {
-        return view('admin/orders/orders');
+        return view('dashboard/orders/orders');
     }
     public function detail()
     {
-        return view('admin/orders/detail');
+        return view('dashboard/orders/detail');
     }
 }

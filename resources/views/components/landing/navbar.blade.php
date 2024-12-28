@@ -54,7 +54,7 @@
                             <ul class="py-2" aria-labelledby="user-menu-button">
                                 @if (auth()->user()->role != 'customer')
                                     <li>
-                                        <a href="#"
+                                        <a href="{{ route('dashboard') }}"
                                             class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Dashboard</a>
                                     </li>
                                 @endif

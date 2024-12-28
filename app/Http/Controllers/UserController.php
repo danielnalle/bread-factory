@@ -9,17 +9,17 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('admin/users/users');
+        return view('dashboard/users/users');
     }
 
     public function create()
     {
-        return view('admin/users/create');
+        return view('dashboard/users/create');
     }
     public function edit($id)
     {
         $user = User::where('id', $id)->first();
-        return view('admin/users/edit', [
+        return view('dashboard/users/edit', [
             'user' => $user,
         ]);
     }

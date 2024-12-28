@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        return view('admin/products/products');
+        return view('dashboard/products/products');
     }
     public function create()
     {
-        return view('admin/products/create');
+        return view('dashboard/products/create');
     }
-    public function edit()
+    public function edit($id)
     {
-        return view('admin/products/edit');
+        $product = Product::where('id', $id)->first();
+        return view('dashboard/products/edit', [
+            'product' => $product,
+        ]);
     }
 }
