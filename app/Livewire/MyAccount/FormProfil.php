@@ -2,6 +2,7 @@
 
 namespace App\Livewire\MyAccount;
 
+use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -13,6 +14,7 @@ class FormProfil extends Component
     public $email;
     public $phone;
     public $prevEmail;
+    public $prevPhone;
 
     public function render()
     {
@@ -22,7 +24,8 @@ class FormProfil extends Component
         $this->name = $user->name;
         $this->email = $user->email;
         $this->prevEmail = $user->email;
-        $this->phone = $user->customer->phone;
+        $this->prevPhone = $user->customer != NULL ? $user->customer->phone : NULL;
+        $this->phone = $this->prevPhone;
         return view('livewire.my-account.form-profil');
     }
 
@@ -46,9 +49,16 @@ class FormProfil extends Component
             $updated['email_verified_at'] = NULL;
         };
         $user->update($updated);
-        $user->customer->update([
-            'phone' => $this->phone,
-        ]);
+        if ($this->prevPhone) {
+            $user->customer->update([
+                'phone' => $this->phone,
+            ]);
+        } else {
+            Customer::create([
+                'user_id' => $this->user_id,
+                'phone' => $this->phone,
+            ]);
+        }
 
         flash('Profil Berhasil Diupdate', 'success');
         return redirect()->route('my-account.account');

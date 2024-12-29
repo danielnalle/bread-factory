@@ -6,18 +6,7 @@
                 <h1 class="text-2xl md:text-3xl text-dark-primary dark:text-gray-100 font-bold mb-5">Akun</h1>
                 <div class="flex flex-col gap-8">
                     <div class="flex gap-8 flex-col xs:flex-row w-full">
-                        <div class="flex flex-col items-center basis-full xs:basis-48 sm:basis-[280px]">
-                            <img src="{{ asset('images/team/1.jpg') }}"
-                                class="rounded-full w-28 h-28 sm:w-[160px] sm:h-[160px] object-cover object-center mb-4">
-                            <button type="button"
-                                class="text-dark-primary border border-gray-300 hover:border-gray-600 transition-all duration-200  focus:bg-gray-100 font-medium rounded-lg text-sm sm:text-base px-5 py-2.5 me-2 mb-4">Ubah
-                                Foto Profil</button>
-                            <p class="text-center text-sm sm:text-base text-dark-secondary">Format foto harus .jpg .jpeg
-                                .png
-                                dan ukuran file max 2MB.</p>
-                            <input type="file" id="profileInput" id="imgProfile" name="imgProfile" class="hidden">
-
-                        </div>
+                        @livewire('my-account.form-user-image')
                         <div class="flex flex-col flex-grow">
                             <h5 class="mb-5 text-base text-dark-primary font-semibold">Pengaturan Profil</h5>
 

@@ -5,7 +5,7 @@
 <div class="relative inline-flex" x-data="{ open: false }">
     <button class="inline-flex justify-center items-center group" aria-haspopup="true" @click.prevent="open = !open"
         :aria-expanded="open">
-        <img class="w-8 h-8 rounded-full" src="{{ asset('images/user-36-05.jpg') }}" width="32" height="32"
+        <img class="w-8 h-8 rounded-full border" src="{{ asset('images/user-36-05.jpg') }}" width="32" height="32"
             alt="Yogi Pradnyana" />
         <div class="flex items-center truncate">
             <span

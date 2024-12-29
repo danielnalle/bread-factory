@@ -1,11 +1,11 @@
 <div class="max-w-64 w-full h-auto pr-4 py-4 border-r-2 hidden lg:block">
     <!-- Sidebar header -->
     <div class="flex flex-col items-center mb-5 gap-2 justify-center">
-        <img src="{{ asset('images/team/1.jpg') }}" class="rounded-full w-[60px] h-[60px] object-cover object-center"
-            alt="">
+        <img src="{{ Storage::url(auth()->user()->image) }}"
+            class="rounded-full w-[60px] h-[60px] object-cover object-center border" alt="">
         <div class="w-fit text-center">
-            <h3 class="font-semibold text-dark-primary text-sm">Yogi Pradnyana</h3>
-            <p class="font-normal text-dark-secondary text-sm">yogibro@gmail.com</p>
+            <h3 class="font-semibold text-dark-primary text-sm">{{ auth()->user()->name }}</h3>
+            <p class="font-normal text-dark-secondary text-sm">{{ auth()->user()->email }}</p>
         </div>
     </div>
 

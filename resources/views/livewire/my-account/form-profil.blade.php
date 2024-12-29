@@ -25,7 +25,7 @@
             Handphone</label>
         <input type="text" id="nohp"
             class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full p-3 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-            placeholder="Masukan email" wire:model='phone' />
+            placeholder="Masukan no handphone" wire:model='phone' />
         @error('phone')
             <span class="text-red-600 text-sm">{{ $message }}</span>
         @enderror

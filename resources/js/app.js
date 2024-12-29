@@ -111,6 +111,22 @@ document.addEventListener("alpine:init", () => {
         },
     }));
 });
+document.addEventListener("alpine:init", () => {
+    Alpine.data("userImgUpload", () => ({
+        browseFile() {
+            document.getElementById("imgProfile").click();
+        },
+        submitForm() {
+            console.log("behasil");
+            const submitButton = document.getElementById("btn-save");
+
+            if (submitButton) {
+                // submitButton.click();
+                console.log("button di click");
+            }
+        },
+    }));
+});
 
 document.addEventListener("alpine:init", () => {
     Alpine.data("stickyHandler", () => ({
