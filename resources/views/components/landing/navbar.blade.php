@@ -66,10 +66,6 @@
                                         <a href="{{ route('my-account.orders') }}"
                                             class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('my-account.address') }}"
-                                            class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Alamat</a>
-                                    </li>
                                 @endif
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST" class="w-full">

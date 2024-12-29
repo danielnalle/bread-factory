@@ -30,6 +30,18 @@
             <span class="text-red-600 text-sm">{{ $message }}</span>
         @enderror
     </div>
+    <div class="mb-5">
+        <label for="addressLengkap"
+            class="block mb-2.5 text-xs sm:text-sm font-medium text-dark-secondary dark:text-white">Alamat
+            Lengkap</label>
+        <textarea name="desc" wire:model='address'
+            class="border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary
+                        focus:border-primary block w-full p-3"
+            id="desc" rows="2" maxlength="600">Jalan Gunung Guntur No. 15, Desa Padang Sambian, Kecamatan Denpasar Barat</textarea>
+        @error('address')
+            <span class="text-red-600 text-sm">{{ $message }}</span>
+        @enderror
+    </div>
     <div class="flex justify-end">
         <button type="submit"
             class="text-white text-sm sm:text-base bg-primary hover:bg-primary-hover rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">

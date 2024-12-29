@@ -110,10 +110,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('landing/my-account/account');
     })->name('my-account.account');
 
-    Route::get('/my-account/address', function () {
-        return view('landing/my-account/address');
-    })->name('my-account.address');
-
     Route::get('/my-account/orders/detail', function () {
         return view('landing/my-account/detail');
     })->name('my-account.orders.detail');
