@@ -52,10 +52,12 @@
                                     {{ auth()->user()->name }}</span>
                             </div>
                             <ul class="py-2" aria-labelledby="user-menu-button">
-                                <li>
-                                    <a href="{{ route('dashboard') }}"
-                                        class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Dashboard</a>
-                                </li>
+                                @if (auth()->user()->role != 'customer')
+                                    <li>
+                                        <a href="{{ route('dashboard') }}"
+                                            class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Dashboard</a>
+                                    </li>
+                                @endif
                                 <li>
                                     <a href="{{ route('my-account.account') }}"
                                         class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Akun</a>

@@ -35,7 +35,7 @@
                         </g>
                     </svg>
 
-                    <span class="text-sm sm:text-base font-medium text-dark-primary">hello@breadfactory.id</span>
+                    <span class="text-sm sm:text-base font-medium text-dark-primary">breadfactorypbl@gmail.com</span>
                 </div>
                 <div class="flex items-center gap-2 mb-7">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="w-5 sm:w-auto"

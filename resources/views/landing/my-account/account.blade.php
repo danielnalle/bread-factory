@@ -23,38 +23,7 @@
                                 panjang dan acak untuk tetap aman.</p>
                         </div>
                         <div class="flex flex-col flex-grow">
-                            <form action="">
-                                <div class="mb-5">
-                                    <label for="currPass"
-                                        class="block mb-2.5 text-xs sm:text-sm font-medium text-dark-secondary dark:text-white">Password
-                                        Saat Ini</label>
-                                    <input type="text" id="currPass"
-                                        class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full p-3 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                                        required />
-                                </div>
-                                <div class="mb-5">
-                                    <label for="newPass"
-                                        class="block mb-2.5 text-xs sm:text-sm font-medium text-dark-secondary dark:text-white">Password
-                                        Baru</label>
-                                    <input type="email" id="newPass"
-                                        class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full p-3 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                                        required />
-                                </div>
-                                <div class="mb-5">
-                                    <label for="confirmPass"
-                                        class="block mb-2.5 text-xs sm:text-sm font-medium text-dark-secondary dark:text-white">Konfirmasi
-                                        Password</label>
-                                    <input type="text" id="confirmPass"
-                                        class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full p-3 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                                        required />
-                                </div>
-                                <div class="flex justify-end">
-                                    <button type="submit"
-                                        class="text-white text-sm sm:text-base bg-primary hover:bg-primary-hover rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
-                                        Ubah
-                                    </button>
-                                </div>
-                            </form>
+                            @livewire('my-account.form-reset-password')
                         </div>
                     </div>
                 </div>
