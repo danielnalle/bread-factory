@@ -45,10 +45,10 @@
                             alt="user photo">
                     </button>
                     <!-- Dropdown menu -->
-                    <div class="z-50 hidden text-base max-w-56 list-none" id="user-dropdown">
+                    <div class="z-50 hidden text-base w-full max-w-44 list-none" id="user-dropdown">
                         <div class="bg-white mt-2 divide-y divide-gray-100 rounded-lg shadow-lg">
-                            <div class="px-4 py-3">
-                                <span class="block text-base font-medium text-dark-primary dark:text-white">Hy,
+                            <div class="px-4 pb-2 pt-3">
+                                <span class="block text-sm font-medium text-dark-primary dark:text-white">Hy,
                                     {{ auth()->user()->name }}</span>
                             </div>
                             <ul class="py-2" aria-labelledby="user-menu-button">
@@ -57,19 +57,20 @@
                                         <a href="{{ route('dashboard') }}"
                                             class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Dashboard</a>
                                     </li>
+                                @else
+                                    <li>
+                                        <a href="{{ route('my-account.account') }}"
+                                            class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Akun</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('my-account.orders') }}"
+                                            class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('my-account.address') }}"
+                                            class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Alamat</a>
+                                    </li>
                                 @endif
-                                <li>
-                                    <a href="{{ route('my-account.orders') }}"
-                                        class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('my-account.account') }}"
-                                        class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Akun</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('my-account.address') }}"
-                                        class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Alamat</a>
-                                </li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST" class="w-full">
                                         @csrf

@@ -25,6 +25,27 @@
 </head>
 
 <body class="font-secondary antialiased">
+    @if (flash()->message)
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    },
+                });
+                Toast.fire({
+                    icon: '{{ flash()->class }}',
+                    title: "{{ flash()->message }}",
+                });
+            });
+        </script>
+    @endif
 
     <div class="container max-w-full relative h-screen">
 
@@ -41,7 +62,7 @@
 
     </div>
 
-    @livewireScriptConfig
+    @livewireScripts
 </body>
 
 </html>
