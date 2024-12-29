@@ -41,14 +41,14 @@
                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                         data-dropdown-placement="bottom-end">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full object-cover" src="{{ asset('images/team/1.jpg') }}"
-                            alt="user photo">
+                        <img class="w-8 h-8 rounded-full object-cover border"
+                            src="{{ Storage::url(auth()->user()->image) }}" alt="user photo">
                     </button>
                     <!-- Dropdown menu -->
-                    <div class="z-50 hidden text-base max-w-56 list-none" id="user-dropdown">
+                    <div class="z-50 hidden text-base w-full max-w-44 list-none" id="user-dropdown">
                         <div class="bg-white mt-2 divide-y divide-gray-100 rounded-lg shadow-lg">
-                            <div class="px-4 py-3">
-                                <span class="block text-base font-medium text-dark-primary dark:text-white">Hy,
+                            <div class="px-4 pb-2 pt-3">
+                                <span class="block text-sm font-medium text-dark-primary dark:text-white">Hy,
                                     {{ auth()->user()->name }}</span>
                             </div>
                             <ul class="py-2" aria-labelledby="user-menu-button">
@@ -59,17 +59,15 @@
                                     </li>
                                 @endif
                                 <li>
-                                    <a href="{{ route('my-account.orders') }}"
-                                        class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
-                                </li>
-                                <li>
                                     <a href="{{ route('my-account.account') }}"
                                         class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Akun</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('my-account.address') }}"
-                                        class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Alamat</a>
-                                </li>
+                                @if (auth()->user()->role == 'customer')
+                                    <li>
+                                        <a href="{{ route('my-account.orders') }}"
+                                            class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
+                                    </li>
+                                @endif
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST" class="w-full">
                                         @csrf

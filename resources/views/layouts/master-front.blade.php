@@ -17,14 +17,33 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- Alpine JS --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Styles -->
     @livewireStyles
 </head>
 
 <body class="font-secondary antialiased">
+    @if (flash()->message)
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    },
+                });
+                Toast.fire({
+                    icon: '{{ flash()->class }}',
+                    title: "{{ flash()->message }}",
+                });
+            });
+        </script>
+    @endif
 
     <div class="container max-w-full relative h-screen">
 
@@ -41,7 +60,7 @@
 
     </div>
 
-    @livewireScriptConfig
+    @livewireScripts
 </body>
 
 </html>
