@@ -14,7 +14,8 @@
 
                         </div>
                     </div>
-                    <div class="flex gap-8 flex-col xs:flex-row w-full">
+                    <div
+                        class="flex gap-8 flex-col xs:flex-row w-full {{ auth()->user()->role != 'customer' ? 'mt-10' : '' }}">
                         <div class="flex flex-col basis-full xs:basis-48 sm:basis-[280px]">
                             <h3 class="text-dark-primary font-semibold mb-1">Ganti Password</h3>
                             <p class="text-sm sm:text-base text-dark-secondary">Pastikan akun Anda menggunakan kata
