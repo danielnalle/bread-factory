@@ -16,7 +16,7 @@ class EnsureUserIsTeam
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && in_array(Auth::user()->role, ['admin', 'customer'])) {
+        if (Auth::check() && in_array(Auth::user()->role, ['admin', 'pegawai'])) {
             return $next($request);
         }
 
