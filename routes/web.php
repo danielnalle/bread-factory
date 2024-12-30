@@ -11,6 +11,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Middleware\EnsureUserIsCustomer;
+use App\Http\Middleware\EnsureUserIsTeam;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,13 +30,35 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/email/verify', function (Request $request) {
     if ($request->user()->hasVerifiedEmail()) {
-        return redirect()->route('landing-page'); // Redirect ke halaman home jika sudah terverifikasi
+        // Ambil role user yang sedang login
+        $role = Auth::user()->role; // Pastikan kolom 'role' tersedia di tabel users
+
+        // Arahkan berdasarkan role
+        if ($role === 'customer') {
+            return redirect()->route('landing-page');
+        } elseif (in_array($role, ['admin', 'pegawai'])) {
+            return redirect()->route('dashboard');
+        }
+
+        // Default redirect jika role tidak sesuai
+        return redirect()->route('landing-page');
     }
 
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
+    // Ambil role user yang sedang login
+    $role = Auth::user()->role; // Pastikan kolom 'role' tersedia di tabel users
+
+    // Arahkan berdasarkan role
+    if ($role === 'customer') {
+        return redirect()->route('landing-page');
+    } elseif (in_array($role, ['admin', 'pegawai'])) {
+        return redirect()->route('dashboard');
+    }
+
+    // Default redirect jika role tidak sesuai
     return redirect()->route('landing-page');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
@@ -90,49 +114,51 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/cart', function () {
-        return view('landing/content/cart');
-    })->name('cart');
+    Route::middleware([EnsureUserIsCustomer::class])->group(function () {
+        Route::get('/cart', function () {
+            return view('landing/content/cart');
+        })->name('cart');
 
-    Route::get('/checkout', function () {
-        return view('landing/content/checkout');
-    })->name('checkout');
+        Route::get('/checkout', function () {
+            return view('landing/content/checkout');
+        })->name('checkout');
 
-    Route::get('/berhasil', function () {
-        return view('landing/content/berhasil');
-    })->name('berhasil');
+        Route::get('/berhasil', function () {
+            return view('landing/content/berhasil');
+        })->name('berhasil');
 
-    Route::get('/my-account/orders', function () {
-        return view('landing/my-account/orders');
-    })->name('my-account.orders');
+        Route::get('/my-account/orders', function () {
+            return view('landing/my-account/orders');
+        })->name('my-account.orders');
+
+        Route::get('/my-account/orders/detail', function () {
+            return view('landing/my-account/detail');
+        })->name('my-account.orders.detail');
+    });
+    Route::middleware([EnsureUserIsTeam::class])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard/index');
+        })->name('dashboard');
+        Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
+        Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+        Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+        Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+        Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
+        Route::get('/products', [ProductController::class, 'index'])->name('products');
+        Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+        Route::get('/products/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
+        Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+        Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+        Route::get('/categories/edit/{category}', [CategoryController::class, 'edit'])->name('categories.edit');
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+        Route::get('/orders/detail', [OrderController::class, 'detail'])->name('orders.detail');
+        Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
+        Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
+        Route::get('/payment-method/edit/{payment}', [PaymentController::class, 'edit'])->name('payment-method.edit');
+    });
 
     Route::get('/my-account/account', function () {
         return view('landing/my-account/account');
     })->name('my-account.account');
-
-    Route::get('/my-account/orders/detail', function () {
-        return view('landing/my-account/detail');
-    })->name('my-account.orders.detail');
-
-    // Admin Dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard/index');
-    })->name('dashboard');
-    Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
-    Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
-    Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
-    Route::get('/users', [UserController::class, 'index'])->name('users');
-    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
-    Route::get('/products', [ProductController::class, 'index'])->name('products');
-    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-    Route::get('/products/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
-    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-    Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
-    Route::get('/categories/edit/{category}', [CategoryController::class, 'edit'])->name('categories.edit');
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders');
-    Route::get('/orders/detail', [OrderController::class, 'detail'])->name('orders.detail');
-    Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
-    Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
-    Route::get('/payment-method/edit/{payment}', [PaymentController::class, 'edit'])->name('payment-method.edit');
 });
