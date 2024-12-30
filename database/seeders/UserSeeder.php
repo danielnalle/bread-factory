@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             'email' => 'yogi@gmail.com',
             'role' => 'admin',
             'password' => 'asdasd',
-            'email_verified_at' => NOW(),
+            // 'email_verified_at' => NOW(),
         ]);
     }
 }
