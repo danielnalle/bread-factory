@@ -110,14 +110,14 @@
                     <label for="kategori"
                         class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Kategori<span
                             class="text-red-600">*</span></label>
-                    <select id="kategori" wire:model='category'
+                    <select id="kategori" wire:model='bread_type'
                         class=" border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                         <option value="">-- Pilih kategori --</option>
-                        @foreach ($categories as $category)
-                            <option value={{ $category->id }}>{{ $category->name }}</option>
+                        @foreach ($bread_types as $bread_type)
+                            <option value={{ $bread_type->id }}>{{ $bread_type->name }}</option>
                         @endforeach
                     </select>
-                    @error('category')
+                    @error('bread_type')
                         <span class="text-red-600 text-sm">{{ $message }}</span>
                     @enderror
                 </div>

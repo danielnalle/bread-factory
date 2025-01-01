@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Products;
 
-use App\Models\Category;
+use App\Models\BreadType;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,13 +13,13 @@ use Livewire\WithFileUploads;
 class EditProduct extends Component
 {
     use WithFileUploads;
-    public $product_id, $name, $description, $category, $quantity, $min_order, $price, $image, $prevImage, $path, $unit;
+    public $product_id, $name, $description, $bread_type, $quantity, $min_order, $price, $image, $prevImage, $path, $unit;
     public function mount($product)
     {
         $this->product_id = $product->id;
         $this->name = $product->name;
         $this->description = $product->description;
-        $this->category = $product->bread_type_id;
+        $this->bread_type = $product->bread_type_id;
         $this->quantity = $product->quantity;
         $this->min_order = $product->min_order;
         $this->unit = $product->unit;
@@ -29,8 +29,8 @@ class EditProduct extends Component
 
     public function render()
     {
-        $categories = Category::all();
-        return view('livewire.products.edit-product', ['categories' => $categories]);
+        $bread_types = BreadType::all();
+        return view('livewire.products.edit-product', ['bread_types' => $bread_types]);
     }
 
     public function update()
@@ -38,7 +38,7 @@ class EditProduct extends Component
         $rules = [
             'name' => 'required|string|max:255|unique:breads,name,' . $this->product_id,
             'description' => 'required|string|max:600',
-            'category' => 'required|exists:bread_types,id',
+            'bread_type' => 'required|exists:bread_types,id',
             'quantity' => 'required|integer|min:1',
             'min_order' => 'required|integer|min:1',
             'unit' => 'required|string|max:255',
@@ -61,7 +61,7 @@ class EditProduct extends Component
         $updated = [
             'name' => $this->name,
             'description' => $this->description,
-            'bread_type_id' => $this->category,
+            'bread_type_id' => $this->bread_type,
             'quantity' => $this->quantity,
             'min_order' => $this->min_order,
             'unit' => $this->unit,

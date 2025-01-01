@@ -3,7 +3,7 @@
 
         <div class="sm:flex sm:justify-between sm:items-center mb-6">
             <div class="mb-4 sm:mb-0">
-                <h1 class="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">Tambah Kategori</h1>
+                <h1 class="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">Tambah Jenis Roti</h1>
             </div>
             <div class="mb-4 sm:mb-0">
                 <nav class="flex" aria-label="Breadcrumb">
@@ -21,9 +21,9 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m1 9 4-4-4-4" />
                                 </svg>
-                                <a href="{{ route('categories') }}"
+                                <a href="{{ route('bread_types') }}"
                                     class="inline-flex ms-1 md:ms-2 items-center text-sm font-medium text-dark-primary hover:text-primary-hover dark:text-gray-400 dark:hover:text-white">
-                                    Kategori
+                                    Jenis Roti
                                 </a>
                             </div>
                         </li>
@@ -48,7 +48,7 @@
         <!-- Cards -->
 
         <div class="antialiased relative">
-            @livewire('categories.create-category')
+            @livewire('bread_types.create-bread-type')
 
         </div>
 

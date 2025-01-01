@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire\Categories;
+namespace App\Livewire\BreadTypes;
 
-use App\Models\Category;
+use App\Models\BreadType;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-class CreateCategory extends Component
+class CreateBreadType extends Component
 {
     #[Validate('required|string|max:255|unique:bread_types,name')]
     public $name;
@@ -15,19 +15,19 @@ class CreateCategory extends Component
 
     public function render()
     {
-        return view('livewire.categories.create-category');
+        return view('livewire.bread_types.create-bread-type');
     }
 
     public function store()
     {
         $this->validate();
 
-        Category::create([
+        BreadType::create([
             'name' => $this->name,
             'isActive' => $this->isActive,
         ]);
 
-        flash("Kategori Berhasil Ditambah", "success");
-        return redirect()->route('categories');
+        flash("Jenis Roti Berhasil Ditambah", "success");
+        return redirect()->route('bread_types');
     }
 }

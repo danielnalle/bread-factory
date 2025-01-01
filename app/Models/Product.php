@@ -12,8 +12,8 @@ class Product extends Model
     protected $table = "breads";
     protected $fillable = ['name', 'description', 'bread_type_id', 'quantity', 'min_order', 'unit', 'price', 'image'];
 
-    public function category(): BelongsTo
+    public function bread_type(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'bread_type_id');
+        return $this->belongsTo(BreadType::class, 'bread_type_id');
     }
 }

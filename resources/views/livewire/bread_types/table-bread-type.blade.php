@@ -12,11 +12,11 @@
                 </div>
                 <input type="text" id="table-search" wire:model.live="search"
                     class="block pt-2 ps-10 text-sm text-dark-primary border border-gray-300 rounded-lg w-full sm:w-96 bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 placeholder-dark-secondary dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                    placeholder="Cari kategori...">
+                    placeholder="Cari jenis roti...">
             </div>
         </div>
         <div class="mb-4 sm:mb-0">
-            <a href="{{ route('categories.create') }}"
+            <a href="{{ route('bread_types.create') }}"
                 class="text-white bg-primary hover:bg-primary-hover font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover">
                 <svg class="me-2" width="12" height="12" viewBox="0 0 10 10" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +27,7 @@
                         d="M8.4165 5.49023H1.0835C0.668496 5.49023 0.333496 5.15423 0.333496 4.74023C0.333496 4.32623 0.668496 3.99023 1.0835 3.99023H8.4165C8.8305 3.99023 9.1665 4.32623 9.1665 4.74023C9.1665 5.15423 8.8305 5.49023 8.4165 5.49023"
                         fill="white" />
                 </svg>
-                Kategori Baru
+                Jenis Baru
             </a>
         </div>
     </div>
@@ -49,17 +49,17 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @foreach ($bread_types as $bread_type)
                 <tr class=" text-dark-secondary bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td class="w-4 p-4 text-center">
                         {{ $loop->iteration }}
                     </td>
                     <th scope="row"
                         class="px-6 py-4 font-semibold text-dark-primary whitespace-nowrap dark:text-white">
-                        {{ $category->name }}
+                        {{ $bread_type->name }}
                     </th>
                     <td class="px-6 py-4">
-                        @if ($category->isActive == 1)
+                        @if ($bread_type->isActive == 1)
                             {{-- Active --}}
                             <svg width="24" height="24" viewBox="0 0 25 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +87,7 @@
                         @endif
                     </td>
                     <td class="flex items-center px-6 py-4">
-                        <a href="{{ route('categories.edit', $category->id) }}"
+                        <a href="{{ route('bread_types.edit', $bread_type->id) }}"
                             class="font-medium bg-yellow-300 hover:bg-yellow-400 p-2 rounded-md hover:underline"><svg
                                 width="18" height="18" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -102,7 +102,7 @@
                                     fill="black" />
                             </svg>
                         </a>
-                        <button type="button" wire:click="deleteConfirm({{ $category->id }})"
+                        <button type="button" wire:click="deleteConfirm({{ $bread_type->id }})"
                             class="font-medium bg-red-600 hover:bg-red-700 p-2 rounded-md hover:underline ms-3"><svg
                                 width="20" height="20" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -140,7 +140,7 @@
                                                 d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                         </svg>
                                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Kamu
-                                            yakin ingin menghapus kategori ini?</h3>
+                                            yakin ingin menghapus jenis ini?</h3>
                                         <button type="button"
                                             class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center confirm-delete">
                                             Ya, Saya Yakin
@@ -158,5 +158,5 @@
 
         </tbody>
     </table>
-    {{ $categories->links('components.pagination') }}
+    {{ $bread_types->links('components.pagination') }}
 </div>

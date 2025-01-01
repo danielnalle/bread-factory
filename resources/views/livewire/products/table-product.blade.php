@@ -71,7 +71,7 @@
                         {{ $product->name }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $product->category->name }}
+                        {{ $product->bread_type->name }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $product->quantity }}

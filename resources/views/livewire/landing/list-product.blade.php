@@ -44,14 +44,14 @@
             <div class="font-medium text-primary text-sm sm:text-base mb-7">
                 <ul class="flex items-center gap-2.5 overflow-x-auto">
                     <li
-                        class="px-5 py-2.5 rounded-full whitespace-nowrap @if ($selectedCategory == '') {{ 'bg-primary text-white' }} @else {{ '' }} @endif">
+                        class="px-5 py-2.5 rounded-full whitespace-nowrap @if ($selectedBreadType == '') {{ 'bg-primary text-white' }} @else {{ '' }} @endif">
                         <a href="#" wire:click="filter('')">Semua
                             Produk</a>
                     </li>
-                    @foreach ($categories as $category)
+                    @foreach ($bread_types as $bread_type)
                         <li
-                            class="px-5 py-2.5 rounded-full whitespace-nowrap bg-none @if ($selectedCategory == $category->id) {{ 'bg-primary text-white' }} @else {{ '' }} @endif">
-                            <a href="#" wire:click='filter({{ $category->id }})'>{{ $category->name }}</a>
+                            class="px-5 py-2.5 rounded-full whitespace-nowrap bg-none @if ($selectedBreadType == $bread_type->id) {{ 'bg-primary text-white' }} @else {{ '' }} @endif">
+                            <a href="#" wire:click='filter({{ $bread_type->id }})'>{{ $bread_type->name }}</a>
                         </li>
                     @endforeach
                 </ul>

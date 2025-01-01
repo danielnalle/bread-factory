@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Products;
 
-use App\Models\Category;
+use App\Models\BreadType;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,14 +13,14 @@ class CreateProduct extends Component
 {
     use WithFileUploads;
 
-    public $name, $description, $category, $quantity, $min_order, $price, $image, $unit;
+    public $name, $description, $bread_type, $quantity, $min_order, $price, $image, $unit;
 
     protected function rules()
     {
         return [
             'name' => 'required|string|max:255|unique:breads,name',
             'description' => 'required|string|max:600',
-            'category' => 'required|exists:bread_types,id',
+            'bread_type' => 'required|exists:bread_types,id',
             'quantity' => 'required|integer|min:1',
             'min_order' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0',
@@ -47,7 +47,7 @@ class CreateProduct extends Component
         Product::create([
             'name' => $this->name,
             'description' => $this->description,
-            'bread_type_id' => $this->category,
+            'bread_type_id' => $this->bread_type,
             'quantity' => $this->quantity,
             'min_order' => $this->min_order,
             'unit' => $this->unit,
@@ -63,7 +63,7 @@ class CreateProduct extends Component
     }
     public function render()
     {
-        $categories = Category::all();
-        return view('livewire.products.create-product', ['categories' => $categories]);
+        $bread_types = BreadType::all();
+        return view('livewire.products.create-product', ['bread_types' => $bread_types]);
     }
 }

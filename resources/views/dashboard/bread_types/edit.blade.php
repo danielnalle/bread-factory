@@ -3,7 +3,7 @@
 
         <div class="sm:flex sm:justify-between sm:items-center mb-6">
             <div class="mb-4 sm:mb-0">
-                <h1 class="text-2xl md:text-3xl text-dark-primary dark:text-gray-100 font-bold">Kategori</h1>
+                <h1 class="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">Edit Jenis Roti</h1>
             </div>
             <div class="mb-4 sm:mb-0">
                 <nav class="flex" aria-label="Breadcrumb">
@@ -14,6 +14,19 @@
                                 Katalog
                             </a>
                         </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 9 4-4-4-4" />
+                                </svg>
+                                <a href="{{ route('bread_types') }}"
+                                    class="inline-flex ms-1 md:ms-2 items-center text-sm font-medium text-dark-primary hover:text-primary-hover dark:text-gray-400 dark:hover:text-white">
+                                    Jenis Roti
+                                </a>
+                            </div>
+                        </li>
                         <li aria-current="page">
                             <div class="flex items-center">
                                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
@@ -22,8 +35,7 @@
                                         stroke-width="2" d="m1 9 4-4-4-4" />
                                 </svg>
                                 <span
-                                    class="ms-1 text-sm font-medium text-dark-secondary md:ms-2 dark:text-gray-400">Kategori
-                                </span>
+                                    class="ms-1 text-sm font-medium text-dark-secondary md:ms-2 dark:text-gray-400">Edit</span>
                             </div>
                         </li>
                     </ol>
@@ -35,7 +47,10 @@
 
         <!-- Cards -->
 
-        @livewire('categories.table-category')
+        <div class="antialiased relative">
+            @livewire('bread_types.edit-bread-type', ['bread_type' => $bread_type])
+
+        </div>
 
     </div>
 </x-app-layout>
