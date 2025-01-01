@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Livewire\Products;
+namespace App\Livewire\Breads;
 
 use App\Models\BreadType;
-use App\Models\Product;
+use App\Models\Bread;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class CreateProduct extends Component
+class CreateBread extends Component
 {
     use WithFileUploads;
 
@@ -39,12 +39,12 @@ class CreateProduct extends Component
         $this->validate();
 
         if ($this->image) {
-            $path = $this->image->store('products', 'public');
+            $path = $this->image->store('breads', 'public');
         }
 
 
         DB::statement("SET @current_user_email = ?", [Auth::user()->email]);
-        Product::create([
+        Bread::create([
             'name' => $this->name,
             'description' => $this->description,
             'bread_type_id' => $this->bread_type,
@@ -58,12 +58,12 @@ class CreateProduct extends Component
 
 
         $this->reset();
-        flash('Product berhasil ditambah', 'success');
-        return redirect()->route('products');
+        flash('Roti berhasil ditambah', 'success');
+        return redirect()->route('breads');
     }
     public function render()
     {
         $bread_types = BreadType::all();
-        return view('livewire.products.create-product', ['bread_types' => $bread_types]);
+        return view('livewire.breads.create-bread', ['bread_types' => $bread_types]);
     }
 }

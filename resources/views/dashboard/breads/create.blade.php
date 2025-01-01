@@ -3,7 +3,7 @@
 
         <div class="sm:flex sm:justify-between sm:items-center mb-6">
             <div class="mb-4 sm:mb-0">
-                <h1 class="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">Edit Produk</h1>
+                <h1 class="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">Tambah Roti</h1>
             </div>
             <div class="mb-4 sm:mb-0">
                 <nav class="flex" aria-label="Breadcrumb">
@@ -21,9 +21,9 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m1 9 4-4-4-4" />
                                 </svg>
-                                <a href="{{ route('products') }}"
+                                <a href="{{ route('breads') }}"
                                     class="inline-flex ms-1 md:ms-2 items-center text-sm font-medium text-dark-primary hover:text-primary-hover dark:text-gray-400 dark:hover:text-white">
-                                    Produk
+                                    Roti
                                 </a>
                             </div>
                         </li>
@@ -35,7 +35,7 @@
                                         stroke-width="2" d="m1 9 4-4-4-4" />
                                 </svg>
                                 <span
-                                    class="ms-1 text-sm font-medium text-dark-secondary md:ms-2 dark:text-gray-400">Edit</span>
+                                    class="ms-1 text-sm font-medium text-dark-secondary md:ms-2 dark:text-gray-400">Tambah</span>
                             </div>
                         </li>
                     </ol>
@@ -48,7 +48,7 @@
         <!-- Cards -->
 
         <div class="antialiased relative">
-            @livewire('products.edit-product', ['product' => $product])
+            @livewire('breads.create-bread')
 
         </div>
 

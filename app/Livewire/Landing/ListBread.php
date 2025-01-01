@@ -3,11 +3,11 @@
 namespace App\Livewire\Landing;
 
 use App\Models\BreadType;
-use App\Models\Product;
+use App\Models\Bread;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ListProduct extends Component
+class ListBread extends Component
 {
     use WithPagination;
 
@@ -16,15 +16,15 @@ class ListProduct extends Component
 
     public function render()
     {
-        $totalProducts = Product::count();
+        $totalBreads = Bread::count();
         $bread_types = BreadType::all();
-        return view('livewire.landing.list-product', [
-            // 'products' => Product::orderBy('id', 'desc')->whereAny(['name'], 'like', '%' . $this->search . '%')->paginate($totalProducts)
-            'products' => Product::orderBy('id', 'desc')->when($this->search, function ($query) {
+        return view('livewire.landing.list-bread', [
+            // 'Breads' => Bread::orderBy('id', 'desc')->whereAny(['name'], 'like', '%' . $this->search . '%')->paginate($totalBreads)
+            'breads' => Bread::orderBy('id', 'desc')->when($this->search, function ($query) {
                 $query->where('name', 'like', '%' . $this->search . '%');
             })->when($this->selectedBreadType, function ($query) {
                 $query->where('bread_type_id', $this->selectedBreadType);
-            })->paginate($totalProducts),
+            })->paginate($totalBreads),
             'bread_types' => $bread_types,
         ]);
     }

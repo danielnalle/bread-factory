@@ -1,42 +1,42 @@
 <?php
 
-namespace App\Livewire\Products;
+namespace App\Livewire\Breads;
 
 use App\Models\BreadType;
-use App\Models\Product;
+use App\Models\Bread;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class EditProduct extends Component
+class EditBread extends Component
 {
     use WithFileUploads;
-    public $product_id, $name, $description, $bread_type, $quantity, $min_order, $price, $image, $prevImage, $path, $unit;
-    public function mount($product)
+    public $bread_id, $name, $description, $bread_type, $quantity, $min_order, $price, $image, $prevImage, $path, $unit;
+    public function mount($bread)
     {
-        $this->product_id = $product->id;
-        $this->name = $product->name;
-        $this->description = $product->description;
-        $this->bread_type = $product->bread_type_id;
-        $this->quantity = $product->quantity;
-        $this->min_order = $product->min_order;
-        $this->unit = $product->unit;
-        $this->price = $product->price;
-        $this->prevImage = $product->image;
+        $this->bread_id = $bread->id;
+        $this->name = $bread->name;
+        $this->description = $bread->description;
+        $this->bread_type = $bread->bread_type_id;
+        $this->quantity = $bread->quantity;
+        $this->min_order = $bread->min_order;
+        $this->unit = $bread->unit;
+        $this->price = $bread->price;
+        $this->prevImage = $bread->image;
     }
 
     public function render()
     {
         $bread_types = BreadType::all();
-        return view('livewire.products.edit-product', ['bread_types' => $bread_types]);
+        return view('livewire.breads.edit-bread', ['bread_types' => $bread_types]);
     }
 
     public function update()
     {
         $rules = [
-            'name' => 'required|string|max:255|unique:breads,name,' . $this->product_id,
+            'name' => 'required|string|max:255|unique:breads,name,' . $this->bread_id,
             'description' => 'required|string|max:600',
             'bread_type' => 'required|exists:bread_types,id',
             'quantity' => 'required|integer|min:1',
@@ -51,7 +51,7 @@ class EditProduct extends Component
 
         $this->validate($rules);
         if ($this->image) {
-            $this->path = $this->image->store('products', 'public');
+            $this->path = $this->image->store('breads', 'public');
             if ($this->path && $this->image) {
                 if ($this->prevImage) {
                     Storage::disk('public')->delete($this->prevImage);
@@ -72,11 +72,11 @@ class EditProduct extends Component
 
         DB::statement("SET @current_user_email = ?", [Auth::user()->email]);
 
-        Product::where('id', $this->product_id)->update($updated);
+        Bread::where('id', $this->bread_id)->update($updated);
 
         $this->reset();
 
-        flash('Product Berhasil Diupdate', 'success');
-        return redirect()->route('products');
+        flash('Roti Berhasil Diupdate', 'success');
+        return redirect()->route('breads');
     }
 }

@@ -160,13 +160,13 @@
                     <span class="lg:hidden lg:sidebar-expanded:block 2xl:block">Katalog</span>
                 </h3>
                 <ul class="mt-3">
-                    <!-- Produk -->
+                    <!-- Roti -->
                     <li
-                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(2), ['products'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
-                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(2), ['products'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
-                            href="{{ route('products') }}">
+                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(2), ['breads'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
+                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(2), ['breads'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
+                            href="{{ route('breads') }}">
                             <div class="flex items-center">
-                                <svg class="shrink-0 fill-current @if (in_array(Request::segment(2), ['products'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
+                                <svg class="shrink-0 fill-current @if (in_array(Request::segment(2), ['breads'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
                                     width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <mask id="path-1-outside-1_295_7954" maskUnits="userSpaceOnUse" x="0.666992"
@@ -223,7 +223,7 @@
                                 </svg>
 
                                 <span
-                                    class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Produk</span>
+                                    class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Roti</span>
                             </div>
                         </a>
                     </li>

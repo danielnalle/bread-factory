@@ -3,7 +3,7 @@
 
         <div class="sm:flex sm:justify-between sm:items-center mb-6">
             <div class="mb-4 sm:mb-0">
-                <h1 class="text-2xl md:text-3xl text-dark-primary dark:text-gray-100 font-bold">Produk</h1>
+                <h1 class="text-2xl md:text-3xl text-dark-primary dark:text-gray-100 font-bold">Roti</h1>
             </div>
             <div class="mb-4 sm:mb-0">
                 <nav class="flex" aria-label="Breadcrumb">
@@ -22,7 +22,7 @@
                                         stroke-width="2" d="m1 9 4-4-4-4" />
                                 </svg>
                                 <span
-                                    class="ms-1 text-sm font-medium text-dark-secondary md:ms-2 dark:text-gray-400">Produk
+                                    class="ms-1 text-sm font-medium text-dark-secondary md:ms-2 dark:text-gray-400">Roti
                                 </span>
                             </div>
                         </li>
@@ -35,7 +35,7 @@
 
         <!-- Cards -->
 
-        @livewire('products.table-product')
+        @livewire('breads.table-bread')
 
     </div>
 </x-app-layout>

@@ -15,8 +15,8 @@ class BreadType extends Model
         'isActive',
     ];
 
-    public function products(): HasMany
+    public function breads(): HasMany
     {
-        return $this->hasMany(Product::class, 'id', 'bread_type_id');
+        return $this->hasMany(Bread::class, 'id', 'bread_type_id');
     }
 }
