@@ -42,6 +42,16 @@ class FormLogin extends Component
             return null;
         }
 
+        $role = Auth::user()->role; // Pastikan kolom 'role' tersedia di tabel users
+
+        // Arahkan berdasarkan role
+        if ($role === 'customer') {
+            return redirect()->route('landing-page');
+        } elseif (in_array($role, ['admin', 'pegawai'])) {
+            return redirect()->route('dashboard');
+        }
+
+        // Default redirect jika role tidak sesuai
         return redirect()->route('landing-page');
     }
 }

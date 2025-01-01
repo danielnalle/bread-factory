@@ -94,8 +94,8 @@ Route::get('/', function () {
 })->name('landing-page');
 
 // For Customers
-Route::get('/produk', function () {
-    return view('landing/content/produk');
+Route::get('/products', function () {
+    return view('landing/content/products');
 })->name('produk');
 
 Route::get('/about', function () {
@@ -145,9 +145,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
         Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
-        Route::get('/products', [ProductController::class, 'index'])->name('products');
-        Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-        Route::get('/products/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
+        Route::get('/dashboards/products', [ProductController::class, 'index'])->name('products');
+        Route::get('/dashboards/products/create', [ProductController::class, 'create'])->name('products.create');
+        Route::get('/dashboards/products/edit/{product}', [ProductController::class, 'edit'])->name('products.edit');
         Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
         Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
         Route::get('/categories/edit/{category}', [CategoryController::class, 'edit'])->name('categories.edit');

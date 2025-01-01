@@ -13,7 +13,7 @@ use Livewire\WithFileUploads;
 class EditProduct extends Component
 {
     use WithFileUploads;
-    public $product_id, $name, $description, $category, $quantity, $min_order, $price, $image, $prevImage, $path;
+    public $product_id, $name, $description, $category, $quantity, $min_order, $price, $image, $prevImage, $path, $unit;
     public function mount($product)
     {
         $this->product_id = $product->id;
@@ -22,6 +22,7 @@ class EditProduct extends Component
         $this->category = $product->bread_type_id;
         $this->quantity = $product->quantity;
         $this->min_order = $product->min_order;
+        $this->unit = $product->unit;
         $this->price = $product->price;
         $this->prevImage = $product->image;
     }
@@ -40,6 +41,7 @@ class EditProduct extends Component
             'category' => 'required|exists:bread_types,id',
             'quantity' => 'required|integer|min:1',
             'min_order' => 'required|integer|min:1',
+            'unit' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
         ];
 
@@ -62,6 +64,7 @@ class EditProduct extends Component
             'bread_type_id' => $this->category,
             'quantity' => $this->quantity,
             'min_order' => $this->min_order,
+            'unit' => $this->unit,
             'price' => $this->price,
             'image' => $this->path ? $this->path : $this->prevImage,
             'updated_at' => now(),

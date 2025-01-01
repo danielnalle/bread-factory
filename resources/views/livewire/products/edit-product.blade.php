@@ -89,6 +89,17 @@
                         <span class="text-red-600 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="mb-5">
+                    <label for="unit"
+                        class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Satuan<span
+                            class="text-red-600">*</span></label>
+                    <input type="text" id="unit"
+                        class=" border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-3 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                        placeholder="Masukan minimal pesanan" wire:model='unit' />
+                    @error('unit')
+                        <span class="text-red-600 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
                 <div>
                     <label for="kategori"
                         class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Kategori<span

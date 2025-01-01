@@ -53,6 +53,9 @@
                     Minimal Order
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Satuan
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Aksi
                 </th>
             </tr>
@@ -78,6 +81,9 @@
                     </td>
                     <td class="px-6 py-4">
                         {{ $product->min_order }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $product->unit }}
                     </td>
                     <td class="flex items-center px-6 py-4">
                         <a href="{{ route('products.edit', $product->id) }}"

@@ -13,7 +13,7 @@ class CreateProduct extends Component
 {
     use WithFileUploads;
 
-    public $name, $description, $category, $quantity, $min_order, $price, $image;
+    public $name, $description, $category, $quantity, $min_order, $price, $image, $unit;
 
     protected function rules()
     {
@@ -24,6 +24,7 @@ class CreateProduct extends Component
             'quantity' => 'required|integer|min:1',
             'min_order' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0',
+            'unit' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Max 2MB
         ];
     }
@@ -49,6 +50,7 @@ class CreateProduct extends Component
             'bread_type_id' => $this->category,
             'quantity' => $this->quantity,
             'min_order' => $this->min_order,
+            'unit' => $this->unit,
             'price' => $this->price,
             'image' => $path,
         ]);
