@@ -148,10 +148,10 @@
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="{{ route('produk') }}"
+                        <a href="{{ route('roti') }}"
                             @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'md:text-primary md:hover:text-opacity-80' :
                     'md:text-gray-200 md:hover:text-white'" @endif
-                            class="block py-2 px-3 text-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @endif @if (in_array(Request::segment(1), ['produk'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Produk</a>
+                            class="block py-2 px-3 text-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @endif @if (in_array(Request::segment(1), ['breads'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Roti</a>
                     </li>
                     <li>
                         <a href="{{ route('about') }}"

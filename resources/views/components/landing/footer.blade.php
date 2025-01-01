@@ -17,7 +17,7 @@
                 </li>
                 <li>
                     <a href="#"
-                        class="block py-2 px-3 md:text-gray-200 md:hover:text-white rounded md:bg-transparent md:p-0">Produk</a>
+                        class="block py-2 px-3 md:text-gray-200 md:hover:text-white rounded md:bg-transparent md:p-0">Roti</a>
                 </li>
                 <li>
                     <a href="#"
@@ -46,7 +46,7 @@
             <h3 class="text-md md:text-lg font-semibold mb-5 md:mb-7">Navigasi</h3>
             <ul class="text-sm md:text-base font-light flex flex-col gap-4 md:gap-5 text-white text-opacity-80">
                 <li><a href="/" class="hover:underline hover:underline-offset-4 inline-block">Home</a></li>
-                <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Produk</a></li>
+                <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Roti</a></li>
                 <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Tentang
                         Kami</a></li>
                 <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Kontak</a></li>

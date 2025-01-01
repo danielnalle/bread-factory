@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Bread;
+use App\Models\BreadType;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call([UserSeeder::class, CategorySeeder::class, PaymentSeeder::class]);
+        $this->call([UserSeeder::class, BreadTypeSeeder::class, PaymentSeeder::class, BreadSeeder::class]);
     }
 }

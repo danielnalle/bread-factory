@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('bread_type_id')->constrained('bread_types');
             $table->integer('quantity');
             $table->integer('min_order');
+            $table->string('unit');
             $table->decimal('price');
             $table->string('image');
             $table->timestamps();
