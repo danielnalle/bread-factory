@@ -13,6 +13,7 @@ class ListBread extends Component
 
     public $search = '';
     public $selectedBreadType = '';
+    public $selectedBreadTypeName = 'Semua Roti';
 
     public function render()
     {
@@ -26,6 +27,7 @@ class ListBread extends Component
                 $query->where('bread_type_id', $this->selectedBreadType);
             })->paginate($totalBreads),
             'bread_types' => $bread_types,
+            'selectedBreadTypeName' => $this->selectedBreadTypeName,
         ]);
     }
 
@@ -37,6 +39,11 @@ class ListBread extends Component
     public function filter($value)
     {
         $this->selectedBreadType = $value;
+        if ($value != '') {
+            $this->selectedBreadTypeName = BreadType::find($value)->name;
+        } else {
+            $this->selectedBreadTypeName = "Semua Roti";
+        }
         $this->resetPage();
     }
 }
