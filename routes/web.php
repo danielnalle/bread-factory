@@ -160,6 +160,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
         // Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
         Route::get('/dashboards/breads', [BreadController::class, 'index'])->name('breads');
+        Route::get('/dashboards/breads/detail/{bread}', [BreadController::class, 'detail'])->name('breads.detail');
         Route::get('/bread-types', [BreadTypeController::class, 'index'])->name('bread_types');
         Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
         Route::get('/orders', [OrderController::class, 'index'])->name('orders');
