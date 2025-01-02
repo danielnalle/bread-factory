@@ -11,6 +11,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BreadController;
 use App\Http\Controllers\BreadTypeController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Middleware\EnsureUserIsAdmin;
 use App\Http\Middleware\EnsureUserIsCustomer;
 use App\Http\Middleware\EnsureUserIsTeam;
 use App\Models\Bread;
@@ -92,7 +93,9 @@ Route::get('/reset-password/{token}', function (string $token) {
 
 Route::get('/', function () {
     return view('landing/content/home', [
-        'breads' => Bread::orderBy('id', 'desc')->limit(4)->get(),
+        'breads' => Bread::select('breads.*')
+            ->join('bread_types', 'bread_types.id', '=', 'breads.bread_type_id')
+            ->where('bread_types.isActive', '1')->orderBy('id', 'desc')->limit(4)->get(),
     ]);
 })->name('landing-page');
 
@@ -119,48 +122,48 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::middleware([EnsureUserIsCustomer::class])->group(function () {
-        Route::get('/cart', function () {
-            return view('landing/content/cart');
-        })->name('cart');
+    Route::get('/cart', function () {
+        return view('landing/content/cart');
+    })->name('cart');
 
-        Route::get('/checkout', function () {
-            return view('landing/content/checkout');
-        })->name('checkout');
+    Route::get('/checkout', function () {
+        return view('landing/content/checkout');
+    })->name('checkout');
 
-        Route::get('/berhasil', function () {
-            return view('landing/content/berhasil');
-        })->name('berhasil');
+    Route::get('/berhasil', function () {
+        return view('landing/content/berhasil');
+    })->name('berhasil');
 
-        Route::get('/my-account/orders', function () {
-            return view('landing/my-account/orders');
-        })->name('my-account.orders');
+    Route::get('/my-account/orders', function () {
+        return view('landing/my-account/orders');
+    })->name('my-account.orders');
 
-        Route::get('/my-account/orders/detail', function () {
-            return view('landing/my-account/detail');
-        })->name('my-account.orders.detail');
-    });
+    Route::get('/my-account/orders/detail', function () {
+        return view('landing/my-account/detail');
+    })->name('my-account.orders.detail');
     Route::middleware([EnsureUserIsTeam::class])->group(function () {
+        Route::middleware([EnsureUserIsAdmin::class])->group(function () {
+            Route::get('/users', [UserController::class, 'index'])->name('users');
+            Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+            Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
+            Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
+            Route::get('/payment-method/edit/{payment}', [PaymentController::class, 'edit'])->name('payment-method.edit');
+            Route::get('/bread-types/create', [BreadTypeController::class, 'create'])->name('bread_types.create');
+            Route::get('/bread-types/edit/{type}', [BreadTypeController::class, 'edit'])->name('bread_types.edit');
+            Route::get('/dashboards/breads/create', [BreadController::class, 'create'])->name('breads.create');
+            Route::get('/dashboards/breads/edit/{bread}', [BreadController::class, 'edit'])->name('breads.edit');
+        });
         Route::get('/dashboard', function () {
             return view('dashboard/index');
         })->name('dashboard');
         Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
-        Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
-        Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
-        Route::get('/users', [UserController::class, 'index'])->name('users');
-        Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-        Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
+        // Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+        // Route::get('/customers/edit', [CustomerController::class, 'edit'])->name('customers.edit');
         Route::get('/dashboards/breads', [BreadController::class, 'index'])->name('breads');
-        Route::get('/dashboards/breads/create', [BreadController::class, 'create'])->name('breads.create');
-        Route::get('/dashboards/breads/edit/{bread}', [BreadController::class, 'edit'])->name('breads.edit');
         Route::get('/bread-types', [BreadTypeController::class, 'index'])->name('bread_types');
-        Route::get('/bread-types/create', [BreadTypeController::class, 'create'])->name('bread_types.create');
-        Route::get('/bread-types/edit/{type}', [BreadTypeController::class, 'edit'])->name('bread_types.edit');
+        Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
         Route::get('/orders', [OrderController::class, 'index'])->name('orders');
         Route::get('/orders/detail', [OrderController::class, 'detail'])->name('orders.detail');
-        Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
-        Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
-        Route::get('/payment-method/edit/{payment}', [PaymentController::class, 'edit'])->name('payment-method.edit');
     });
 
     Route::get('/my-account/account', function () {

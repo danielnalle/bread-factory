@@ -63,7 +63,7 @@ class CreateBread extends Component
     }
     public function render()
     {
-        $bread_types = BreadType::all();
+        $bread_types = BreadType::where('isActive', '1')->get();
         return view('livewire.breads.create-bread', ['bread_types' => $bread_types]);
     }
 }
