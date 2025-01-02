@@ -22,4 +22,11 @@ class BreadController extends Controller
             'bread' => $bread,
         ]);
     }
+    public function detail($id)
+    {
+        $bread = Bread::where('id', $id)->first();
+        return view('dashboard/breads/detail', [
+            'bread' => $bread,
+        ]);
+    }
 }

@@ -34,8 +34,10 @@
         {{-- Informasi --}}
         <div
             class="px-5 py-2.5 bg-white dark:bg-gray-900 antialiased relative overflow-x-auto shadow-sm sm:rounded-lg mb-8">
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-7">
-                <div class="px-0 md:px-5 py-3 md:py-4 border-r border-gray-200">
+            <div
+                class="grid @if (auth()->user()->role != 'admin') {{ 'grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-4' }} @else {{ 'grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-7' }} @endif">
+                <div
+                    class="px-0 md:px-5 py-3 md:py-4 border-r border-gray-200 @if (auth()->user()->role != 'admin') {{ 'hidden' }} @else {{ 'static' }} @endif">
                     <p class="font-medium text-sm text-dark-secondary">
                         Tim
                     </p>
@@ -43,7 +45,8 @@
                         1
                     </h3>
                 </div>
-                <div class="px-0 md:px-5 py-3 md:py-4 md:border-r md:border-gray-200">
+                <div
+                    class="px-0 md:px-5 py-3 md:py-4 @if (auth()->user()->role != 'admin') {{ 'border-r border-gray-200' }} @else {{ 'md:border-r md:border-gray-200' }} @endif">
                     <p class="font-medium text-sm text-dark-secondary">
                         Pelanggan
                     </p>
@@ -52,7 +55,7 @@
                     </h3>
                 </div>
                 <div
-                    class="px-0 md:px-5 py-3 md:py-4 border-r border-gray-200 md:border-none xl:border-r xl:border-solid xl:border-gray-200">
+                    class="px-0 md:px-5 py-3 md:py-4 @if (auth()->user()->role != 'admin') {{ 'xl:border-r xl:border-gray-200' }} @else {{ 'border-r border-gray-200 md:border-none xl:border-r xl:border-gray-200' }} @endif">
                     <p class="font-medium text-sm text-dark-secondary">
                         Produk
                     </p>
@@ -60,7 +63,8 @@
                         2
                     </h3>
                 </div>
-                <div class="px-0 md:px-5 py-3 md:py-4 md:border-r md:border-gray-200">
+                <div
+                    class="px-0 md:px-5 py-3 md:py-4 @if (auth()->user()->role != 'admin') {{ 'border-r border-gray-200' }} @else {{ 'md:border-r md:border-gray-200' }} @endif">
                     <p class="font-medium text-sm text-dark-secondary">
                         Kategori
                     </p>
@@ -68,7 +72,8 @@
                         2
                     </h3>
                 </div>
-                <div class="px-0 md:px-5 py-3 md:py-4 border-r border-gray-200">
+                <div
+                    class="px-0 md:px-5 py-3 md:py-4 @if (auth()->user()->role != 'admin') {{ '' }} @else {{ 'border-r border-gray-200' }} @endif">
                     <p class="font-medium text-sm text-dark-secondary">
                         Pesanan
                     </p>
@@ -76,7 +81,8 @@
                         1
                     </h3>
                 </div>
-                <div class="px-0 md:px-5 py-3 md:py-4 xl:col-span-2">
+                <div
+                    class="px-0 md:px-5 py-3 md:py-4 xl:col-span-2 @if (auth()->user()->role != 'admin') {{ 'hidden' }} @else {{ 'static' }} @endif">
                     <p class="font-medium text-sm text-dark-secondary">
                         Pendapatan
                     </p>
@@ -186,10 +192,9 @@
                                             fill="white" />
                                     </g>
                                 </svg>
-
                             </a>
                             <a href="#"
-                                class="font-medium bg-red-600 hover:bg-red-700 p-2 rounded-md hover:underline ms-3"><svg
+                                class="font-medium bg-red-600 hover:bg-red-700 p-2 rounded-md hover:underline ms-3 @if (auth()->user()->role != 'admin') {{ 'hidden' }} @else {{ 'static' }} @endif"><svg
                                     width="20" height="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"

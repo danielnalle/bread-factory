@@ -62,12 +62,10 @@
                                     <a href="{{ route('my-account.account') }}"
                                         class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Akun</a>
                                 </li>
-                                @if (auth()->user()->role == 'customer')
-                                    <li>
-                                        <a href="{{ route('my-account.orders') }}"
-                                            class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
-                                    </li>
-                                @endif
+                                <li>
+                                    <a href="{{ route('my-account.orders') }}"
+                                        class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
+                                </li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST" class="w-full">
                                         @csrf

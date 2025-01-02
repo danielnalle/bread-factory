@@ -30,7 +30,7 @@
                 <h3 class="text-2xl xs:text-3xl md:text-4xl">Roti Terbaru</h3>
                 <a href="{{ route('roti') }}" class="text-sm md:text-base underline underline-offset-4 pb-1">See all</a>
             </div>
-            <ul class="flex flex-wrap justify-center xl:justify-between gap-5 lg:gap-10 xl:gap-0">
+            <ul class="flex flex-wrap justify-center xl:justify-start gap-10 xl:gap-7">
                 @foreach ($breads as $bread)
                     <li class="bg-white border border-gray-200 rounded-md overflow-hidden w-[270px] shadow-sm transition duration-500 ease-in-out hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col mb-0 xl:mb-5 cursor-pointer"
                         x-data="{ goToDetail: '{{ route('detail-breads', $bread->id) }}' }" @click="window.location.href = goToDetail">

@@ -17,7 +17,7 @@ class DetailBread extends Component
     {
         return view('livewire.landing.detail-bread', [
             'bread' => $this->bread,
-            'similar' => Bread::where('bread_type_id', $this->bread->bread_type_id)->orderBy('id', 'desc')->limit(4)->get()
+            'similar' => Bread::where('bread_type_id', $this->bread->bread_type_id)->where('id', '!=', $this->bread->id)->orderBy('id', 'desc')->limit(4)->get()
         ]);
     }
 

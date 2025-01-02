@@ -29,7 +29,7 @@ class EditBread extends Component
 
     public function render()
     {
-        $bread_types = BreadType::all();
+        $bread_types = BreadType::where('isActive', '1')->get();
         return view('livewire.breads.edit-bread', ['bread_types' => $bread_types]);
     }
 

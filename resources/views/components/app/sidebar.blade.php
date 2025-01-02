@@ -130,7 +130,7 @@
                     </li>
                     <!-- Manajemen Tim -->
                     <li
-                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['users'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
+                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 @if (auth()->user()->role == 'pegawai') {{ 'hidden' }}@else {{ 'static' }} @endif last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['users'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
                         <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['users'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
                             href="{{ route('users') }}">
                             <div class="flex items-center">
