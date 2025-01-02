@@ -41,8 +41,8 @@
     </section>
     <section id="breads" class="px-5 md:px-24 xl:px-44 w-full py-5 bg-[#F5F5F5]">
         <div class="flex flex-col">
-            <div class="font-medium text-primary text-sm sm:text-base mb-7">
-                <ul class="flex items-center gap-2.5 overflow-x-auto">
+            <div class="font-medium text-primary text-sm flex md:static justify-between items-center sm:text-base mb-7">
+                <ul class="hidden sm:flex items-center gap-2.5 overflow-x-auto">
                     <li
                         class="px-5 py-2.5 rounded-full whitespace-nowrap @if ($selectedBreadType == '') {{ 'bg-primary text-white' }} @else {{ '' }} @endif">
                         <a href="#" wire:click="filter('')">Semua
@@ -55,6 +55,37 @@
                         </li>
                     @endforeach
                 </ul>
+                <h5 class="text-base sm:text-lg font-semibold sm:hidden">{{ $selectedBreadTypeName }}</h5>
+                <button type="button"
+                    class="flex text-sm sm:hidden rounded-lg p-2 border hover:bg-gray-100 border-dark-tertiary"
+                    id="filter-menu-button" aria-expanded="false" data-dropdown-toggle="filter-dropdown"
+                    data-dropdown-placement="bottom-end">
+                    <span class="sr-only">Open filter menu</span>
+                    <svg class="fill-current text-dark-secondary" width="16" height="16" viewBox="0 0 16 16">
+                        <path
+                            d="M0 3a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1ZM3 8a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1ZM7 12a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H7Z" />
+                    </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div class="z-50 hidden text-base w-36 list-none" id="filter-dropdown">
+                    <div class="bg-white divide-y divide-gray-100 rounded-lg shadow-lg">
+                        <ul class="py-2" aria-labelledby="filter-menu-button">
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-1 text-sm font-medium text-dark-primary hover:bg-gray-100 @if ($selectedBreadType == '') {{ 'text-primary' }} @else {{ '' }} @endif"
+                                    wire:click="filter('')">Semua
+                                    Roti</a>
+                            </li>
+                            @foreach ($bread_types as $bread_type)
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-1 text-sm font-medium text-dark-primary hover:bg-gray-100 @if ($selectedBreadType == $bread_type->id) {{ 'text-primary' }} @else {{ '' }} @endif"
+                                        wire:click='filter({{ $bread_type->id }})'>{{ $bread_type->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
             </div>
             <ul class="flex flex-wrap justify-center xl:justify-start gap-10 xl:gap-7">
                 @foreach ($breads as $bread)

@@ -34,7 +34,7 @@
                 <div class="flex md:hidden gap-5 pt-3 sm:pt-5">
                     <div class="w-24 h-auto shrink-0 overflow-hidden rounded-sm">
                         <div class="relative h-full w-full bg-[#f8f8f8]">
-                            <img src="{{ asset('images/products/1.jpg') }}" class="w-full h-full object-contain"
+                            <img src="{{ asset('images/breads/1.jpg') }}" class="w-full h-full object-contain"
                                 alt="">
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             class="col-span-2 lg:col-span-3 flex gap-2.5 items-center text-base sm:text-lg font-semibold text-dark-primary">
                             <div class="w-20 h-20 shrink-0 overflow-hidden rounded-sm">
                                 <div class="relative h-full w-full bg-[#f8f8f8]">
-                                    <img src="{{ asset('images/products/1.jpg') }}" class="w-full h-full object-contain"
+                                    <img src="{{ asset('images/breads/1.jpg') }}" class="w-full h-full object-contain"
                                         alt="">
                                 </div>
                             </div>
