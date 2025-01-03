@@ -38,11 +38,9 @@ class FormProfil extends Component
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $this->user_id,
+            'phone' => 'required|regex:/^[0-9]{10,15}$/|unique:customers,phone, ' . $this->user_id . ',user_id',
+            'address' => 'required|string|max:600',
         ];
-        if (Auth::user()->role == 'customer') {
-            $rules['phone'] = 'required|regex:/^[0-9]{10,15}$/|unique:customers,phone, ' . $this->user_id . ',user_id';
-            $rules['address'] = 'required|string|max:600';
-        }
         $this->validate($rules);
 
         $user = User::find($this->user_id);
@@ -57,19 +55,17 @@ class FormProfil extends Component
         };
 
         $user->update($updated);
-        if (Auth::user()->role == 'customer') {
-            if ($this->prevPhone) {
-                $user->customer->update([
-                    'phone' => $this->phone,
-                    'address' => $this->address,
-                ]);
-            } else {
-                Customer::create([
-                    'user_id' => $this->user_id,
-                    'phone' => $this->phone,
-                    'address' => $this->address,
-                ]);
-            }
+        if ($this->prevPhone) {
+            $user->customer->update([
+                'phone' => $this->phone,
+                'address' => $this->address,
+            ]);
+        } else {
+            Customer::create([
+                'user_id' => $this->user_id,
+                'phone' => $this->phone,
+                'address' => $this->address,
+            ]);
         }
 
         flash('Profil Berhasil Diupdate', 'success');

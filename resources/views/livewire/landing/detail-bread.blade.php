@@ -2,7 +2,7 @@
     <section id="detail" class="px-5 md:px-24 xl:px-44 w-full pt-[116px] pb-10 bg-[#F5F5F5]">
         <div
             class="flex flex-col items-center lg:items-start lg:flex-row h-full gap-8 p-5 mb-5 rounded-lg bg-white shadow-sm">
-            <div class="sm:w-[400px] sm:shrink-0 sm:h-[400px] overflow-hidden rounded-sm">
+            <div class="xs:w-[400px] xs:shrink-0 xs:h-[400px] overflow-hidden rounded-sm">
                 <div class="relative h-full w-full bg-[#f8f8f8]">
                     <img src="{{ Storage::url($bread->image) }}" class="w-full h-full object-contain" alt="">
                 </div>
@@ -76,11 +76,7 @@
                 </ul>
                 <div class="flex flex-wrap gap-2.5">
                     <button type="submit"
-                        class="text-white leading-relaxed text-sm md:text-base bg-primary font-medium hover:bg-primary-hover rounded-full px-7 py-2 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
-                        Beli Sekarang
-                    </button>
-                    <button type="submit"
-                        class="text-primary leading-relaxed text-base font-medium bg-white border hover:bg-gray-100 border-primary rounded-full px-7 py-2 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover gap-2">
+                        class="text-white w-full justify-center sm:justify-start sm:w-fit leading-relaxed text-base font-normal bg-primary border hover:bg-primary-hover border-none rounded-full px-7 py-2 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover gap-2">
                         <svg width="24" height="24" viewBox="0 0 28 28" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -96,12 +92,12 @@
                                 d="M21.9618 26.2976C21.1288 26.2976 20.4521 25.6198 20.4521 24.7868C20.4521 23.9538 21.1288 23.2771 21.9618 23.2771C22.796 23.2771 23.4738 23.9538 23.4738 24.7868C23.4738 25.6198 22.796 26.2976 21.9618 26.2976Z"
                                 fill="currentColor" />
                         </svg>
-                        <span class="hidden sm:block">Masukan Keranjang</span>
+                        <span>Masukan Keranjang</span>
                     </button>
                 </div>
             </div>
         </div>
-        <a href="{{ url()->previous() ?? route('roti') }}"
+        <a href="{{ route('roti') }}"
             class="text-white leading-relaxed text-sm md:text-base bg-primary font-medium hover:bg-primary-hover rounded-full px-7 py-2 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
             Kembali
         </a>

@@ -15,10 +15,10 @@
                     class="text-2xl font-main @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @endif tracking-widest font-bold whitespace-nowrap dark:text-white">Bakeru</span>
             </a>
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                <a href="{{ route('cart') }}"
+                <a href="{{ route('carts') }}"
                     @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'text-primary' :
                     'text-gray-200 hover:text-white'" @endif
-                    class="flex items-center mr-2 md:mr-5 justify-between fill-current @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif">
+                    class="flex relative items-center mr-3 md:mr-6 justify-between fill-current @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif">
                     <svg width="24" height="24" viewBox="0 0 28 28" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -34,6 +34,9 @@
                             d="M21.9618 26.2976C21.1288 26.2976 20.4521 25.6198 20.4521 24.7868C20.4521 23.9538 21.1288 23.2771 21.9618 23.2771C22.796 23.2771 23.4738 23.9538 23.4738 24.7868C23.4738 25.6198 22.796 26.2976 21.9618 26.2976Z"
                             fill="currentColor" />
                     </svg>
+                    <div
+                        class="absolute flex items-center justify-center px-2 h-[24px] text-[10px] font-bold bg-primary text-white rounded-full -top-3 start-3 dark:border-gray-900">
+                        20</div>
                 </a>
                 @if (auth()->user())
                     <button type="button"

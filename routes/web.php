@@ -15,6 +15,7 @@ use App\Http\Middleware\EnsureUserIsAdmin;
 use App\Http\Middleware\EnsureUserIsCustomer;
 use App\Http\Middleware\EnsureUserIsTeam;
 use App\Models\Bread;
+use App\Models\Cart;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -124,7 +125,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/cart', function () {
         return view('landing/content/cart');
-    })->name('cart');
+    })->name('carts');
 
     Route::get('/checkout', function () {
         return view('landing/content/checkout');

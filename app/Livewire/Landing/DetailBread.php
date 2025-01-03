@@ -8,10 +8,11 @@ use Livewire\Component;
 class DetailBread extends Component
 {
     public $bread;
-    public $amount = 1;
+    public $amount;
     public function mount($bread)
     {
         $this->bread = $bread;
+        $this->amount = $bread->min_order;
     }
     public function render()
     {
@@ -28,10 +29,10 @@ class DetailBread extends Component
 
     public function decrement()
     {
-        if ($this->amount > 1) {
+        if ($this->amount > $this->bread->min_order) {
             $this->amount--;
         } else {
-            $this->amount = 1;
+            $this->amount = $this->bread->min_order;
         }
     }
 }
