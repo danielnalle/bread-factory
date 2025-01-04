@@ -16,11 +16,9 @@ class ListCart extends Component
     public $totalPrice = 0;
     public $quantities = [];
     public $errorsPerBread = [];
-    public $checkedItems = [];
 
     public function mount()
     {
-        $this->checkedItems = session()->get('checkedItems', []);
         $this->loadCart();
     }
 
@@ -42,15 +40,9 @@ class ListCart extends Component
 
     public function calculateTotalPrice()
     {
-        $checkedItems = $this->checkedItems ?? [];
-
-        $this->totalPrice = $this->cartDetails
-            ->filter(function ($detail) use ($checkedItems) {
-                return in_array($detail->id, $checkedItems);
-            })
-            ->sum(function ($detail) {
-                return $detail->quantity * $detail->breads->price;
-            });
+        $this->totalPrice = $this->cartDetails->sum(function ($detail) {
+            return $detail->quantity * $detail->breads->price;
+        });
     }
 
     public function updateQuantity($id, $quantity)
@@ -69,44 +61,11 @@ class ListCart extends Component
         $this->calculateTotalPrice();
     }
 
-    public function toggleCheckout($cartId)
-    {
-        if (in_array($cartId, $this->checkedItems)) {
-            $this->checkedItems = array_diff($this->checkedItems, [$cartId]);
-        } else {
-            $this->checkedItems[] = $cartId;
-        }
-
-        session()->put('checkedItems', $this->checkedItems);
-        $this->calculateTotalPrice();
-    }
-
-    public function toggleAllItems()
-    {
-        if (count($this->checkedItems) == $this->cartDetails->count()) {
-            $this->checkedItems = [];
-        } else {
-            $this->checkedItems = $this->cartDetails->pluck('id')->toArray();
-        }
-        session()->put('checkedItems', $this->checkedItems);
-        // dd(session()->get('checkedItems'));
-
-        $this->calculateTotalPrice();
-    }
-
-    public function removeItem($id, $cartDetailId)
+    public function removeItem($id)
     {
         $cartDetail = CartDetail::where('cart_id', $this->cart->id)->where('bread_id', $id)->first();
         if ($cartDetail) {
             $cartDetail->delete();
-            if ($key = array_search($cartDetailId, $this->checkedItems)) {
-                unset($this->checkedItems[$key]);
-                session()->put('checkedItems', $this->checkedItems);
-            } else {
-                unset($this->checkedItems[0]);
-                session()->put('checkedItems', $this->checkedItems);
-            }
-
             $this->loadCart();
             $this->calculateTotalPrice();
         }
