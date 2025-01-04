@@ -124,7 +124,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/cart', function () {
-        return view('landing/content/cart');
+        return view('landing/content/cart', [
+            'carts' => Cart::where('user_id', Auth::user()->id)
+                ->where('is_active', true)
+                ->first(),
+            'breads' => Bread::select('breads.*')
+                ->join('bread_types', 'bread_types.id', '=', 'breads.bread_type_id')
+                ->where('bread_types.isActive', '1')->orderBy('id', 'desc')->limit(4)->get()
+        ]);
     })->name('carts');
 
     Route::get('/checkout', function () {

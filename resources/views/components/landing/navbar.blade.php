@@ -34,9 +34,13 @@
                             d="M21.9618 26.2976C21.1288 26.2976 20.4521 25.6198 20.4521 24.7868C20.4521 23.9538 21.1288 23.2771 21.9618 23.2771C22.796 23.2771 23.4738 23.9538 23.4738 24.7868C23.4738 25.6198 22.796 26.2976 21.9618 26.2976Z"
                             fill="currentColor" />
                     </svg>
-                    <div
-                        class="absolute flex items-center justify-center px-2 h-[24px] text-[10px] font-bold bg-primary text-white rounded-full -top-3 start-3 dark:border-gray-900">
-                        20</div>
+                    @if (auth()->user() &&
+                            auth()->user()->carts()->where('is_active', true)->withCount('cart_details')->get()->sum('cart_details_count') != 0)
+                        <div
+                            class="absolute flex items-center justify-center px-2 h-[24px] text-[12px] font-medium bg-primary text-white rounded-full -top-3 start-3 dark:border-gray-900">
+                            {{ auth()->user()->carts()->where('is_active', true)->withCount('cart_details')->get()->sum('cart_details_count') }}
+                        </div>
+                    @endif
                 </a>
                 @if (auth()->user())
                     <button type="button"

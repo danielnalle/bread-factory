@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CartDetail extends Model
 {
@@ -13,11 +14,11 @@ class CartDetail extends Model
 
     public function cart(): BelongsTo
     {
-        return $this->belongsTo(Cart::class, 'cart_id');
+        return $this->belongsTo(Cart::class);
     }
 
-    public function breads(): BelongsToMany
+    public function breads(): BelongsTo
     {
-        return $this->belongsToMany(Bread::class, 'bread_id');
+        return $this->belongsTo(Bread::class, 'bread_id');
     }
 }
