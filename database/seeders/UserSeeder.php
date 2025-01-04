@@ -22,11 +22,20 @@ class UserSeeder extends Seeder
             'role' => 'admin',
             'email_verified_at' => NOW(),
         ]);
+
         User::factory()->create([
             'name' => 'Yogi Pradnyana',
             'email' => 'yogi@gmail.com',
             'role' => 'admin',
             'password' => 'asdasd',
+            'email_verified_at' => NOW(),
+        ]);
+
+        User::factory()->create([
+            'name' => 'Customer',
+            'email' => 'cust@example.com',
+            'role' => 'customer',
+            'password' => 'password',
             'email_verified_at' => NOW(),
         ]);
     }

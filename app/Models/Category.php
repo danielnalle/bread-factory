@@ -11,12 +11,11 @@ class Category extends Model
     use HasFactory;
     protected $table = 'bread_types';
     protected $fillable = [
-        'name',
-        'isActive',
+        'name'
     ];
 
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class, 'id', 'bread_type_id');
+        return $this->hasMany(Bread::class, 'bread_type_id');
     }
 }

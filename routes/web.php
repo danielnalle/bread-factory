@@ -1,10 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Models\Cart;
 
 // Controllers
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Customer;
+use App\Models\CartDetail;
+use App\Models\OrderStatus;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -12,10 +22,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Password;
 
 Route::get('/utility/404', function () {
     return view('errors/404');
@@ -33,6 +39,7 @@ Route::get('/email/verify', function (Request $request) {
 
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
+
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect()->route('landing-page');
@@ -103,16 +110,80 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('berhasil');
 
     Route::get('/my-account/orders', function () {
-        return view('landing/my-account/orders');
+        $data = [
+            'orders' => Cart::where('user_id', Auth::id())->first()->orders,
+            'order_status' => OrderStatus::all(),
+            'cart_id' => Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id
+        ];
+
+        return view('landing/my-account/orders', $data);
     })->name('my-account.orders');
+
+    // Using get for development purpose, do not use get when in production
+    Route::get('/my-account/place-order', function () {
+        $cart_id = Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id;
+
+        $phone = Customer::where('user_id', Auth::id())->first()->phone ?? null;
+
+        if(!isset($phone)) {
+            return redirect()->route('my-account.orders')->with('error', 'Nomor telepon belum terdaftar');
+        }
+
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = config('midtrans.is_production');
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = config('midtrans.is_sanitized');
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = config('midtrans.is_3ds');
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => Order::where('cart_id', $cart_id)->first()->total_price,
+            ),
+            'customer_details' => array(
+                'first_name' => Auth::user()->name,
+                'email' => Auth::user()->email,
+                'phone' => $phone,
+            ),
+        );
+        
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        return redirect()->route('my-account.orders.detail', ['cart_id' => $cart_id])->with('snap-token', $snapToken);
+    })->name('my-account.place-order');
 
     Route::get('/my-account/account', function () {
         return view('landing/my-account/account');
     })->name('my-account.account');
 
-    Route::get('/my-account/orders/detail', function () {
-        return view('landing/my-account/detail');
+    Route::get('/my-account/orders/detail/{cart_id}', function (int $cart_id) {
+        $data = [
+            'customer_name' => Auth::user()->name,
+            'cart_details' => CartDetail::where('cart_id', $cart_id)->get(),
+            'customer' => Customer::where('user_id', Auth::id())->first(),
+            'order' => Order::where('cart_id', $cart_id)->first(),
+            'snap_token' => session('snap-token')
+        ];
+
+        return view('landing/my-account/detail', $data);
     })->name('my-account.orders.detail');
+
+    Route::post('/transaction-detail', function (Request $req) {
+        $transaction_status = $req->json('transaction_status');
+
+        $cart_id = Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id;
+
+        if($transaction_status == "settlement") {
+            $order = Order::where('cart_id', $cart_id)->first();
+
+            $order->payment_status_id = 3;
+
+            $order->save();
+        };
+    })->name('transaction-response');
 
     // Admin Dashboard
     Route::get('/dashboard', function () {
