@@ -68,31 +68,9 @@ class ListCart extends Component
             $cartDetail->delete();
             $this->loadCart();
             $this->calculateTotalPrice();
+            return redirect()->route('carts');
         }
     }
-
-
-    // // Fungsi untuk proses checkout
-    // public function proceedToCheckout()
-    // {
-    //     // Pindahkan produk yang dicheckout ke cart tidak aktif
-    //     foreach ($this->checkedItems as $cartId) {
-    //         $cart = CartDetail::find($cartId);
-    //         if ($cart) {
-    //             // Tandai produk sebagai tidak aktif (misal update status di database)
-    //             $cart->update(['status' => 'inactive']);
-    //         }
-    //     }
-
-    //     // Hapus produk yang sudah dipilih dari daftar checkedItems
-    //     $this->checkedItems = [];
-
-    // Session setelah checkout
-    // session()->forget('checkedItems');
-
-    //     // Kirim notifikasi atau refresh data
-    //     session()->flash('message', 'Produk berhasil dipindahkan ke checkout.');
-    // }
 
     public function render()
     {

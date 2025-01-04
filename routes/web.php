@@ -116,6 +116,7 @@ Route::get('/contact', function () {
 Route::get('/breads/detail/{bread}', function (Bread $bread) {
     return view('landing/content/detail', [
         'bread' => $bread,
+        'similar' => Bread::where('bread_type_id', $bread->bread_type_id)->where('id', '!=', $bread->id)->orderBy('id', 'desc')->limit(4)->get()
     ]);
 })->name('detail-breads');
 
@@ -130,7 +131,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 ->first(),
             'breads' => Bread::select('breads.*')
                 ->join('bread_types', 'bread_types.id', '=', 'breads.bread_type_id')
-                ->where('bread_types.isActive', '1')->orderBy('id', 'desc')->limit(4)->get()
+                ->where('bread_types.isActive', 1)
+                ->whereNotIn('breads.id', function ($query) {
+                    $query->select('cart_details.bread_id')
+                        ->from('cart_details')
+                        ->join('carts', 'carts.id', '=', 'cart_details.cart_id')
+                        ->where('carts.user_id', Auth::user()->id)
+                        ->where('carts.is_active', true);
+                })
+                ->orderBy('breads.id', 'desc')
+                ->limit(4)
+                ->get()
         ]);
     })->name('carts');
 
