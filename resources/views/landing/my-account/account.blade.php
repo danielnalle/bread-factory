@@ -10,7 +10,7 @@
                         <div class="flex flex-col flex-grow">
                             <h5 class="mb-5 text-base text-dark-primary font-semibold">Pengaturan Profil</h5>
 
-                            @livewire('my-account.FormProfil')
+                            @livewire('my-account.form-profil')
 
                         </div>
                     </div>

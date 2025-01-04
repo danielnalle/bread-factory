@@ -44,6 +44,25 @@
             });
         </script>
     @endif
+    @if (flash()->message && flash()->class == 'add-to-cart')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "{{ flash()->message }}",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    customClass: {
+                        title: "text-xl mb-5"
+                    },
+                    didOpen: () => {
+                        document.body.style.overflow = "auto"; // Paksa scroll bar tetap terlihat
+                    }
+                });
+            });
+        </script>
+    @endif
 
     <div class="container max-w-full relative h-screen">
 

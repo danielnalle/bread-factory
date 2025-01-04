@@ -36,15 +36,28 @@ window.addEventListener("deleteConfirm", (event) => {
                 button.addEventListener("click", () => Swal.close());
             });
 
-            const confirmButton = document.querySelectorAll(".confirm-delete"); // Tambahkan class unik pada tombol "Ya, Saya Yakin"
+            const confirmButton = document.querySelectorAll(".confirm-delete");
             confirmButton.forEach((btn) => {
                 btn.addEventListener("click", () => {
-                    // Panggil backend atau Livewire menggunakan @this.call (jika pakai Livewire)
-                    Livewire.dispatch(event.detail[0].trigger); // Emit event ke Livewire
-                    Swal.close(); // Tutup modal setelah aksi
+                    Livewire.dispatch(event.detail[0].trigger);
+                    Swal.close();
                 });
             });
         },
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (localStorage.getItem("checkedItems")) {
+        let checkedItems = [JSON.parse(localStorage.getItem("checkedItems"))];
+        Livewire.dispatch("updateCheckedItems", checkedItems);
+    }
+
+    window.addEventListener("saveToLocalStorage", (event) => {
+        localStorage.setItem(
+            "checkedItems",
+            JSON.stringify(event.detail[0].checkedItems)
+        );
     });
 });
 
