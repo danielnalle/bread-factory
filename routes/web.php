@@ -8,14 +8,12 @@ use App\Models\Order;
 use App\Models\Customer;
 use App\Models\CartDetail;
 use App\Models\OrderStatus;
-use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Password;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
@@ -133,6 +131,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/berhasil', function () {
             return view('landing/content/berhasil');
         })->name('berhasil');
+    });
 
     Route::get('/my-account/orders', function () {
         $data = [
@@ -211,7 +210,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('transaction-response');
 
     // Admin Dashboard
-    Route::middleware([EnsureUserIsTeam::class]->group(function () {
+    Route::middleware([EnsureUserIsTeam::class])->group(function () {
         Route::get('/dashboard', function () {
             return view('dashboard/index');
         })->name('dashboard');
@@ -232,5 +231,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
         Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
         Route::get('/payment-method/edit/{payment}', [PaymentController::class, 'edit'])->name('payment-method.edit');
-    }));
+    });
 });
