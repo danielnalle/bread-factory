@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -53,6 +54,21 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function customer(): HasOne
     {
-        return $this->hasOne(Customer::class, 'user_id', 'id');
+        return $this->hasOne(Customer::class, 'user_id');
+    }
+
+    // public function carts(): HasMany
+    // {
+    //     return $this->hasMany(Cart::class, 'user_id');
+    // }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class, 'user_id');
+    }
+
+    public function carts(): HasMany
+    {
+        return $this->hasMany(Cart::class, 'user_id');
     }
 }
