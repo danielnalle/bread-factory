@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CartDetail extends Model
 {
-    protected $table = "cart_details";
+    protected $table = 'cart_details';
+
     protected $fillable = ['cart_id', 'bread_id', 'quantity'];
 
     public function cart(): BelongsTo

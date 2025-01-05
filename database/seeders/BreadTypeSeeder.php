@@ -15,11 +15,12 @@ class BreadTypeSeeder extends Seeder
     {
         BreadType::factory()->create([
             'name' => 'Roti Tawar',
-            'isActive' => 1,
         ]);
         BreadType::factory()->create([
             'name' => 'Roti Isi',
-            'isActive' => 1,
+        ]);
+        BreadType::factory()->create([
+            'name' => 'Roti Sobek',
         ]);
     }
 }

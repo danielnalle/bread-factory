@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->foreignId('bread_type_id')->constrained('bread_types');
-            $table->integer('quantity');
-            $table->integer('min_order');
+            $table->integer('quantity')->unsigned();
+            $table->integer('min_order')->unsigned();
             $table->string('unit');
-            $table->decimal('price');
+            $table->integer('price')->unsigned();
             $table->string('image');
             $table->timestamps();
         });
