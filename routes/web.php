@@ -129,10 +129,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/cart', function () {
+        $cart = Cart::firstOrCreate(
+            ['user_id' => Auth::user()->id, 'is_active' => true]
+        );
+
         return view('landing/content/cart', [
-            'carts' => Cart::where('user_id', Auth::user()->id)
-                ->where('is_active', true)
-                ->first(),
+            'cart' => $cart,
             'breads' => Bread::select('breads.*')
                 ->join('bread_types', 'bread_types.id', '=', 'breads.bread_type_id')
                 ->where('bread_types.isActive', 1)
@@ -156,9 +158,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/my-account/orders', function () {
         $data = [
-            'orders' => Cart::where('user_id', Auth::id())->first()->orders,
+            'orders' => Cart::where('user_id', Auth::id())->first()->order,
             'order_status' => OrderStatus::all(),
-            'cart_id' => Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id
+            'cart_id' => Cart::where('user_id', Auth::id())->where('is_active', true)->first()->id
         ];
 
         return view('landing/my-account/orders', $data);

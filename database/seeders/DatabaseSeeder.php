@@ -50,65 +50,41 @@ class DatabaseSeeder extends Seeder
             'quantity' => 20,
             'created_at' => NOW(),
             'updated_at' => NOW(),
-            // $this->call([UserSeeder::class, CategorySeeder::class, BreadSeeder::class]);
+        ]);
 
-            // OrderStatus::create([
-            //     'name' => 'Menunggu',
-            // ]);
+        PaymentStatus::create([
+            'name' => 'Belum dibayar',
+        ]);
 
-            // OrderStatus::create([
-            //     'name' => 'Diproses',
-            // ]);
+        PaymentStatus::create([
+            'name' => 'Bayar',
+        ]);
 
-            // OrderStatus::create([
-            //     'name' => 'Pengiriman',
-            // ]);
+        PaymentStatus::create([
+            'name' => 'Sudah dibayar',
+        ]);
 
-            // OrderStatus::create([
-            //     'name' => 'Sampai & Pay',
-            // ]);
+        Cart::create([
+            'user_id' => 9
+        ]);
 
-            // OrderStatus::create([
-            //     'name' => 'Selesai',
-            // ]);
+        CartDetail::create([
+            'cart_id' => 1,
+            'bread_id' => Bread::all()->random()->id,
+            'quantity' => 20
+        ]);
 
-            // OrderStatus::create([
-            //     'name' => 'Ditolak',
-            // ]);
+        CartDetail::create([
+            'cart_id' => 1,
+            'bread_id' => Bread::all()->random()->id,
+            'quantity' => 25
+        ]);
 
-            // PaymentStatus::create([
-            //     'name' => 'Belum dibayar',
-            // ]);
-
-            // PaymentStatus::create([
-            //     'name' => 'Bayar',
-            // ]);
-
-            // PaymentStatus::create([
-            //     'name' => 'Sudah dibayar',
-            // ]);
-
-            // Cart::create([
-            //     'user_id' => 9
-            // ]);
-
-            // CartDetail::create([
-            //     'cart_id' => 1,
-            //     'bread_id' => Bread::all()->random()->id,
-            //     'quantity' => 20
-            // ]);
-
-            // CartDetail::create([
-            //     'cart_id' => 1,
-            //     'bread_id' => Bread::all()->random()->id,
-            //     'quantity' => 25
-            // ]);
-
-            // Order::create([
-            //     'cart_id' => 1,
-            //     'order_status_id' => 1,
-            //     'payment_status_id' => 2,
-            //     'total_price' => 300000
+        Order::create([
+            'cart_id' => 1,
+            'order_status_id' => 1,
+            'payment_status_id' => 2,
+            'total_price' => 300000
         ]);
     }
 }

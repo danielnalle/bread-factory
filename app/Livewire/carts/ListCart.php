@@ -4,6 +4,7 @@ namespace App\Livewire\Carts;
 
 use App\Models\Cart;
 use App\Models\CartDetail;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;

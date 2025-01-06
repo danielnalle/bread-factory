@@ -2,13 +2,13 @@
     :class="scrolled ? 'bg-white text-primary border-b-2 shadow-sm' :
         'bg-gradient-to-b from-[rgba(0,0,0,0.4)] via-[rgba(0,0,0,0.2)] to-[rgba(0,0,0,0)] border-none'"
     @endif
-    class="w-full z-[999] @if (!in_array(Request::segment(1), ['']))
+    class="w-full z-40 @if (!in_array(Request::segment(1), ['']))
 {{ 'bg-white border-b-2 shadow-sm' }}
 @endif text-white fixed top-0 left-0 right-0 transition-all duration-300">
 
     <nav class="px-5 md:px-24 xl:px-44">
         <div class="max-w-screen-xl relative flex flex-wrap items-center justify-between mx-auto py-4">
-            <a href="/" class="flex items-center p-0 lg:pr-14">
+            <a href="/" class="flex items-center p-0">
                 <span
                     @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'text-primary' :
                     'text-gray-200 hover:text-white'" @endif

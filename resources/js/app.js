@@ -47,19 +47,13 @@ window.addEventListener("deleteConfirm", (event) => {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    if (localStorage.getItem("checkedItems")) {
-        let checkedItems = [JSON.parse(localStorage.getItem("checkedItems"))];
-        Livewire.dispatch("updateCheckedItems", checkedItems);
-    }
-
-    window.addEventListener("saveToLocalStorage", (event) => {
-        localStorage.setItem(
-            "checkedItems",
-            JSON.stringify(event.detail[0].checkedItems)
-        );
-    });
-});
+// window.addEventListener("showModal", (event) => {
+//     const modal = document.getElementById("alamat-modal");
+//     if (modal) {
+//         modal.classList.remove("hidden");
+//         modal.classList.add("flex");
+//     }
+// });
 
 document.addEventListener("DOMContentLoaded", () => {
     // Light switcher

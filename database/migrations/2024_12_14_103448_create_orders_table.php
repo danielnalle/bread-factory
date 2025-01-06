@@ -16,11 +16,7 @@ return new class extends Migration
             $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade');
             $table->foreignId('order_status_id')->constrained('order_status')->onDelete('cascade');
             $table->foreignId('payment_status_id')->constrained('payment_status')->onDelete('cascade');
-<<<<<<< HEAD
-            $table->integer('total_price');
-=======
             $table->integer('total_price')->unsigned();
->>>>>>> 72522cd0e782105e9434fb338d36c5164d09d812
             $table->timestamps();
         });
     }

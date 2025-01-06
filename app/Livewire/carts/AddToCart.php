@@ -48,6 +48,11 @@ class AddToCart extends Component
             return redirect()->route('login');
         }
 
+        if ($this->amount < $this->bread->min_order) {
+            $this->errMessage = 'Jumlah produk tidak boleh kurang dari ' . $this->bread->min_order;
+            return;
+        }
+
         // Cari atau buat cart untuk user
         $cart = Cart::firstOrCreate(
             ['user_id' => $this->user->id, 'is_active' => true]

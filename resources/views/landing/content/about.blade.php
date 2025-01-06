@@ -19,7 +19,7 @@
                             Bakeru menghadirkan roti segar berkualitas tinggi yang dibuat untuk membawa kehangatan dan
                             kebahagiaan ke setiap santapan.
                         </p>
-                        <a href="{{ route('produk') }}"
+                        <a href="{{ route('roti') }}"
                             class="text-white mx-auto sm:mx-0 text-sm sm:text-base bg-primary hover:bg-primary-hover rounded-full px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
                             Lihat Produk Kami
                         </a>

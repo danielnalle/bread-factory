@@ -65,13 +65,12 @@
         </script>
     @endif
 
-    <div class="container max-w-full relative h-screen">
+    <div class="container max-w-full relative min-h-screen flex flex-col">
 
 
         <x-landing.navbar />
 
-
-        <main>
+        <main class="flex-grow">
             {{ $slot }}
         </main>
 

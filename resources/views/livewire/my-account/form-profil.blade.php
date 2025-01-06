@@ -37,7 +37,7 @@
         <textarea name="desc" wire:model='address'
             class="border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary
                         focus:border-primary block w-full p-3"
-            id="desc" rows="2" maxlength="600">Jalan Gunung Guntur No. 15, Desa Padang Sambian, Kecamatan Denpasar Barat</textarea>
+            placeholder="Masukan alamat lengkap" id="desc" rows="2" maxlength="600">Jalan Gunung Guntur No. 15, Desa Padang Sambian, Kecamatan Denpasar Barat</textarea>
         @error('address')
             <span class="text-red-600 text-sm">{{ $message }}</span>
         @enderror

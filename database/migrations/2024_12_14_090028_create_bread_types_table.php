@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('bread_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
         });
     }
