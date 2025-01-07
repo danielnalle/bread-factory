@@ -158,17 +158,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/my-account/orders', function () {
         $data = [
-            'orders' => Cart::where('user_id', Auth::id())->first()->order,
+            'orders' => Cart::where('user_id', Auth::id())->where('is_active', false)->get(),
             'order_status' => OrderStatus::all(),
-            'cart_id' => Cart::where('user_id', Auth::id())->where('is_active', true)->first()->id
+            'cart_id' => Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id
         ];
+
+        // dd($data);
 
         return view('landing/my-account/orders', $data);
     })->name('my-account.orders');
 
     // Using get for development purpose, do not use get when in production
-    Route::get('/my-account/place-order', function () {
-        $cart_id = Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id;
+    Route::get('/my-account/place-order/{cart_id}', function (int $cart_id) {
+        // dd(Cart::where('user_id', Auth::id())->where('is_active', false)->get());
+        // $cart_id = Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id;
 
         $phone = Customer::where('user_id', Auth::id())->first()->phone ?? null;
 
@@ -226,10 +229,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
         if ($transaction_status == "settlement") {
             $order = Order::where('cart_id', $cart_id)->first();
 
-            $order->payment_status_id = 3;
-
-            $order->save();
+            $order->update(['payment_status_id' => 3]);
         };
+        // $serverKey = config('midtrans.server_key');
+
+        // $hashed = hash("sha512", $req->order_id . $req->status_code . $req->gross_amount . $serverKey);
+
+        // $cart_id = Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id;
+        // dd($hashed);
+
+        // if ($hashed == $req->signature_key) {
+        //     if ($req->transaction_status == "capture") {
+        //         $order = Order::where('cart_id', $cart_id)->first();
+        //         $order->update(['payment_status_id' => 3]);
+        //     }
+        // };
     })->name('transaction-response');
 
     // Admin Dashboard

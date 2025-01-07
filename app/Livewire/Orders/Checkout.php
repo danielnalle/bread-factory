@@ -2,14 +2,17 @@
 
 namespace App\Livewire\Orders;
 
+use App\Models\Cart;
 use App\Models\CartDetail;
 use App\Models\Customer;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Checkout extends Component
 {
     public $carts;
+    public $cart;
     public $address;
     public $phone;
     public $user;
@@ -20,6 +23,7 @@ class Checkout extends Component
         $user = Auth::user();
         $this->user = $user;
         $cart_id = $user->carts->where('is_active', true)->first()->id;
+        $this->cart = $user->carts->where('is_active', true)->first();
         $this->carts = CartDetail::where('cart_id', $cart_id)->get();
         if ($user->customer) {
             $this->address = $user->customer->address;
@@ -54,14 +58,14 @@ class Checkout extends Component
 
     public function makeOrder()
     {
-        // $activeCart = $this->cart->id;
-        // Order::create([
-        //     'cart_id' => $activeCart,
-        //     'order_status_id' => 1,
-        //     'payment_status_id' => 1,
-        //     'total_price' => $this->totalPrice,
-        // ]);
-        // Cart::where('id', $this->cart->id)->update(['is_active' => false]);
+        $activeCart = $this->cart->id;
+        Order::create([
+            'cart_id' => $activeCart,
+            'order_status_id' => 1,
+            'payment_status_id' => 1,
+            'total_price' => $this->totalPrice,
+        ]);
+        Cart::where('id', $activeCart)->update(['is_active' => false]);
     }
 
     public function render()
