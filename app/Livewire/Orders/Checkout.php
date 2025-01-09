@@ -7,6 +7,7 @@ use App\Models\CartDetail;
 use App\Models\Customer;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Checkout extends Component
@@ -58,14 +59,32 @@ class Checkout extends Component
 
     public function makeOrder()
     {
-        $activeCart = $this->cart->id;
-        Order::create([
-            'cart_id' => $activeCart,
-            'order_status_id' => 1,
-            'payment_status_id' => 1,
-            'total_price' => $this->totalPrice,
-        ]);
-        Cart::where('id', $activeCart)->update(['is_active' => false]);
+        try {
+            DB::beginTransaction();
+            
+            $activeCart = $this->cart->id;
+
+            $activeCartDetails = CartDetail::where('cart_id', $activeCart)->get();
+
+            foreach ($activeCartDetails as $detail) {
+                $quantity = $detail->quantity;
+                $detail->breads->quantity -= $quantity;
+                $detail->breads->save();
+            }
+
+            Order::create([
+                'cart_id' => $activeCart,
+                'order_status_id' => 1,
+                'payment_status_id' => 1,
+                'total_price' => $this->totalPrice,
+            ]);
+            Cart::where('id', $activeCart)->update(['is_active' => false]);
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
     }
 
     public function render()

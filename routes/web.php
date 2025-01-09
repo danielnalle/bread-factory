@@ -158,12 +158,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/my-account/orders', function () {
         $data = [
-            'orders' => Cart::where('user_id', Auth::id())->where('is_active', false)->get(),
+            'orders' => Cart::where('user_id', Auth::id())->get(),
             'order_status' => OrderStatus::all(),
-            'cart_id' => Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id
+            // 'cart_id' => Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id
         ];
-
-        // dd($data);
 
         return view('landing/my-account/orders', $data);
     })->name('my-account.orders');
@@ -211,6 +209,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/my-account/orders/detail/{cart_id}', function (int $cart_id) {
         $data = [
+            'cart_id' => $cart_id,
             'customer_name' => Auth::user()->name,
             'cart_details' => CartDetail::where('cart_id', $cart_id)->get(),
             'customer' => Customer::where('user_id', Auth::id())->first(),
@@ -224,13 +223,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/transaction-detail', function (Request $req) {
         $transaction_status = $req->json('transaction_status');
 
-        $cart_id = Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id;
-
         if ($transaction_status == "settlement") {
-            $order = Order::where('cart_id', $cart_id)->first();
+            $order = Order::where('cart_id', $req->json('cart_id'))->first();
 
             $order->update(['payment_status_id' => 3]);
+
+            return response()->json(['payment_status' => 'success', 'message' => 'Pembayaran berhasil']);
         };
+
+        return response()->json(['payment_status' => 'failed', 'message' => 'Pembayaran gagal']);
         // $serverKey = config('midtrans.server_key');
 
         // $hashed = hash("sha512", $req->order_id . $req->status_code . $req->gross_amount . $serverKey);

@@ -73,59 +73,60 @@
                     </div>
 
                     {{-- Mobile --}}
-
                     <div class="block md:hidden">
                         @foreach ($orders as $order)
-                            <div class="flex gap-5 border-b pt-3 pb-5" x-data="{ goToDetail: '{{ route('my-account.orders.detail', $cart_id) }}' }"
-                                @click="window.location.href = goToDetail">
-                                <div
-                                    class="text-sm sm:text-base inline-flex mt-[2px] justify-center w-12 text-dark-secondary">
-                                    {{ $loop->iteration }}
-                                </div>
-                                <div class="flex flex-col justify-between w-full">
-                                    <h3 class="text-sm sm:text-base text-dark-primary">No Pesanan:
-                                        <span
-                                            class="font-semibold">NP{{ $order->order->created_at->format('Ymd') }}</span>
-                                    </h3>
-                                    <p class="text-sm sm:text-base text-dark-primary">Status:
-                                        <span>{{ $order->order->orderStatus->name }}</span>
-                                    </p>
+                            @if ($order->order != null)
+                                <div class="flex gap-5 border-b pt-3 pb-5" x-data="{ goToDetail: '{{ route('my-account.orders.detail', $order->order->id) }}' }"
+                                    @click="window.location.href = goToDetail">
                                     <div
-                                        class="flex justify-start flex-col xs:flex-row xs:justify-between items-start xs:items-end gap-2 mt-2">
-                                        <p class="text-sm sm:text-base text-dark-primary">Total
-                                            {{ count($order->order->cart->cart_details) }} item: <span
-                                                class="text-primary font-medium"><span
-                                                    class="text-sm">Rp</span>{{ number_format($order->order->total_price, 0, '', '.') }}</span>
+                                        class="text-sm sm:text-base inline-flex mt-[2px] justify-center w-12 text-dark-secondary">
+                                        {{ $loop->iteration }}
+                                    </div>
+                                    <div class="flex flex-col justify-between w-full">
+                                        <h3 class="text-sm sm:text-base text-dark-primary">No Pesanan:
+                                            <span
+                                                class="font-semibold">NP{{ $order->order->created_at->format('Ymd') }}</span>
+                                        </h3>
+                                        <p class="text-sm sm:text-base text-dark-primary">Status:
+                                            <span>{{ $order->order->orderStatus->name }}</span>
                                         </p>
-                                        {{-- <input type="hidden" name="cart_id" value="{{ $order->order->cart_id }}" required> --}}
-                                        @if ($order->order->paymentStatus->id == 3)
-                                            <button type="button" disabled
-                                                class="font-normal bg-dark-tertiary p-2 rounded-md text-white flex items-center gap-2 text-sm sm:text-base">
-                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M2.25 8.25H21.75M2.25 9H21.75M5.25 14.25H11.25M5.25 16.5H8.25M4.5 19.5H19.5C20.0967 19.5 20.669 19.2629 21.091 18.841C21.5129 18.419 21.75 17.8467 21.75 17.25V6.75C21.75 6.15326 21.5129 5.58097 21.091 5.15901C20.669 4.73705 20.0967 4.5 19.5 4.5H4.5C3.90326 4.5 3.33097 4.73705 2.90901 5.15901C2.48705 5.58097 2.25 6.15326 2.25 6.75V17.25C2.25 17.8467 2.48705 18.419 2.90901 18.841C3.33097 19.2629 3.90326 19.5 4.5 19.5Z"
-                                                        stroke="white" stroke-width="1.3" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                                Bayar
-                                            </button>
-                                        @else
-                                            <a href="{{ route('my-account.place-order', $order->order->cart_id) }}"
-                                                class="font-normal bg-[#0E9F6E] hover:bg-[#28906d] p-2 rounded-md text-white flex items-center gap-2 text-sm sm:text-base">
-                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M2.25 8.25H21.75M2.25 9H21.75M5.25 14.25H11.25M5.25 16.5H8.25M4.5 19.5H19.5C20.0967 19.5 20.669 19.2629 21.091 18.841C21.5129 18.419 21.75 17.8467 21.75 17.25V6.75C21.75 6.15326 21.5129 5.58097 21.091 5.15901C20.669 4.73705 20.0967 4.5 19.5 4.5H4.5C3.90326 4.5 3.33097 4.73705 2.90901 5.15901C2.48705 5.58097 2.25 6.15326 2.25 6.75V17.25C2.25 17.8467 2.48705 18.419 2.90901 18.841C3.33097 19.2629 3.90326 19.5 4.5 19.5Z"
-                                                        stroke="white" stroke-width="1.3" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                                Bayar
-                                            </a>
-                                        @endif
+                                        <div
+                                            class="flex justify-start flex-col xs:flex-row xs:justify-between items-start xs:items-end gap-2 mt-2">
+                                            <p class="text-sm sm:text-base text-dark-primary">Total
+                                                {{ count($order->order->cart->cart_details) }} item: <span
+                                                    class="text-primary font-medium"><span
+                                                        class="text-sm">Rp</span>{{ number_format($order->order->total_price, 0, '', '.') }}</span>
+                                            </p>
+                                            {{-- <input type="hidden" name="cart_id" value="{{ $order->order->cart_id }}" required> --}}
+                                            @if ($order->order->paymentStatus->id == 3)
+                                                <button type="button" disabled
+                                                    class="font-normal bg-dark-tertiary p-2 rounded-md text-white flex items-center gap-2 text-sm sm:text-base">
+                                                    <svg width="20" height="20" viewBox="0 0 24 24"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M2.25 8.25H21.75M2.25 9H21.75M5.25 14.25H11.25M5.25 16.5H8.25M4.5 19.5H19.5C20.0967 19.5 20.669 19.2629 21.091 18.841C21.5129 18.419 21.75 17.8467 21.75 17.25V6.75C21.75 6.15326 21.5129 5.58097 21.091 5.15901C20.669 4.73705 20.0967 4.5 19.5 4.5H4.5C3.90326 4.5 3.33097 4.73705 2.90901 5.15901C2.48705 5.58097 2.25 6.15326 2.25 6.75V17.25C2.25 17.8467 2.48705 18.419 2.90901 18.841C3.33097 19.2629 3.90326 19.5 4.5 19.5Z"
+                                                            stroke="white" stroke-width="1.3" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                    Bayar
+                                                </button>
+                                            @else
+                                                <a href="{{ route('my-account.place-order', $order->order->cart_id) }}"
+                                                    class="font-normal bg-[#0E9F6E] hover:bg-[#28906d] p-2 rounded-md text-white flex items-center gap-2 text-sm sm:text-base">
+                                                    <svg width="20" height="20" viewBox="0 0 24 24"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M2.25 8.25H21.75M2.25 9H21.75M5.25 14.25H11.25M5.25 16.5H8.25M4.5 19.5H19.5C20.0967 19.5 20.669 19.2629 21.091 18.841C21.5129 18.419 21.75 17.8467 21.75 17.25V6.75C21.75 6.15326 21.5129 5.58097 21.091 5.15901C20.669 4.73705 20.0967 4.5 19.5 4.5H4.5C3.90326 4.5 3.33097 4.73705 2.90901 5.15901C2.48705 5.58097 2.25 6.15326 2.25 6.75V17.25C2.25 17.8467 2.48705 18.419 2.90901 18.841C3.33097 19.2629 3.90326 19.5 4.5 19.5Z"
+                                                            stroke="white" stroke-width="1.3" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                    Bayar
+                                                </a>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
                     </div>
 
@@ -158,70 +159,72 @@
                         </thead>
                         <tbody>
                             @foreach ($orders as $order)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td class="w-4 p-4 text-center">
-                                        {{ $loop->iteration }}
-                                    </td>
-                                    <th scope="row"
-                                        class="px-6 py-4 font-semibold text-dark-primary whitespace-nowrap dark:text-white">
-                                        NP{{ $order->order->created_at->format('Ymd') }}
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="text-xs">Rp</span>{{ number_format($order->order->total_price, 0, '', '.') }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $order->order->orderStatus->name }}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $order->order->paymentStatus->name }}
-                                    </td>
-                                    <td class="flex items-center px-6 py-4">
-                                        <a href="{{ route('my-account.orders.detail', $order->order->cart_id) }}"
-                                            class="font-medium bg-primary hover:bg-primary-hover p-2 rounded-md hover:underline"><svg
-                                                width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M8.99966 7.23096C8.00216 7.23096 7.19141 8.04246 7.19141 9.03996C7.19141 10.0367 8.00216 10.8475 8.99966 10.8475C9.99716 10.8475 10.8087 10.0367 10.8087 9.03996C10.8087 8.04246 9.99716 7.23096 8.99966 7.23096M8.99966 11.9725C7.38191 11.9725 6.06641 10.657 6.06641 9.03996C6.06641 7.42221 7.38191 6.10596 8.99966 6.10596C10.6174 6.10596 11.9337 7.42221 11.9337 9.03996C11.9337 10.657 10.6174 11.9725 8.99966 11.9725"
-                                                    fill="white" />
-                                                <mask id="mask0_249_7933" style="mask-type:luminance"
-                                                    maskUnits="userSpaceOnUse" x="1" y="3" width="16"
-                                                    height="13">
+                                @if ($order->order != null)
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td class="w-4 p-4 text-center">
+                                            {{ $loop->iteration }}
+                                        </td>
+                                        <th scope="row"
+                                            class="px-6 py-4 font-semibold text-dark-primary whitespace-nowrap dark:text-white">
+                                            NP{{ $order->order->created_at->format('Ymd') }}
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="text-xs">Rp</span>{{ number_format($order->order->total_price, 0, '', '.') }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $order->order->orderStatus->name }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $order->order->paymentStatus->name }}
+                                        </td>
+                                        <td class="flex items-center px-6 py-4">
+                                            <a href="{{ route('my-account.orders.detail', $order->order->cart_id) }}"
+                                                class="font-medium bg-primary hover:bg-primary-hover p-2 rounded-md hover:underline"><svg
+                                                    width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M1.5 3H16.4999V15.0787H1.5V3Z" fill="white" />
-                                                </mask>
-                                                <g mask="url(#mask0_249_7933)">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M2.67731 9.03907C4.07231 12.1208 6.42206 13.9531 8.99981 13.9538C11.5776 13.9531 13.9273 12.1208 15.3223 9.03907C13.9273 5.95807 11.5776 4.12582 8.99981 4.12507C6.42281 4.12582 4.07231 5.95807 2.67731 9.03907V9.03907ZM9.00131 15.0788H8.99831H8.99756C5.89556 15.0766 3.11006 12.9023 1.54556 9.26107C1.48481 9.11932 1.48481 8.95882 1.54556 8.81707C3.11006 5.17657 5.89631 3.00232 8.99756 3.00007C8.99906 2.99932 8.99906 2.99932 8.99981 3.00007C9.00131 2.99932 9.00131 2.99932 9.00206 3.00007C12.1041 3.00232 14.8896 5.17657 16.4541 8.81707C16.5156 8.95882 16.5156 9.11932 16.4541 9.26107C14.8903 12.9023 12.1041 15.0766 9.00206 15.0788H9.00131Z"
+                                                        d="M8.99966 7.23096C8.00216 7.23096 7.19141 8.04246 7.19141 9.03996C7.19141 10.0367 8.00216 10.8475 8.99966 10.8475C9.99716 10.8475 10.8087 10.0367 10.8087 9.03996C10.8087 8.04246 9.99716 7.23096 8.99966 7.23096M8.99966 11.9725C7.38191 11.9725 6.06641 10.657 6.06641 9.03996C6.06641 7.42221 7.38191 6.10596 8.99966 6.10596C10.6174 6.10596 11.9337 7.42221 11.9337 9.03996C11.9337 10.657 10.6174 11.9725 8.99966 11.9725"
                                                         fill="white" />
-                                                </g>
-                                            </svg>
-                                        </a>
-                                        @if ($order->order->paymentStatus->id == 3)
-                                            <button disabled
-                                                class="font-medium bg-dark-tertiary p-2 rounded-md hover:underline ms-3">
-                                                <svg width="20" height="20" viewBox="0 0 24 24"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M2.25 8.25H21.75M2.25 9H21.75M5.25 14.25H11.25M5.25 16.5H8.25M4.5 19.5H19.5C20.0967 19.5 20.669 19.2629 21.091 18.841C21.5129 18.419 21.75 17.8467 21.75 17.25V6.75C21.75 6.15326 21.5129 5.58097 21.091 5.15901C20.669 4.73705 20.0967 4.5 19.5 4.5H4.5C3.90326 4.5 3.33097 4.73705 2.90901 5.15901C2.48705 5.58097 2.25 6.15326 2.25 6.75V17.25C2.25 17.8467 2.48705 18.419 2.90901 18.841C3.33097 19.2629 3.90326 19.5 4.5 19.5Z"
-                                                        stroke="white" stroke-width="1.3" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </button>
-                                        @else
-                                            <a href="{{ route('my-account.place-order', $order->order->cart_id) }}"
-                                                class="font-medium bg-[#0E9F6E] hover:bg-[#28906d] p-2 rounded-md hover:underline ms-3">
-                                                <svg width="20" height="20" viewBox="0 0 24 24"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M2.25 8.25H21.75M2.25 9H21.75M5.25 14.25H11.25M5.25 16.5H8.25M4.5 19.5H19.5C20.0967 19.5 20.669 19.2629 21.091 18.841C21.5129 18.419 21.75 17.8467 21.75 17.25V6.75C21.75 6.15326 21.5129 5.58097 21.091 5.15901C20.669 4.73705 20.0967 4.5 19.5 4.5H4.5C3.90326 4.5 3.33097 4.73705 2.90901 5.15901C2.48705 5.58097 2.25 6.15326 2.25 6.75V17.25C2.25 17.8467 2.48705 18.419 2.90901 18.841C3.33097 19.2629 3.90326 19.5 4.5 19.5Z"
-                                                        stroke="white" stroke-width="1.3" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
+                                                    <mask id="mask0_249_7933" style="mask-type:luminance"
+                                                        maskUnits="userSpaceOnUse" x="1" y="3" width="16"
+                                                        height="13">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M1.5 3H16.4999V15.0787H1.5V3Z" fill="white" />
+                                                    </mask>
+                                                    <g mask="url(#mask0_249_7933)">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                            d="M2.67731 9.03907C4.07231 12.1208 6.42206 13.9531 8.99981 13.9538C11.5776 13.9531 13.9273 12.1208 15.3223 9.03907C13.9273 5.95807 11.5776 4.12582 8.99981 4.12507C6.42281 4.12582 4.07231 5.95807 2.67731 9.03907V9.03907ZM9.00131 15.0788H8.99831H8.99756C5.89556 15.0766 3.11006 12.9023 1.54556 9.26107C1.48481 9.11932 1.48481 8.95882 1.54556 8.81707C3.11006 5.17657 5.89631 3.00232 8.99756 3.00007C8.99906 2.99932 8.99906 2.99932 8.99981 3.00007C9.00131 2.99932 9.00131 2.99932 9.00206 3.00007C12.1041 3.00232 14.8896 5.17657 16.4541 8.81707C16.5156 8.95882 16.5156 9.11932 16.4541 9.26107C14.8903 12.9023 12.1041 15.0766 9.00206 15.0788H9.00131Z"
+                                                            fill="white" />
+                                                    </g>
                                                 </svg>
                                             </a>
-                                        @endif
-                                    </td>
-                                </tr>
+                                            @if ($order->order->paymentStatus->id == 3)
+                                                <button disabled
+                                                    class="font-medium bg-dark-tertiary p-2 rounded-md hover:underline ms-3">
+                                                    <svg width="20" height="20" viewBox="0 0 24 24"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M2.25 8.25H21.75M2.25 9H21.75M5.25 14.25H11.25M5.25 16.5H8.25M4.5 19.5H19.5C20.0967 19.5 20.669 19.2629 21.091 18.841C21.5129 18.419 21.75 17.8467 21.75 17.25V6.75C21.75 6.15326 21.5129 5.58097 21.091 5.15901C20.669 4.73705 20.0967 4.5 19.5 4.5H4.5C3.90326 4.5 3.33097 4.73705 2.90901 5.15901C2.48705 5.58097 2.25 6.15326 2.25 6.75V17.25C2.25 17.8467 2.48705 18.419 2.90901 18.841C3.33097 19.2629 3.90326 19.5 4.5 19.5Z"
+                                                            stroke="white" stroke-width="1.3" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            @else
+                                                <a href="{{ route('my-account.place-order', $order->order->cart_id) }}"
+                                                    class="font-medium bg-[#0E9F6E] hover:bg-[#28906d] p-2 rounded-md hover:underline ms-3">
+                                                    <svg width="20" height="20" viewBox="0 0 24 24"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M2.25 8.25H21.75M2.25 9H21.75M5.25 14.25H11.25M5.25 16.5H8.25M4.5 19.5H19.5C20.0967 19.5 20.669 19.2629 21.091 18.841C21.5129 18.419 21.75 17.8467 21.75 17.25V6.75C21.75 6.15326 21.5129 5.58097 21.091 5.15901C20.669 4.73705 20.0967 4.5 19.5 4.5H4.5C3.90326 4.5 3.33097 4.73705 2.90901 5.15901C2.48705 5.58097 2.25 6.15326 2.25 6.75V17.25C2.25 17.8467 2.48705 18.419 2.90901 18.841C3.33097 19.2629 3.90326 19.5 4.5 19.5Z"
+                                                            stroke="white" stroke-width="1.3" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
