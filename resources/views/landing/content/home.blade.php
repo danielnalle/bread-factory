@@ -1,6 +1,6 @@
 <x-guest-layout>
     <section id="hero" class="bg-cover bg-center bg-no-repeat h-[600px] flex items-center"
-        style="background-image: url('/images/hero-bg.png');">
+        style="background-image: url('/images/hero-bg.webp');">
         {{-- <div class="relative">
             <img src="{{ asset('images/hero-bg.png') }}" class="w-full h-auto" alt="">
             <div class="bg-black absolute bg-opacity-40 inset-0"></div>

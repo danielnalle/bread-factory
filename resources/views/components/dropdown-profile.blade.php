@@ -5,8 +5,13 @@
 <div class="relative inline-flex" x-data="{ open: false }">
     <button class="inline-flex justify-center items-center group" aria-haspopup="true" @click.prevent="open = !open"
         :aria-expanded="open">
-        <img class="w-8 h-8 rounded-full border" src="{{ Storage::url(auth()->user()->image) }}" width="32"
-            height="32" alt="Yogi Pradnyana" />
+        @if (auth()->user()->image)
+            <img class="w-8 h-8 rounded-full border" src="{{ Storage::url(auth()->user()->image) }}" width="32"
+                height="32" alt="Yogi Pradnyana" />
+        @else
+            <img class="w-8 h-8 rounded-full border" src="{{ Storage::url('user-profile/default.jpg') }}" width="32"
+                height="32" alt="Yogi Pradnyana" />
+        @endif
         <div class="flex items-center truncate">
             <span
                 class="truncate ml-2 text-sm font-medium text-gray-600 dark:text-gray-100 group-hover:text-gray-800 dark:group-hover:text-white">{{ auth()->user()->name }}</span>

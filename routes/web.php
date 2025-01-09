@@ -155,17 +155,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('landing/content/checkout');
     })->name('checkout');
 
+    Route::get('/validation', function () {
+        return view('landing/content/validation');
+    })->name('validation');
 
     Route::get('/my-account/orders', function () {
-        $data = [
-            'orders' => Cart::where('user_id', Auth::id())->where('is_active', false)->get(),
-            'order_status' => OrderStatus::all(),
-            'cart_id' => Cart::where('user_id', Auth::id())->where('is_active', false)->first()->id
-        ];
-
-        // dd($data);
-
-        return view('landing/my-account/orders', $data);
+        return view('landing/my-account/orders');
     })->name('my-account.orders');
 
     // Using get for development purpose, do not use get when in production

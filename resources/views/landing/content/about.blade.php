@@ -1,7 +1,7 @@
 <x-guest-layout>
     <section id="heroSection" class="px-5 md:px-10 w-full h-screen pt-[104px] pb-10">
-        <div
-            class="bg-[url('../../../public/images/about-bg.png')] bg-cover bg-center h-full rounded-lg overflow-hidden">
+        <div style="background-image: url('/images/about-bg.webp');"
+            class="bg-cover bg-center h-full rounded-lg overflow-hidden">
             <div class="flex items-center md:items-end p-4 bg-black bg-opacity-20 justify-start h-full">
                 <div class="bg-white rounded-lg p-7">
                     <div class="max-w-xl flex flex-col items-center md:items-start">

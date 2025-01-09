@@ -1,8 +1,13 @@
 <div class="max-w-64 w-full h-auto pr-4 py-4 border-r-2 hidden lg:block">
     <!-- Sidebar header -->
     <div class="flex flex-col items-center mb-5 gap-2 justify-center">
-        <img src="{{ Storage::url(auth()->user()->image) }}"
-            class="rounded-full w-[60px] h-[60px] object-cover object-center border" alt="">
+        @if (auth()->user()->image)
+            <img src="{{ Storage::url(auth()->user()->image) }}"
+                class="rounded-full w-[60px] h-[60px] object-cover object-center border" alt="">
+        @else
+            <img src="{{ Storage::url('user-profile/default.jpg') }}"
+                class="rounded-full w-[60px] h-[60px] object-cover object-center border" alt="">
+        @endif
         <div class="w-fit text-center">
             <h3 class="font-semibold text-dark-primary text-sm">{{ auth()->user()->name }}</h3>
             <p class="font-normal text-dark-secondary text-sm">{{ auth()->user()->email }}</p>
@@ -82,10 +87,12 @@
                         <span class="text-sm font-medium ml-4">Pesanan</span>
                     </div>
                     <!-- Badge -->
-                    <div class="flex flex-shrink-0 ml-2">
-                        <span
-                            class="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-primary px-2 rounded">3</span>
-                    </div>
+                    @if (count(auth()->user()->carts->where('is_active', false)) > 0)
+                        <div class="flex flex-shrink-0 ml-2">
+                            <span
+                                class="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-primary px-2 rounded">{{ count(auth()->user()->carts->where('is_active', false)) }}</span>
+                        </div>
+                    @endif
                 </div>
 
             </a>

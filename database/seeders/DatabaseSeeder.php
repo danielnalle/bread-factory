@@ -80,11 +80,11 @@ class DatabaseSeeder extends Seeder
             'quantity' => 25
         ]);
 
-        Order::create([
-            'cart_id' => 1,
-            'order_status_id' => 1,
-            'payment_status_id' => 2,
-            'total_price' => 300000
-        ]);
+        // Order::create([
+        //     'cart_id' => 1,
+        //     'order_status_id' => 1,
+        //     'payment_status_id' => 2,
+        //     'total_price' => 300000
+        // ]);
     }
 }

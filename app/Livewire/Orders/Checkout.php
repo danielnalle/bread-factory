@@ -59,13 +59,18 @@ class Checkout extends Component
     public function makeOrder()
     {
         $activeCart = $this->cart->id;
+        $orders = Cart::where('user_id', Auth::user()->id)->where('is_active', false)->get();
+        // dd(count($orders));
         Order::create([
+            'no_order' => now()->format('Ymd') . Auth::id() . str_pad((count($orders) + 1), 4, '0', STR_PAD_LEFT),
             'cart_id' => $activeCart,
             'order_status_id' => 1,
             'payment_status_id' => 1,
             'total_price' => $this->totalPrice,
         ]);
         Cart::where('id', $activeCart)->update(['is_active' => false]);
+
+        return redirect()->route('validation');
     }
 
     public function render()

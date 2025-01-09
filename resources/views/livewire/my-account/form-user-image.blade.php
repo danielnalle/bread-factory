@@ -1,6 +1,11 @@
 <div class="flex flex-col items-center basis-full xs:basis-48 sm:basis-[280px]" x-data="userImgUpload">
-    <img src="{{ Storage::url($prevImage) }}"
-        class="rounded-full w-28 h-28 sm:w-[160px] sm:h-[160px] object-cover object-center mb-4 border">
+    @if ($prevImage)
+        <img src="{{ Storage::url($prevImage) }}"
+            class="rounded-full w-28 h-28 sm:w-[160px] sm:h-[160px] object-cover object-center mb-4 border">
+    @else
+        <img src="{{ Storage::url('user-profile/default.jpg') }}"
+            class="rounded-full w-28 h-28 sm:w-[160px] sm:h-[160px] object-cover object-center mb-4 border">
+    @endif
     @error('image')
         <span class="text-red-600 text-sm">{{ $message }}</span>
     @enderror

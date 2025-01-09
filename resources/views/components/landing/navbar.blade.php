@@ -48,8 +48,13 @@
                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                         data-dropdown-placement="bottom-end">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full object-cover border"
-                            src="{{ Storage::url(auth()->user()->image) }}" alt="user photo">
+                        @if (auth()->user()->image)
+                            <img class="w-8 h-8 rounded-full object-cover border"
+                                src="{{ Storage::url(auth()->user()->image) }}" alt="user photo">
+                        @else
+                            <img class="w-8 h-8 rounded-full object-cover border"
+                                src="{{ Storage::url('user-profile/default.jpg') }}" alt="user photo">
+                        @endif
                     </button>
                     <!-- Dropdown menu -->
                     <div class="z-50 hidden text-base w-full max-w-44 list-none" id="user-dropdown">
