@@ -170,6 +170,7 @@
                 })
                 .then(res => res.json())
                 .then(res => {
+                    localStorage.setItem('flash_message', "Pembayaran Berhasil");
                     window.location.href = '/my-account/orders';
                 })
                 .catch(e => console.log(e.message));
