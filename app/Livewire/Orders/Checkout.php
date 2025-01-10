@@ -65,15 +65,14 @@ class Checkout extends Component
             DB::beginTransaction();
 
             $activeCart = $this->cart->id;
-            $orders = Cart::where('user_id', Auth::user()->id)->where('is_active', false)->get();
 
             // Ambil nomor pesanan terakhir
             $lastOrder = Cart::where('user_id', Auth::id())->where('is_active', false)
                 ->latest('id')
                 ->first();
-
             $lastOrderNumber = $lastOrder ? intval(substr($lastOrder->order->no_order, -4)) : 0;
             $newOrderNumber = $lastOrderNumber + 1;
+
 
             $noOrder = "NP" . now()->format('Ymd') . Auth::id() . str_pad($newOrderNumber, 4, '0', STR_PAD_LEFT);
             Order::create([
@@ -97,8 +96,8 @@ class Checkout extends Component
 
             Cart::where('id', $activeCart)->update(['is_active' => false]);
 
-            return redirect()->route('validation');
             DB::commit();
+            return redirect()->route('validation');
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;

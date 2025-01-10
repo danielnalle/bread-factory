@@ -139,6 +139,7 @@
                     result.cart_id = '{{ $cart_id }}';
                     // console.log((JSON.stringify(result, null, 2)));
                     sendTransactionResponse(JSON.stringify(result, null, 2));
+                    window.location.href = '/my-account/orders';
                 },
                 // Optional
                 onPending: function(result) {
@@ -161,18 +162,18 @@
             console.log(data);
 
             fetch("{{ route('transaction-response') }}", {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": csrfToken
-                },
-                body: data
-            })
-            .then(res => res.json())
-            .then(res => {
-                console.log(res);
-            })
-            .catch(e => console.log(e.message));
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": csrfToken
+                    },
+                    body: data
+                })
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(e => console.log(e.message));
         }
     </script>
 </x-guest-layout>
