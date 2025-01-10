@@ -159,7 +159,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach ($orders as $order)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td class="w-4 p-4 text-center">
@@ -167,7 +166,7 @@
                             </td>
                             <th scope="row"
                                 class="px-6 py-4 font-semibold text-dark-primary whitespace-nowrap dark:text-white">
-                                NP{{ $order->no_order }}
+                                {{ $order->no_order }}
                             </th>
                             <td class="px-6 py-4">
                                 <span class="text-xs">Rp</span>{{ number_format($order->total_price, 0, '', '.') }}

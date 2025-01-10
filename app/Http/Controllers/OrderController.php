@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -10,8 +11,11 @@ class OrderController extends Controller
     {
         return view('dashboard/orders/orders');
     }
-    public function detail()
+    public function detail($order)
     {
-        return view('dashboard/orders/detail');
+        $order = Order::where('no_order', $order)->first();
+        return view('dashboard/orders/detail', [
+            'order' => $order,
+        ]);
     }
 }

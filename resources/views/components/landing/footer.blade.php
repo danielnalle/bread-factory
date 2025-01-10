@@ -45,11 +45,14 @@
         <div>
             <h3 class="text-md md:text-lg font-semibold mb-5 md:mb-7">Navigasi</h3>
             <ul class="text-sm md:text-base font-light flex flex-col gap-4 md:gap-5 text-white text-opacity-80">
-                <li><a href="/" class="hover:underline hover:underline-offset-4 inline-block">Home</a></li>
-                <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Roti</a></li>
-                <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Tentang
+                <li><a href="{{ route('landing-page') }}"
+                        class="hover:underline hover:underline-offset-4 inline-block">Home</a></li>
+                <li><a href="{{ route('roti') }}" class="hover:underline hover:underline-offset-4 inline-block">Roti</a>
+                </li>
+                <li><a href="{{ route('about') }}" class="hover:underline hover:underline-offset-4 inline-block">Tentang
                         Kami</a></li>
-                <li><a href="#" class="hover:underline hover:underline-offset-4 inline-block">Kontak</a></li>
+                <li><a href="{{ route('contact') }}"
+                        class="hover:underline hover:underline-offset-4 inline-block">Kontak</a></li>
             </ul>
         </div>
         <div>

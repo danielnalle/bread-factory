@@ -47,13 +47,11 @@ window.addEventListener("deleteConfirm", (event) => {
     });
 });
 
-// window.addEventListener("showModal", (event) => {
-//     const modal = document.getElementById("alamat-modal");
-//     if (modal) {
-//         modal.classList.remove("hidden");
-//         modal.classList.add("flex");
-//     }
-// });
+window.addEventListener("statusUpdated", (event) => {
+    setTimeout(() => {
+        location.reload();
+    }, 1500);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     // Light switcher

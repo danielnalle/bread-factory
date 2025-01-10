@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Orders;
 
+use App\Models\Bread;
 use App\Models\Cart;
 use App\Models\CartDetail;
 use App\Models\Customer;
@@ -17,6 +18,7 @@ class Checkout extends Component
     public $phone;
     public $user;
     public $totalPrice = 0;
+    public $note;
 
     public function mount()
     {
@@ -60,14 +62,35 @@ class Checkout extends Component
     {
         $activeCart = $this->cart->id;
         $orders = Cart::where('user_id', Auth::user()->id)->where('is_active', false)->get();
-        // dd(count($orders));
+
+        // Ambil nomor pesanan terakhir
+        $lastOrder = Cart::where('user_id', Auth::id())->where('is_active', false)
+            ->latest('id')
+            ->first();
+
+        $lastOrderNumber = $lastOrder ? intval(substr($lastOrder->order->no_order, -4)) : 0;
+        $newOrderNumber = $lastOrderNumber + 1;
+
+        $noOrder = "NP" . now()->format('Ymd') . Auth::id() . str_pad($newOrderNumber, 4, '0', STR_PAD_LEFT);
         Order::create([
-            'no_order' => now()->format('Ymd') . Auth::id() . str_pad((count($orders) + 1), 4, '0', STR_PAD_LEFT),
+            'no_order' => $noOrder,
             'cart_id' => $activeCart,
             'order_status_id' => 1,
             'payment_status_id' => 1,
             'total_price' => $this->totalPrice,
+            'note' => $this->note,
         ]);
+
+        $cartItems = CartDetail::where('cart_id', $activeCart)->get();
+
+        foreach ($cartItems as $item) {
+            $bread = Bread::find($item->bread_id);
+            if ($bread) {
+                $bread->quantity -= $item->quantity;
+                $bread->save();
+            }
+        }
+
         Cart::where('id', $activeCart)->update(['is_active' => false]);
 
         return redirect()->route('validation');

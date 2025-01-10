@@ -23,7 +23,7 @@ class ListBread extends Component
             // 'Breads' => Bread::orderBy('id', 'desc')->whereAny(['name'], 'like', '%' . $this->search . '%')->paginate($totalBreads)
             'breads' => Bread::select('breads.*')
                 ->join('bread_types', 'bread_types.id', '=', 'breads.bread_type_id')
-                ->where('bread_types.isActive', '1')
+                ->where('bread_types.isActive', '1')->where('breads.quantity', '!=', '0')
                 ->orderBy('breads.id', 'desc')->when($this->search, function ($query) {
                     $query->where('breads.name', 'like', '%' . $this->search . '%');
                 })->when($this->selectedBreadType, function ($query) {

@@ -38,20 +38,6 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Ditolak', 'created_at' => NOW(), 'updated_at' => NOW()],
         ]);
 
-        DB::table('carts')->insert([
-            'user_id' => 8,
-            'is_active' => true,
-            'created_at' => NOW(),
-            'updated_at' => NOW(),
-        ]);
-        DB::table('cart_details')->insert([
-            'cart_id' => 1,
-            'bread_id' => 5,
-            'quantity' => 20,
-            'created_at' => NOW(),
-            'updated_at' => NOW(),
-        ]);
-
         PaymentStatus::create([
             'name' => 'Belum dibayar',
         ]);
@@ -63,28 +49,5 @@ class DatabaseSeeder extends Seeder
         PaymentStatus::create([
             'name' => 'Sudah dibayar',
         ]);
-
-        Cart::create([
-            'user_id' => 9
-        ]);
-
-        CartDetail::create([
-            'cart_id' => 1,
-            'bread_id' => Bread::all()->random()->id,
-            'quantity' => 20
-        ]);
-
-        CartDetail::create([
-            'cart_id' => 1,
-            'bread_id' => Bread::all()->random()->id,
-            'quantity' => 25
-        ]);
-
-        // Order::create([
-        //     'cart_id' => 1,
-        //     'order_status_id' => 1,
-        //     'payment_status_id' => 2,
-        //     'total_price' => 300000
-        // ]);
     }
 }

@@ -16,6 +16,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="mt-5">
+                    <label for="catatan"
+                        class="block mb-2.5 text-base font-medium text-primary dark:text-white">Catatan</label>
+                    <textarea name="catatan" disabled
+                        class="border border-gray-300 bg-gray-100 text-dark-primary text-sm rounded-lg focus:ring-primary
+                        focus:border-primary w-full md:w-1/2 block p-2.5 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600
+                        dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                        id="catatan" rows="4" maxlength="1000">{{ $order->note }}</textarea>
+                </div>
             </div>
             <div class="bg-white px-3 sm:px-5 py-3 sm:py-5 shadow-sm rounded-lg mb-5">
                 <h1 class="text-primary text-sm sm:text-base font-medium pb-3 border-b">Pesanan</h1>
@@ -60,7 +69,7 @@
                     <div class="hidden md:block pt-5">
                         <div class="grid grid-cols-5 lg:grid-cols-6 gap-5 items-center">
                             <div
-                                class="col-span-2 lg:col-span-3 flex gap-2.5 items-center text-base sm:text-lg font-semibold text-dark-primary">
+                                class="col-span-2 lg:col-span-3 flex gap-2.5 items-center text-base font-semibold text-dark-primary">
                                 <div class="w-20 h-20 shrink-0 overflow-hidden rounded-sm">
                                     <div class="relative h-full w-full bg-[#f8f8f8]">
                                         <img src="{{ Storage::url($cart_detail->breads->image) }}"

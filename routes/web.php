@@ -100,7 +100,7 @@ Route::get('/', function () {
     return view('landing/content/home', [
         'breads' => Bread::select('breads.*')
             ->join('bread_types', 'bread_types.id', '=', 'breads.bread_type_id')
-            ->where('bread_types.isActive', '1')->orderBy('id', 'desc')->limit(4)->get(),
+            ->where('bread_types.isActive', '1')->where('breads.quantity', '!=', '0')->orderBy('id', 'desc')->limit(4)->get(),
     ]);
 })->name('landing-page');
 
@@ -247,8 +247,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/users', [UserController::class, 'index'])->name('users');
             Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
             Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
-            Route::get('/payment-method/create', [PaymentController::class, 'create'])->name('payment-method.create');
-            Route::get('/payment-method/edit/{payment}', [PaymentController::class, 'edit'])->name('payment-method.edit');
             Route::get('/bread-types/create', [BreadTypeController::class, 'create'])->name('bread_types.create');
             Route::get('/bread-types/edit/{type}', [BreadTypeController::class, 'edit'])->name('bread_types.edit');
             Route::get('/dashboards/breads/create', [BreadController::class, 'create'])->name('breads.create');
@@ -263,8 +261,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/dashboards/breads', [BreadController::class, 'index'])->name('breads');
         Route::get('/dashboards/breads/detail/{bread}', [BreadController::class, 'detail'])->name('breads.detail');
         Route::get('/bread-types', [BreadTypeController::class, 'index'])->name('bread_types');
-        Route::get('/payment-method', [PaymentController::class, 'index'])->name('payment-method');
         Route::get('/orders', [OrderController::class, 'index'])->name('orders');
-        Route::get('/orders/detail', [OrderController::class, 'detail'])->name('orders.detail');
+        Route::get('/orders/detail/{order}', [OrderController::class, 'detail'])->name('orders.detail');
     });
 });

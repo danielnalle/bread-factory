@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends Model
 {
-    protected $fillable = ['no_order', 'cart_id', 'order_status_id', 'payment_status_id', 'total_price'];
+    protected $fillable = ['no_order', 'cart_id', 'order_status_id', 'payment_status_id', 'total_price', 'note'];
 
     public function cart(): BelongsTo
     {

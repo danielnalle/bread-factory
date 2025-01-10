@@ -65,7 +65,7 @@
         </script>
     @endif
 
-    <div class="container max-w-full relative min-h-screen flex flex-col">
+    <div class="container max-w-full relative min-h-screen overflow-x-hidden flex flex-col">
 
 
         <x-landing.navbar />

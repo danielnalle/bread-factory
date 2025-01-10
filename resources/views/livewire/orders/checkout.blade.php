@@ -16,6 +16,16 @@
                         class="text-sm sm:text-base text-primary font-semibold">Ubah</a>
                 </div>
             </div>
+            <div class="mt-5">
+                <label for="catatan"
+                    class="block mb-2.5 text-base font-medium text-primary dark:text-white">Catatan</label>
+                <textarea name="catatan"
+                    class="border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary
+                    focus:border-primary w-full md:w-1/2 block p-2.5 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600
+                    dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                    id="catatan" rows="4" maxlength="1000" placeholder="Masukan catatan, seperti patokan, blok dan nama outlet"
+                    wire:model='note'></textarea>
+            </div>
         </div>
         <div class="bg-white px-3 sm:px-5 py-3 sm:py-5 shadow-sm rounded-lg mb-5">
             <h1 class="text-primary text-sm sm:text-base font-medium pb-3 border-b">Pesanan</h1>

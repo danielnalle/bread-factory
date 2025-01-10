@@ -1,3 +1,7 @@
+@php
+    use App\Models\Order;
+    $orders = count(Order::all());
+@endphp
 <div class="min-w-fit">
     <!-- Sidebar backdrop (mobile only) -->
     <div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200"
@@ -307,32 +311,14 @@
                                         class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Pesanan</span>
                                 </div>
                                 <!-- Badge -->
-                                <div class="flex flex-shrink-0 ml-2">
-                                    <span
-                                        class="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-primary px-2 rounded">1</span>
-                                </div>
+                                @if ($orders)
+                                    <div class="flex flex-shrink-0 ml-2">
+                                        <span
+                                            class="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-primary px-2 rounded">{{ $orders }}</span>
+                                    </div>
+                                @endif
                             </div>
 
-                        </a>
-                    </li>
-                    <!-- Metode Pembayaran -->
-                    <li
-                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['payment-method'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
-                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['payment-method'])) {{ 'hover:text-gray-900 dark:hover:text-whitwe' }} @endif"
-                            href="{{ route('payment-method') }}">
-                            <div class="flex items-center">
-                                <svg class="shrink-0 @if (in_array(Request::segment(1), ['payment-method'])) {{ 'text-primary' }}@else{{ 'text-gray-400 dark:text-gray-500' }} @endif"
-                                    width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M2.25 8.25H21.75M2.25 9H21.75M5.25 14.25H11.25M5.25 16.5H8.25M4.5 19.5H19.5C20.0967 19.5 20.669 19.2629 21.091 18.841C21.5129 18.419 21.75 17.8467 21.75 17.25V6.75C21.75 6.15326 21.5129 5.58097 21.091 5.15901C20.669 4.73705 20.0967 4.5 19.5 4.5H4.5C3.90326 4.5 3.33097 4.73705 2.90901 5.15901C2.48705 5.58097 2.25 6.15326 2.25 6.75V17.25C2.25 17.8467 2.48705 18.419 2.90901 18.841C3.33097 19.2629 3.90326 19.5 4.5 19.5Z"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                <span
-                                    class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Metode
-                                    Pembayaran</span>
-                            </div>
                         </a>
                     </li>
                 </ul>

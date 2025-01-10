@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('order_status_id')->constrained('order_status')->onDelete('cascade');
             $table->foreignId('payment_status_id')->constrained('payment_status')->onDelete('cascade');
             $table->integer('total_price')->unsigned();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

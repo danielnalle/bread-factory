@@ -1,6 +1,5 @@
 <x-app-layout>
     <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-
         <div class="sm:flex sm:justify-between sm:items-center mb-6">
             <div class="mb-4 sm:mb-0">
                 <h1 class="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">Detail Pesanan</h1>
@@ -62,7 +61,8 @@
                                     placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600
                                     dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary
                                     dark:focus:border-primary"
-                                    placeholder="Masukan nama pelanggan" value="Monkey D Luffy" required />
+                                    placeholder="Masukan nama pelanggan" value="{{ $order->cart->user->name }}"
+                                    required />
                             </div>
                             <div>
                                 <label for="catatan"
@@ -71,7 +71,7 @@
                                     class="border bg-gray-100 border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary
                                     focus:border-primary block w-full p-2.5 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600
                                     dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                                    id="catatan" rows="6" maxlength="600" placeholder="Catatan" required>Rumah paling pojok, warna hijau
+                                    id="catatan" rows="6" maxlength="600" placeholder="Catatan" required>{{ $order->note }}
                                 </textarea>
                             </div>
                         </div>
@@ -80,35 +80,30 @@
                     <div>
                         <div class="bg-white p-5 rounded-lg shadow-sm">
                             <div class="mb-5">
+                                <label for="no_pesanan"
+                                    class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">No
+                                    Pesanan</label>
+                                <input type="text" id="no_pesanan" disabled
+                                    class="bg-gray-100 border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-3 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                                    required value="{{ $order->no_order }}" />
+                            </div>
+                            <div class="mb-5">
                                 <label for="status-pesanan"
                                     class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Status
                                     Pesanan</label>
                                 <select id="status" disabled
                                     class="bg-gray-100 border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                                     <option>-- Pilih status --</option>
-                                    <option selected value="baru">Baru</option>
-                                    <option value="diproses">Sedang Diproses</option>
-                                    <option value="pengiriman">Dalam Pengiriman</option>
-                                    <option value="sampai">Sampai di Tujuan</option>
-                                    <option value="selesai">Selesai</option>
-                                    <option value="ditolak">Ditolak</option>
+                                    <option selected>{{ $order->orderStatus->name }}</option>
                                 </select>
                             </div>
-                            <div class="mb-5">
+                            <div class="">
                                 <label for="status-transaksi"
                                     class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Status
                                     Transaksi</label>
                                 <input type="text" id="status-transaksi" disabled
                                     class="bg-gray-100 border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-3 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                                    required value="Pending" />
-                            </div>
-                            <div>
-                                <label for="payment-method"
-                                    class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Metode
-                                    Pembayaran</label>
-                                <input type="text" id="payment-method" disabled
-                                    class="bg-gray-100 border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-3 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                                    value="COD" required />
+                                    required value="{{ $order->paymentStatus->name }}" />
                             </div>
                         </div>
                     </div>
@@ -138,28 +133,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <td class="w-4 p-4 text-center">
-                                    1
-                                </td>
-                                <th scope="row"
-                                    class="px-6 py-4 font-semibold text-dark-primary whitespace-nowrap dark:text-white">
-                                    White Bread
-                                </th>
-                                <td class="px-6 py-4">
-                                    100 pcs
-                                </td>
-                                <td class="px-6 py-4">
-                                    Rp. 8.000
-                                </td>
-                                <td class="px-6 py-4">
-                                    Rp. 800.000
-                                </td>
-                            </tr>
+                            @foreach ($order->cart->cart_details as $item)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <td class="w-4 p-4 text-center">
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <th scope="row"
+                                        class="px-6 py-4 font-semibold text-dark-primary whitespace-nowrap dark:text-white">
+                                        {{ $item->breads->name }}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{ $item->quantity }} {{ $item->unit }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="text-xs">Rp</span>{{ number_format($item->breads->price, 0, ',', '.') }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="text-xs">Rp</span>{{ number_format($item->quantity * $item->breads->price, 0, ',', '.') }}
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <p class="block mb-1 text-sm font-medium text-dark-primary dark:text-white">Total Keseluruhan</p>
-                    <h3 class="text-base font-semibold text-dark-primary dark:text-white">Rp. 800.000</h3>
+                    <h3 class="text-base font-semibold text-dark-primary dark:text-white"><span
+                            class="text-sm">Rp</span>{{ number_format($order->total_price, 0, ',', '.') }}
+                    </h3>
                 </div>
                 <div class="bg-white p-5 rounded-lg shadow-sm mb-5 overflow-x-auto">
                     <p class="block mb-5 text-base font-semibold text-dark-primary dark:text-white">Alamat Pelanggan
@@ -180,10 +181,10 @@
                         <tbody>
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <td class="px-6 py-4">
-                                    Jalan Gunung Agung, Gg. Kojek, No. 30
+                                    {{ $order->cart->user->customer->address }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    081234567893
+                                    {{ $order->cart->user->customer->phone }}
                                 </td>
                             </tr>
                         </tbody>

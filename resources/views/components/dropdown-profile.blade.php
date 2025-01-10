@@ -6,11 +6,11 @@
     <button class="inline-flex justify-center items-center group" aria-haspopup="true" @click.prevent="open = !open"
         :aria-expanded="open">
         @if (auth()->user()->image)
-            <img class="w-8 h-8 rounded-full border" src="{{ Storage::url(auth()->user()->image) }}" width="32"
-                height="32" alt="Yogi Pradnyana" />
+            <img class="w-8 h-8 rounded-full border object-cover" src="{{ Storage::url(auth()->user()->image) }}"
+                width="32" height="32" alt="Yogi Pradnyana" />
         @else
-            <img class="w-8 h-8 rounded-full border" src="{{ Storage::url('user-profile/default.jpg') }}" width="32"
-                height="32" alt="Yogi Pradnyana" />
+            <img class="w-8 h-8 rounded-full border object-cover" src="{{ Storage::url('user-profile/default.jpg') }}"
+                width="32" height="32" alt="Yogi Pradnyana" />
         @endif
         <div class="flex items-center truncate">
             <span

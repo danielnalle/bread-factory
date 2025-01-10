@@ -47,17 +47,21 @@
                 Tim Kami
             </h1>
             <div class="flex flex-wrap gap-5 items-center justify-center">
-                <div class="p-0 sm:pb-10 max-w-60 h-[340px]">
-                    <img src="{{ asset('images/team/1.jpg') }}" class="rounded-lg overflow-hidden" alt="">
+                <div class="p-0 sm:pb-10">
+                    <img src="{{ asset('images/team/1.jpg') }}"
+                        class="rounded-lg h-[340px] object-cover object-center w-60 overflow-hidden" alt="">
                 </div>
-                <div class="p-0 sm:pt-10 max-w-60 h-[340px]">
-                    <img src="{{ asset('images/user1.png') }}" class="rounded-lg overflow-hidden" alt="">
+                <div class="p-0 sm:pt-10">
+                    <img src="{{ asset('images/user1.png') }}"
+                        class="rounded-lg h-[340px] object-cover object-center w-60 overflow-hidden" alt="">
                 </div>
-                <div class="p-0 sm:pb-10 max-w-60 h-[340px]">
-                    <img src="{{ asset('images/user1.png') }}" class="rounded-lg overflow-hidden" alt="">
+                <div class="p-0 sm:pb-10">
+                    <img src="{{ asset('images/team/3.jpg') }}"
+                        class="rounded-lg h-[340px] object-cover object-bottom w-60 overflow-hidden" alt="">
                 </div>
-                <div class="p-0 sm:pt-10 max-w-60 h-[340px]">
-                    <img src="{{ asset('images/user1.png') }}" class="rounded-lg overflow-hidden" alt="">
+                <div class="p-0 sm:pt-10">
+                    <img src="{{ asset('images/user1.png') }}"
+                        class="rounded-lg h-[340px] object-cover object-center w-60 overflow-hidden" alt="">
                 </div>
             </div>
         </div>

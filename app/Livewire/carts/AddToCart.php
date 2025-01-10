@@ -53,6 +53,11 @@ class AddToCart extends Component
             return;
         }
 
+        if ($this->amount > $this->bread->quantity) {
+            $this->errMessage = 'Jumlah produk tidak boleh melebihi dari stok';
+            return;
+        }
+
         // Cari atau buat cart untuk user
         $cart = Cart::firstOrCreate(
             ['user_id' => $this->user->id, 'is_active' => true]
