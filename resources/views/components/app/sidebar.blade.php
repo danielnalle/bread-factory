@@ -1,7 +1,3 @@
-@php
-    use App\Models\Order;
-    $orders = count(Order::all());
-@endphp
 <div class="min-w-fit">
     <!-- Sidebar backdrop (mobile only) -->
     <div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200"
@@ -310,13 +306,7 @@
                                     <span
                                         class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Pesanan</span>
                                 </div>
-                                <!-- Badge -->
-                                @if ($orders)
-                                    <div class="flex flex-shrink-0 ml-2">
-                                        <span
-                                            class="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-primary px-2 rounded">{{ $orders }}</span>
-                                    </div>
-                                @endif
+                                @livewire('sidebar-app.badges-order')
                             </div>
 
                         </a>

@@ -31,8 +31,8 @@ class UpdateOrderStatus extends Component
 
         // Emit pesan sukses
 
-        $this->dispatch("alert", ['type' => 'success', 'message' => "Status berhasil diupdate"]);
-        $this->dispatch("statusUpdated");
+        flash('Status Berhasil Diupdate', 'success');
+        return redirect(url()->previous());
     }
 
     public function render()

@@ -1,4 +1,4 @@
-<div>
+<div wire:poll.keep-alive.5s>
     <div class="overflow-x-auto">
         <div class="flex space-x-5 text-sm font-medium border-b mb-5">
             <button type="button" wire:click="filter('')"
@@ -84,7 +84,17 @@
                             {{ $order->paymentStatus->name }}
                         </td>
                         <td class="px-6 py-4">
-                            @livewire('status.update-order-status', ['order' => $order, 'order_status' => $order_status])
+                            {{-- @livewire('status.update-order-status', ['order' => $order, 'order_status' => $order_status]) --}}
+                            <select wire:change='updateStatus({{ $order->id }}, $event.target.value)'
+                                class="border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                                <option value="">-- Pilih status --</option>
+                                @foreach ($order_status as $status)
+                                    <option value="{{ $status->id }}"
+                                        {{ $status->id == $order->order_status_id ? 'selected' : '' }}>
+                                        {{ $status->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </td>
                         <td class="px-6 py-4">
                             {{ $order->created_at->format('d M Y') }}

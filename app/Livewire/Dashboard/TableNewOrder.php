@@ -15,6 +15,8 @@ class TableNewOrder extends Component
 
     public $search = '';
     public $cart_id;
+    public $order;
+    public $orderStatusId;
 
     public function render()
     {
@@ -33,6 +35,18 @@ class TableNewOrder extends Component
         ]);
     }
 
+    public function updateStatus($orderId, $orderStatusId)
+    {
+        $this->orderStatusId = $orderStatusId;
+        $this->order = Order::find($orderId);
+        $this->order->update([
+            'order_status_id' => (int) $this->orderStatusId,
+        ]);
+
+        flash('Status Berhasil Diupdate', 'success');
+        return redirect(url()->previous());
+    }
+
     public function deleteConfirm($id)
     {
         $this->cart_id = $id;
@@ -48,6 +62,7 @@ class TableNewOrder extends Component
         $order = Cart::find($this->cart_id);
         $order->delete();
 
-        $this->dispatch("alert", ['type' => 'success', 'message' => "Order Berhasil dihapus"]);
+        flash('Order Berhasil Dihapus', 'success');
+        return redirect()->route('dashboard');
     }
 }

@@ -21,6 +21,9 @@ class TableOrder extends Component
     public $selectedOrderStatusName = 'Semua';
     public $cart_id;
     public $selectedStatus;
+    public $order;
+    public $orderStatusId;
+
 
     public function render()
     {
@@ -44,6 +47,18 @@ class TableOrder extends Component
         $this->resetPage();
     }
 
+    public function updateStatus($orderId, $orderStatusId)
+    {
+        $this->orderStatusId = $orderStatusId;
+        $this->order = Order::find($orderId);
+        $this->order->update([
+            'order_status_id' => (int) $this->orderStatusId,
+        ]);
+
+        flash('Status Berhasil Diupdate', 'success');
+        return redirect(url()->previous());
+    }
+
     public function deleteConfirm($id)
     {
         $this->cart_id = $id;
@@ -59,6 +74,7 @@ class TableOrder extends Component
         $order = Cart::find($this->cart_id);
         $order->delete();
 
-        $this->dispatch("alert", ['type' => 'success', 'message' => "Order Berhasil dihapus"]);
+        flash('Order Berhasil Dihapus', 'success');
+        return redirect()->route('orders');
     }
 }

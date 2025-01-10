@@ -47,12 +47,6 @@ window.addEventListener("deleteConfirm", (event) => {
     });
 });
 
-window.addEventListener("statusUpdated", (event) => {
-    setTimeout(() => {
-        location.reload();
-    }, 1500);
-});
-
 document.addEventListener("DOMContentLoaded", () => {
     // Light switcher
     const lightSwitches = document.querySelectorAll(".light-switch");
