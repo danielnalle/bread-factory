@@ -65,32 +65,7 @@
                 </h1>
                 <p class="text-base hidden lg:block text-dark-secondary mb-5">Anda dapat menghubungi kami kapan
                     saja</p>
-                <form action="">
-                    <div class="flex gap-5 lg:gap-2 mb-5 flex-col lg:flex-row">
-                        <input type="text" id="namaDepan" name="namaDepan"
-                            class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-dark-tertiary dark:placeholder-gray-400 dark:text-white  dark:focus:ring-primary dark:focus:border-primary"
-                            placeholder="Nama Depan" required />
-                        <input type="text" id="namaBelakang" name="namaBelakang"
-                            class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-dark-tertiary dark:placeholder-gray-400 dark:text-white  dark:focus:ring-primary dark:focus:border-primary"
-                            placeholder="Nama Belakang" required />
-                    </div>
-                    <input type="email" id="email" name="email"
-                        class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-dark-tertiary dark:placeholder-gray-400 dark:text-white  dark:focus:ring-primary dark:focus:border-primary mb-5"
-                        placeholder="Email" required />
-                    <input type="text" id="nohp" name="nohp"
-                        class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-dark-tertiary dark:placeholder-gray-400 dark:text-white  dark:focus:ring-primary dark:focus:border-primary mb-5"
-                        placeholder="Nomor Telepon" required />
-                    <textarea name="desc"
-                        class="border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary
-                        focus:border-primary block w-full px-3 py-2.5 mb-5 placeholder-dark-tertiary placeholder:text-sm placeholder:sm:text-base
-                        dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                        id="desc" rows="6" maxlength="600" placeholder="Pesan" required></textarea>
-                    <button type="submit"
-                        class="text-white mx-auto sm:mx-0 text-base bg-primary hover:bg-primary-hover rounded-lg px-5 py-2.5 text-center inline-flex items-center justify-center dark:bg-primary dark:hover:bg-primary-hover w-full">
-                        Kirim
-                    </button>
-
-                </form>
+                @livewire('contact.contact-form')
             </div>
         </div>
     </section>
