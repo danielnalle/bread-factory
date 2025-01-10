@@ -52,7 +52,7 @@
                         class="rounded-lg h-[340px] object-cover object-center w-60 overflow-hidden" alt="">
                 </div>
                 <div class="p-0 sm:pt-10">
-                    <img src="{{ asset('images/user1.png') }}"
+                    <img src="{{ asset('images/team/2.jpg') }}"
                         class="rounded-lg h-[340px] object-cover object-center w-60 overflow-hidden" alt="">
                 </div>
                 <div class="p-0 sm:pb-10">

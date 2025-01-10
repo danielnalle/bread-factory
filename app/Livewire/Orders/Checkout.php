@@ -8,6 +8,7 @@ use App\Models\CartDetail;
 use App\Models\Customer;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Checkout extends Component
@@ -60,40 +61,48 @@ class Checkout extends Component
 
     public function makeOrder()
     {
-        $activeCart = $this->cart->id;
-        $orders = Cart::where('user_id', Auth::user()->id)->where('is_active', false)->get();
+        try {
+            DB::beginTransaction();
 
-        // Ambil nomor pesanan terakhir
-        $lastOrder = Cart::where('user_id', Auth::id())->where('is_active', false)
-            ->latest('id')
-            ->first();
+            $activeCart = $this->cart->id;
+            $orders = Cart::where('user_id', Auth::user()->id)->where('is_active', false)->get();
 
-        $lastOrderNumber = $lastOrder ? intval(substr($lastOrder->order->no_order, -4)) : 0;
-        $newOrderNumber = $lastOrderNumber + 1;
+            // Ambil nomor pesanan terakhir
+            $lastOrder = Cart::where('user_id', Auth::id())->where('is_active', false)
+                ->latest('id')
+                ->first();
 
-        $noOrder = "NP" . now()->format('Ymd') . Auth::id() . str_pad($newOrderNumber, 4, '0', STR_PAD_LEFT);
-        Order::create([
-            'no_order' => $noOrder,
-            'cart_id' => $activeCart,
-            'order_status_id' => 1,
-            'payment_status_id' => 1,
-            'total_price' => $this->totalPrice,
-            'note' => $this->note,
-        ]);
+            $lastOrderNumber = $lastOrder ? intval(substr($lastOrder->order->no_order, -4)) : 0;
+            $newOrderNumber = $lastOrderNumber + 1;
 
-        $cartItems = CartDetail::where('cart_id', $activeCart)->get();
+            $noOrder = "NP" . now()->format('Ymd') . Auth::id() . str_pad($newOrderNumber, 4, '0', STR_PAD_LEFT);
+            Order::create([
+                'no_order' => $noOrder,
+                'cart_id' => $activeCart,
+                'order_status_id' => 1,
+                'payment_status_id' => 1,
+                'total_price' => $this->totalPrice,
+                'note' => $this->note,
+            ]);
 
-        foreach ($cartItems as $item) {
-            $bread = Bread::find($item->bread_id);
-            if ($bread) {
-                $bread->quantity -= $item->quantity;
-                $bread->save();
+            $cartItems = CartDetail::where('cart_id', $activeCart)->get();
+
+            foreach ($cartItems as $item) {
+                $bread = Bread::find($item->bread_id);
+                if ($bread) {
+                    $bread->quantity -= $item->quantity;
+                    $bread->save();
+                }
             }
+
+            Cart::where('id', $activeCart)->update(['is_active' => false]);
+
+            return redirect()->route('validation');
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
         }
-
-        Cart::where('id', $activeCart)->update(['is_active' => false]);
-
-        return redirect()->route('validation');
     }
 
     public function render()

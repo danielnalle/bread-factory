@@ -136,16 +136,19 @@
             snap.pay('{{ $snap_token }}', {
                 // Optional
                 onSuccess: function(result) {
+                    result.cart_id = '{{ $cart_id }}';
                     // console.log((JSON.stringify(result, null, 2)));
                     sendTransactionResponse(JSON.stringify(result, null, 2));
                 },
                 // Optional
                 onPending: function(result) {
+                    result.cart_id = '{{ $cart_id }}';
                     // console.log((JSON.stringify(result, null, 2)));
                     sendTransactionResponse(JSON.stringify(result, null, 2))
                 },
                 // Optional
                 onError: function(result) {
+                    result.cart_id = '{{ $cart_id }}';
                     // console.log((JSON.stringify(result, null, 2)));
                     sendTransactionResponse(JSON.stringify(result, null, 2))
                 }
@@ -155,6 +158,8 @@
         function sendTransactionResponse(data) {
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
+            console.log(data);
+
             fetch("{{ route('transaction-response') }}", {
                 method: 'POST',
                 headers: {
@@ -163,6 +168,11 @@
                 },
                 body: data
             })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+            })
+            .catch(e => console.log(e.message));
         }
     </script>
 </x-guest-layout>
