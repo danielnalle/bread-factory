@@ -139,7 +139,6 @@
                     result.cart_id = '{{ $cart_id }}';
                     // console.log((JSON.stringify(result, null, 2)));
                     sendTransactionResponse(JSON.stringify(result, null, 2));
-                    window.location.href = '/my-account/orders';
                 },
                 // Optional
                 onPending: function(result) {
@@ -171,7 +170,7 @@
                 })
                 .then(res => res.json())
                 .then(res => {
-                    console.log(res);
+                    window.location.href = '/my-account/orders';
                 })
                 .catch(e => console.log(e.message));
         }

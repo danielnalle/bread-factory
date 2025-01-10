@@ -43,6 +43,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         PaymentStatus::create([
+            'name' => 'Bayar',
+        ]);
+
+        PaymentStatus::create([
             'name' => 'Sudah dibayar',
         ]);
     }
