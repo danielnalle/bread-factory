@@ -22,7 +22,7 @@
         <div
             class="px-0 md:px-5 py-3 md:py-4 @if (auth()->user()->role != 'admin') {{ 'xl:border-r xl:border-gray-200' }} @else {{ 'border-r border-gray-200 md:border-none xl:border-r xl:border-gray-200' }} @endif">
             <p class="font-medium text-sm text-dark-secondary">
-                Produk
+                Roti
             </p>
             <h3 class="font-bold text-dark-primary text-xl">
                 {{ $informations[2] ?? '0' }}
@@ -31,7 +31,7 @@
         <div
             class="px-0 md:px-5 py-3 md:py-4 @if (auth()->user()->role != 'admin') {{ 'border-r border-gray-200' }} @else {{ 'md:border-r md:border-gray-200' }} @endif">
             <p class="font-medium text-sm text-dark-secondary">
-                Kategori
+                Jenis Roti
             </p>
             <h3 class="font-bold text-dark-primary text-xl">
                 {{ $informations[3] ?? '0' }}

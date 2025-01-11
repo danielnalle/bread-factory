@@ -8,9 +8,10 @@
                 <div class="flex gap-5 items-center">
                     <div class="flex flex-wrap gap-2">
                         <p class="text-sm sm:text-base font-semibold text-dark-primary">
-                            {{ auth()->user()->name }} ({{ $phone }})
+                            {{ auth()->user()->name }} ({{ auth()->user()->customer->phone ?? '' }})
                         </p>
-                        <p class="text-sm sm:text-base font-medium text-dark-secondary">{{ $address }}</p>
+                        <p class="text-sm sm:text-base font-medium text-dark-secondary">
+                            {{ auth()->user()->customer->address ?? '' }}</p>
                     </div>
                     <a href="{{ route('my-account.account') }}"
                         class="text-sm sm:text-base text-primary font-semibold">Ubah</a>
@@ -123,7 +124,7 @@
     </form>
 
     <div id="alamat-modal"
-        class="@if ($phone || $address) {{ 'hidden' }} @else {{ 'flex' }} @endif overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full h-screen">
+        class="@if (isset(auth()->user()->customer->phone)) {{ 'hidden' }} @else {{ 'flex' }} @endif overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full h-screen">
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="relative p-4 w-full max-w-md max-h-full">
@@ -137,37 +138,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
-                    <form class="space-y-4" wire:submit='updateProfil'>
-                        <div>
-                            <label for="nohp"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No
-                                Handphone</label>
-                            <input type="text" name="nohp"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="Masukan no handphone" wire:model='phone' />
-                            @error('phone')
-                                <span class="text-red-600 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div>
-                            <label for="alamat"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat
-                                Lengkap</label>
-                            <textarea name="alamat"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                placeholder="Masukan alamat lengkap" wire:model='address'></textarea>
-                            @error('address')
-                                <span class="text-red-600 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="flex justify-between gap-3">
-                            <a href="{{ route('carts') }}"
-                                class="w-full text-dark-primary border-2 bg-white hover:bg-gray-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Lain
-                                kali</a>
-                            <button type="submit"
-                                class="w-full text-white bg-primary hover:bg-primary-hover font-medium rounded-lg text-sm px-5 py-2.5 text-center">Simpan</button>
-                        </div>
-                    </form>
+                    @livewire('orders.form-update-profil')
                 </div>
             </div>
         </div>

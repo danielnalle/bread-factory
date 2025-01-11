@@ -101,12 +101,12 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="kategori"
-                        class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Kategori<span
+                    <label for="jenis-roti"
+                        class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Jenis Roti<span
                             class="text-red-600">*</span></label>
-                    <select id="kategori" wire:model='bread_type'
+                    <select id="jenis-roti" wire:model='bread_type'
                         class=" border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                        <option value="">-- Pilih kategori --</option>
+                        <option value="">-- Pilih jenis roti --</option>
                         @foreach ($bread_types as $bread_type)
                             <option value={{ $bread_type->id }}>{{ $bread_type->name }}</option>
                         @endforeach

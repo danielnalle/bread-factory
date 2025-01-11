@@ -15,8 +15,6 @@ class Checkout extends Component
 {
     public $carts;
     public $cart;
-    public $address;
-    public $phone;
     public $user;
     public $totalPrice = 0;
     public $note;
@@ -28,28 +26,7 @@ class Checkout extends Component
         $cart_id = $user->carts->where('is_active', true)->first()->id;
         $this->cart = $user->carts->where('is_active', true)->first();
         $this->carts = CartDetail::where('cart_id', $cart_id)->get();
-        if ($user->customer) {
-            $this->address = $user->customer->address;
-            $this->phone = $user->customer->phone;
-        }
         $this->calculateTotalPrice();
-    }
-
-    public function updateProfil()
-    {
-        $this->validate([
-            'phone' => 'required|regex:/^[0-9]{10,15}$/|unique:customers,phone, ' . $this->user->id . ',user_id',
-            'address' => 'required|string|max:600',
-        ]);
-
-        Customer::create([
-            'user_id' => $this->user->id,
-            'phone' => $this->phone,
-            'address' => $this->address,
-        ]);
-
-        flash('Profil Berhasil Diupdate', 'success');
-        return redirect()->route('checkout');
     }
 
     public function calculateTotalPrice()

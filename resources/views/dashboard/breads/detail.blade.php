@@ -125,10 +125,10 @@
                                 placeholder="Masukan minimal pesanan" value="{{ $bread->unit }}" />
                         </div>
                         <div>
-                            <label for="kategori"
-                                class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Kategori<span
-                                    class="text-red-600">*</span></label>
-                            <select id="kategori" wire:model='bread_type' disabled
+                            <label for="jenis roti"
+                                class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Jenis
+                                Roti<span class="text-red-600">*</span></label>
+                            <select id="jenis roti" wire:model='bread_type' disabled
                                 class=" border border-gray-300 bg-gray-100 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                                 <option value="{{ $bread->bread_type->name }}">{{ $bread->bread_type->name }}</option>
                             </select>
