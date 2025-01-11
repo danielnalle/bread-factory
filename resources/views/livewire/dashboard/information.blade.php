@@ -1,4 +1,5 @@
-<div class="px-5 py-2.5 bg-white dark:bg-gray-900 antialiased relative overflow-x-auto shadow-sm sm:rounded-lg mb-8">
+<div wire:poll.keep-alive.5s
+    class="px-5 py-2.5 bg-white dark:bg-gray-900 antialiased relative overflow-x-auto shadow-sm sm:rounded-lg mb-8">
     <div
         class="grid @if (auth()->user()->role != 'admin') {{ 'grid-cols-2 gap-4 md:grid-cols-2 xl:grid-cols-4' }} @else {{ 'grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-7' }} @endif">
         <div

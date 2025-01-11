@@ -1,4 +1,4 @@
-<div class="p-0 lg:pl-4 lg:py-4 w-full">
+<div wire:poll.keep-alive.5s class="p-0 lg:pl-4 lg:py-4 w-full">
     <h1 class="text-2xl md:text-3xl text-dark-primary dark:text-gray-100 font-bold mb-5">Pesanan</h1>
     {{-- Filter --}}
     <div class="hidden md:block">
