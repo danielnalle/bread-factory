@@ -39,6 +39,8 @@
                                         </a>
                                         <p class="text-xs font-normal text-dark-secondary">Min:
                                             {{ $cart->breads->min_order }} {{ $cart->breads->unit }}</p>
+                                        <p class="text-xs font-normal text-dark-secondary">Stok:
+                                            {{ $cart->breads->quantity }}</p>
                                         <p class="text-xs sm:text-sm text-dark-primary">Rp<span
                                                 class="text-sm sm:text-base">{{ number_format($cart->breads->price, 0, ',', '.') }}</span>
                                         </p>
@@ -121,6 +123,9 @@
                                         href="{{ route('detail-breads', $cart->breads->id) }}">{{ $cart->breads->name }}</a>
                                     <p class="text-sm font-normal text-dark-secondary">Min. order:
                                         {{ $cart->breads->min_order }} {{ $cart->breads->unit }}
+                                    </p>
+                                    <p class="text-sm font-normal text-dark-secondary">Stok:
+                                        {{ $cart->breads->quantity }}
                                     </p>
                                 </div>
                             </div>

@@ -53,6 +53,12 @@ class ListCart extends Component
             $this->errorsPerBread[$id] = 'Jumlah produk tidak boleh kurang dari ' . $min_order;
             return;
         }
+
+        if ($quantity > $cartDetail->breads->quantity) {
+            $this->errorsPerBread[$id] = 'Jumlah produk tidak boleh melebihi dari stok';
+            return;
+        }
+
         if ($cartDetail) {
             $cartDetail->update(['quantity' => $quantity]);
             unset($this->errorsPerBread[$id]);
