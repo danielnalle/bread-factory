@@ -148,3 +148,30 @@ document.addEventListener("alpine:init", () => {
         },
     }));
 });
+
+document.addEventListener("alpine:init", () => {
+    Alpine.data("stickyHandler", () => ({
+        checkSticky() {
+            const stickyElements = [
+                document.getElementById("sticky-element"),
+                document.getElementById("sticky-element-mobile"),
+            ];
+            stickyElements.forEach((element) => {
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.bottom >= window.innerHeight) {
+                        element.classList.add("shadow-custom-sticky");
+                        element.classList.remove("shadow-sm");
+                    } else {
+                        element.classList.remove("shadow-custom-sticky");
+                        element.classList.add("shadow-sm");
+                    }
+                }
+            });
+        },
+        init() {
+            window.addEventListener("scroll", this.checkSticky);
+            this.checkSticky(); // Check on load
+        },
+    }));
+});
