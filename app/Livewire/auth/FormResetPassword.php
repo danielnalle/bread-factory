@@ -15,11 +15,17 @@ class FormResetPassword extends Component
     {
         return [
             'token' => 'required',
-            'email' => 'required|email',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required',
         ];
     }
+
+    public function mount(string $token, string $email)
+    {
+        $this->token = $token;
+        $this->email = $email; // Set email dari token
+    }
+
     public function resetPassword()
     {
         $this->validate();

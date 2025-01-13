@@ -2,18 +2,9 @@
     @csrf
     <input type="hidden" name="token" value="{{ $token }}" wire:model='token'>
     <div class="mb-5">
-        <label for="email"
-            class="block mb-2.5 text-sm sm:text-base font-normal text-dark-secondary dark:text-white">Email</label>
-        <input type="email" id="email"
-            class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-dark-tertiary dark:placeholder-gray-400 dark:text-white  dark:focus:ring-primary dark:focus:border-primary"
-            placeholder="Masukan email" name="email" wire:model='email' />
-        @error('email')
-            <span class="text-red-600 text-sm">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="mb-5">
         <label for="password"
-            class="block mb-2.5 text-sm sm:text-base font-normal text-dark-secondary dark:text-white">Password</label>
+            class="block mb-2.5 text-sm sm:text-base font-normal text-dark-secondary dark:text-white">Password
+            Baru</label>
         <input type="password" id="password"
             class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-dark-tertiary dark:placeholder-gray-400 dark:text-white  dark:focus:ring-primary dark:focus:border-primary"
             placeholder="Masukan password" name="password" wire:model='password' />

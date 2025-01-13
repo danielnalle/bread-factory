@@ -16,7 +16,7 @@
         <h1 class="text-xl text-center text-dark-primary md:text-2xl font-medium mb-4">
             Reset Password
         </h1>
-        @livewire('auth.form-reset-password', ['token' => $token])
+        @livewire('auth.form-reset-password', ['token' => $token, 'email' => $email])
 
     </div>
 
