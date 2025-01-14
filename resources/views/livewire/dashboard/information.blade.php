@@ -30,7 +30,7 @@
             </h3>
         </div>
         <div
-            class="px-0 md:px-5 py-3 md:py-4 @if (auth()->user()->role != 'admin') {{ 'border-r border-gray-200' }} @else {{ 'md:border-r md:border-gray-200' }} @endif">
+            class="px-0 md:px-5 py-3 md:py-4 @if (auth()->user()->role != 'admin') {{ 'border-r border-gray-200' }} @else {{ 'md:border-r xl:border-l md:border-gray-200' }} @endif">
             <p class="font-medium text-sm text-dark-secondary">
                 Jenis Roti
             </p>
@@ -50,7 +50,7 @@
         <div
             class="px-0 md:px-5 py-3 md:py-4 xl:col-span-2 @if (auth()->user()->role != 'admin') {{ 'hidden' }} @else {{ 'static' }} @endif">
             <p class="font-medium text-sm text-dark-secondary">
-                Pendapatan
+                Pendapatan Bulan Ini
             </p>
             <h3 class="font-bold text-dark-primary text-xl">
                 Rp. {{ number_format($pendapatan, 0, ',', '.') }}

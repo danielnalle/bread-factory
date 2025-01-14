@@ -25,6 +25,7 @@ window.addEventListener("alert", (event) => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const message = localStorage.getItem("flash_message");
+    const status = localStorage.getItem("flash_status");
     if (message) {
         const Toast = Swal.mixin({
             toast: true,
@@ -38,10 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
             },
         });
         Toast.fire({
-            icon: "success",
+            icon: status,
             title: message,
         });
-        localStorage.removeItem("flash_message"); // Hapus setelah ditampilkan
+        localStorage.removeItem("flash_message");
+        localStorage.removeItem("flash_status");
     }
 });
 

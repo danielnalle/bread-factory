@@ -43,7 +43,59 @@
                     @endif
                 </a>
                 @if (auth()->user())
-                    <button type="button"
+                    <div class="relative inline-flex" x-data="{ open: false }">
+                        <button class="inline-flex justify-center items-center group" aria-haspopup="true"
+                            @click.prevent="open = !open" :aria-expanded="open">
+                            @if (auth()->user()->image)
+                                <img class="w-8 h-8 rounded-full border object-cover"
+                                    src="{{ Storage::url(auth()->user()->image) }}" width="32" height="32"
+                                    alt="User Profile" />
+                            @else
+                                <img class="w-8 h-8 rounded-full border object-cover"
+                                    src="{{ Storage::url('user-profile/default.jpg') }}" width="32" height="32"
+                                    alt="User Profile" />
+                            @endif
+
+                        </button>
+                        <div class="origin-top-right z-10 absolute top-12 min-w-44 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 py-2 rounded-lg shadow-lg overflow-hidden mt-1 right-0"
+                            @click.outside="open = false" @keydown.escape.window="open = false" x-show="open"
+                            x-transition:enter="transition ease-out duration-200 transform"
+                            x-transition:enter-start="opacity-0 -translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-out duration-200" x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0" x-cloak>
+                            <div class="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200 dark:border-gray-700/60">
+                                <div class="font-medium text-dark-primary text-sm dark:text-gray-100">Hy,
+                                    {{ Str::limit(auth()->user()->name, 14, '...') }}
+                                </div>
+                            </div>
+                            <ul class="flex flex-col w-full">
+                                <li class="w-full cursor-pointer">
+                                    <a class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3"
+                                        href="{{ route('dashboard') }}" @click="open = false" @focus="open = true"
+                                        @focusout="open = false">Dashboard</a>
+                                </li>
+                                <li class="w-full cursor-pointer">
+                                    <a class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3"
+                                        href="{{ route('my-account.account') }}" @click="open = false"
+                                        @focus="open = true" @focusout="open = false">Akun</a>
+                                </li>
+                                <li class="w-full cursor-pointer">
+                                    <a class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3"
+                                        href="{{ route('my-account.orders') }}" @click="open = false"
+                                        @focus="open = true" @focusout="open = false">Pesanan</a>
+                                </li>
+                                <li class="w-full cursor-pointer">
+                                    <form action="{{ route('logout') }}" method="POST" class="w-full">
+                                        @csrf
+                                        <button type="submit" @focus="open = true" @focusout="open = false"
+                                            class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{-- <button type="button"
                         class="flex text-sm rounded-full md:me-0 focus:ring-2 focus:ring-primary dark:focus:ring-gray-600"
                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                         data-dropdown-placement="bottom-end">
@@ -88,7 +140,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
                 @else
                     <a href="{{ route('login') }}"
                         class="text-white text-sm bg-primary tracking-wide ml-6 hover:bg-primary-hover font-normal rounded-full px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">

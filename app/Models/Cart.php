@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Cart extends Model
 {
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id', 'is_active'];
 
     public function user(): BelongsTo
     {

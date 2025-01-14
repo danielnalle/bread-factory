@@ -20,6 +20,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('landing-page'); // Redirect ke halaman login
+        return redirect()->route('landing-page');
     }
 }

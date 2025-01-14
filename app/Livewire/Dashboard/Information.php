@@ -6,6 +6,7 @@ use App\Models\Bread;
 use App\Models\BreadType;
 use App\Models\Order;
 use App\Models\User;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class Information extends Component
@@ -22,7 +23,11 @@ class Information extends Component
             Order::count(),
         ];
 
-        $this->pendapatan = Order::where('payment_status_id', 3)->sum('total_price');
+
+        $this->pendapatan = Order::where('payment_status_id', 3)
+            ->whereMonth('created_at', Carbon::now()->month)
+            ->whereYear('created_at', Carbon::now()->year)
+            ->sum('total_price');
         return view('livewire.dashboard.information', [
             'informations' => $this->informations
         ]);

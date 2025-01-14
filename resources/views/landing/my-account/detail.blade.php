@@ -170,10 +170,18 @@
                 })
                 .then(res => res.json())
                 .then(res => {
-                    localStorage.setItem('flash_message', "Pembayaran Berhasil");
+                    if (res.payment_status == 'success') {
+                        localStorage.setItem('flash_message', "Pembayaran Berhasil");
+                        localStorage.setItem('flash_status', "success");
+                    } else if (res.payment_status == 'failed') {
+                        localStorage.setItem('flash_message', "Pembayaran Gagal");
+                        localStorage.setItem('flash_status', "error");
+                    }
                     window.location.href = '/my-account/orders';
                 })
-                .catch(e => console.log(e.message));
+                .catch(e => {
+                    console.error(e.message);
+                });
         }
     </script>
 </x-guest-layout>
