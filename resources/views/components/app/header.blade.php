@@ -27,7 +27,7 @@
                 {{-- <x-modal-search /> --}}
 
                 <!-- Notifications button -->
-                {{-- <x-dropdown-notifications align="right" /> --}}
+                @livewire('notification')
 
                 <!-- Info button -->
                 {{-- <x-dropdown-help align="right" /> --}}

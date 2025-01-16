@@ -91,11 +91,20 @@
                                 <label for="status-pesanan"
                                     class="block mb-2.5 text-sm font-medium text-dark-primary dark:text-white">Status
                                     Pesanan</label>
-                                <select id="status" disabled
-                                    class="bg-gray-100 border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                                    <option>-- Pilih status --</option>
-                                    <option selected>{{ $order->orderStatus->name }}</option>
-                                </select>
+                                {{-- <select wire:change='updateStatus({{ $order->id }}, $event.target.value)'
+                                    class="border border-gray-300 text-dark-primary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full px-3 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                                    <option value="">-- Pilih status --</option>
+                                    @foreach ($order_status as $status)
+                                        <option value="{{ $status->id }}"
+                                            {{ $status->id == $order->order_status_id ? 'selected' : '' }}>
+                                            {{ $status->name }}
+                                        </option>
+                                    @endforeach
+                                </select> --}}
+                                @livewire('orders.order-status', [
+                                    'order' => $order,
+                                    'order_status' => $order_status,
+                                ])
                             </div>
                             <div class="">
                                 <label for="status-transaksi"

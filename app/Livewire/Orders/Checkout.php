@@ -7,8 +7,11 @@ use App\Models\Cart;
 use App\Models\CartDetail;
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\User;
+use App\Notifications\OrderNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use Livewire\Component;
 
 class Checkout extends Component
@@ -52,7 +55,7 @@ class Checkout extends Component
 
 
             $noOrder = "NP" . now()->format('Ymd') . Auth::id() . str_pad($newOrderNumber, 4, '0', STR_PAD_LEFT);
-            Order::create([
+            $order = Order::create([
                 'no_order' => $noOrder,
                 'cart_id' => $activeCart,
                 'order_status_id' => 1,
@@ -73,6 +76,8 @@ class Checkout extends Component
 
             Cart::where('id', $activeCart)->update(['is_active' => false]);
 
+            $userAdmin = User::where('role', '!=', 'customer')->get();
+            Notification::send($userAdmin, new OrderNotification($order, 'Pesanan Baru', 'membuat pesanan baru.'));
             DB::commit();
             return redirect()->route('validation');
         } catch (\Throwable $th) {
