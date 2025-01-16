@@ -30,6 +30,13 @@ class UserSeeder extends Seeder
             'password' => 'asdasd',
             'email_verified_at' => NOW(),
         ]);
+        User::factory()->create([
+            'name' => 'Udin Surudin',
+            'email' => 'udin@gmail.com',
+            'role' => 'pegawai',
+            'password' => 'asdasd',
+            'email_verified_at' => NOW(),
+        ]);
 
         User::factory()->create([
             'name' => 'Customer',
