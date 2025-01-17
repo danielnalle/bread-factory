@@ -5,6 +5,10 @@ namespace App\Livewire\Dashboard;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderStatus;
+use App\Models\User;
+use App\Notifications\OrderStatusNotification;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -43,6 +47,11 @@ class TableNewOrder extends Component
             'order_status_id' => (int) $this->orderStatusId,
         ]);
 
+        $statusName = OrderStatus::find($orderStatusId)->name;
+        $statusName = strtolower($statusName);
+        $userId = $this->order->cart->user->id;
+        $userOrder = User::where('id', $userId)->get();
+        Notification::send($userOrder, new OrderStatusNotification($this->order, 'Pesanan Update', $statusName . '.'));
         flash('Status Berhasil Diupdate', 'success');
         return redirect(url()->previous());
     }

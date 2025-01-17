@@ -197,7 +197,7 @@
                                         </g>
                                     </svg>
                                 </a>
-                                @if ($order->paymentStatus->id == 3)
+                                @if ($order->paymentStatus->id == 3 || $order->orderStatus->id == 6)
                                     <button disabled
                                         class="font-medium bg-dark-tertiary p-2 rounded-md hover:underline ms-3">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"

@@ -14,11 +14,16 @@
                     'text-gray-200 hover:text-white'" @endif
                     class="text-2xl font-main @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @endif tracking-widest font-bold whitespace-nowrap dark:text-white">Bakeru</span>
             </a>
-            <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <div class="flex items-center md:order-2">
+                @if (auth()->user())
+                    @livewire('landing.landing-notification', [
+                        'home' => in_array(Request::segment(1), ['']),
+                    ])
+                @endif
                 <a href="{{ route('carts') }}"
                     @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'text-primary' :
                     'text-gray-200 hover:text-white'" @endif
-                    class="flex relative items-center mr-3 md:mr-6 justify-between fill-current @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif">
+                    class="flex relative items-center mr-4 xs:mr-5 justify-between fill-current @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif">
                     <svg width="24" height="24" viewBox="0 0 28 28" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -43,7 +48,7 @@
                     @endif
                 </a>
                 @if (auth()->user())
-                    <div class="relative inline-flex" x-data="{ open: false }">
+                    <div class="relative inline-flex mr-4 xs:mr-5 md:mr-0" x-data="{ open: false }">
                         <button class="inline-flex justify-center items-center group" aria-haspopup="true"
                             @click.prevent="open = !open" :aria-expanded="open">
                             @if (auth()->user()->image)
@@ -70,11 +75,13 @@
                                 </div>
                             </div>
                             <ul class="flex flex-col w-full">
-                                <li class="w-full cursor-pointer">
-                                    <a class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3"
-                                        href="{{ route('dashboard') }}" @click="open = false" @focus="open = true"
-                                        @focusout="open = false">Dashboard</a>
-                                </li>
+                                @if (auth()->user()->role != 'customer')
+                                    <li class="w-full cursor-pointer">
+                                        <a class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3"
+                                            href="{{ route('dashboard') }}" @click="open = false" @focus="open = true"
+                                            @focusout="open = false">Dashboard</a>
+                                    </li>
+                                @endif
                                 <li class="w-full cursor-pointer">
                                     <a class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3"
                                         href="{{ route('my-account.account') }}" @click="open = false"
