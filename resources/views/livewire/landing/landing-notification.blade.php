@@ -1,9 +1,7 @@
 <div wire:poll.keep-alive.5s>
-    <div class="relative inline-flex" x-data="{ open: false }">
-        <button
-            class="w-8 h-8 flex items-center justify-center hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-gray-700/50 dark:lg:hover:bg-gray-800 rounded-full"
-            :class="{ 'bg-gray-200 dark:bg-gray-800': open }" aria-haspopup="true" @click.prevent="open = !open"
-            :aria-expanded="open">
+    <div class="relative mr-4 xs:mr-5" x-data="{ open: false }">
+        <button class="w-6 h-6 flex items-end justify-center rounded-full" aria-haspopup="true"
+            @click.prevent="open = !open" :aria-expanded="open">
             <span class="sr-only">Notifications</span>
             {{-- <svg class="fill-current text-gray-500/80 dark:text-gray-400/80" width="16" height="16" viewBox="0 0 16 16"
             xmlns="http://www.w3.org/2000/svg">
@@ -12,8 +10,12 @@
             <path
                 d="M11 6a5 5 0 0 0 0 10c.807 0 1.567-.194 2.24-.533l1.444.482a1 1 0 0 0 1.265-1.265l-.482-1.444A4.962 4.962 0 0 0 16 11a5 5 0 0 0-5-5Zm-3 5a3 3 0 0 1 6 0c0 .588-.171 1.134-.466 1.6a1 1 0 0 0-.115.82 1 1 0 0 0-.82.114A2.973 2.973 0 0 1 11 14a3 3 0 0 1-3-3Z" />
         </svg> --}}
-            <svg id="Notification" class="fill-current text-dark-primary" width="22" height="22" viewBox="0 0 24 24"
-                version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <svg id="Notification"
+                @if ($isHome) :class="scrolled ? 'text-primary' :
+            'text-gray-200 hover:text-white'" @endif
+                class="fill-current @if ($isHome) {{ 'text-gray-200' }} @else{{ 'text-primary' }} @endif"
+                width="22" height="22" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g stroke="none" stroke-width="1.5" fill="none" fill-rule="evenodd">
                     <g id="Notification" transform="translate(3.000000, 1.000000)" fill="currentColor">
                         <path
@@ -28,7 +30,7 @@
                 </div>
             @endif
         </button>
-        <div class="origin-top-right z-10 absolute top-full -mr-48 sm:mr-0 min-w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 py-1.5 rounded-lg shadow-lg overflow-hidden mt-1 right-0"
+        <div class="origin-top-right z-10 absolute -mr-48 sm:mr-0 min-w-80 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 py-1.5 rounded-lg shadow-lg overflow-hidden mt-1 top-12 right-0"
             @click.outside="open = false" @keydown.escape.window="open = false" x-show="open"
             x-transition:enter="transition ease-out duration-200 transform"
             x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
@@ -59,7 +61,8 @@
                                 <span
                                     class="block font-medium text-sm text-gray-800 dark:text-gray-100">{{ $notification->data['title'] }}📣</span>
 
-                                <span class="block text-sm mb-2">{{ $notification->data['message'] }}</span>
+                                <span
+                                    class="block text-dark-primary text-sm mb-2">{{ $notification->data['message'] }}</span>
                                 <span
                                     class="block text-xs font-medium text-gray-400 dark:text-gray-500">{{ $notification->created_at->diffForHumans() }}</span>
                             </div>

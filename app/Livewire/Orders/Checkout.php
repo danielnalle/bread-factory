@@ -9,6 +9,7 @@ use App\Models\Customer;
 use App\Models\Order;
 use App\Models\User;
 use App\Notifications\OrderNotification;
+use App\Notifications\OrderStatusNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
@@ -76,8 +77,10 @@ class Checkout extends Component
 
             Cart::where('id', $activeCart)->update(['is_active' => false]);
 
-            $userAdmin = User::where('role', '!=', 'customer')->get();
-            Notification::send($userAdmin, new OrderNotification($order, 'Pesanan Baru', 'membuat pesanan baru.'));
+            $userPabrik = User::where('role', '!=', 'customer')->get();
+            Notification::send($userPabrik, new OrderNotification($order, 'Pesanan Baru', 'membuat pesanan baru.'));
+            $userOrder = User::where('id', $this->user->id)->get();
+            Notification::send($userOrder, new OrderStatusNotification($order, 'Pesanan Baru', 'berhasil buat.'));
             DB::commit();
             return redirect()->route('validation');
         } catch (\Throwable $th) {

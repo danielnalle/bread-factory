@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Landing;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class Notification extends Component
+class LandingNotification extends Component
 {
-
     public $notifications;
-    public function mount()
+    public $isHome;
+    public function mount($home)
     {
+        $this->isHome = $home;
         $this->loadNotifications();
     }
 
     public function markAsReadAll()
     {
-        $notification = Auth::user()->notifications->where('type', 'App\Notifications\OrderNotification');
+        $notification = Auth::user()->notifications->where('type', 'App\Notifications\OrderStatusNotification');
         if ($notification) {
             $notification->markAsRead();
             $this->loadNotifications();
@@ -37,17 +38,18 @@ class Notification extends Component
         $notif = Auth::user()->notifications->find($notification['id']);
         if ($notif) {
             $notif->markAsRead();
-            return redirect()->route('orders.detail', $notification['data']['no_order']);
+            return redirect()->route('my-account.orders.detail', $notification['data']['order']['cart_id']);
         }
     }
 
     public function loadNotifications()
     {
-        $this->notifications = Auth::user()->unreadNotifications->where('type', 'App\Notifications\OrderNotification')->take(5);
+        $this->notifications = Auth::user()->unreadNotifications->where('type', 'App\Notifications\OrderStatusNotification')->take(5);
     }
+
     public function render()
     {
         $this->loadNotifications();
-        return view('livewire.notification');
+        return view('livewire.landing.landing-notification');
     }
 }
