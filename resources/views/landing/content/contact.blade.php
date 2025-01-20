@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <section id="contact" class="px-5 md:px-24 xl:px-44 w-full pt-[64px] bg-[#F5F5F5]">
+    <section id="contact" class="px-5 md:px-24 xl:px-44 w-full pt-[40px] md:pt-[64px] bg-[#F5F5F5]">
         <div class="flex flex-col lg:flex-row lg:justify-between gap-10 py-14">
             <div class="max-w-xl">
                 <h1 class="text-2xl sm:text-3xl text-start md:text-4xl font-main text-primary mb-5 font-semibold">
@@ -9,7 +9,7 @@
                     Kami siap membantu menjawab pertanyaan atau masukan. Hubungi kami, dan tim kami akan segera
                     merespons.
                 </p>
-                <div class="flex items-center gap-2 mb-7">
+                <div class="flex items-center gap-2 mb-3 md:mb-7">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="w-5 sm:w-auto"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -18,7 +18,7 @@
                     </svg>
                     <span class="text-sm sm:text-base font-medium text-dark-primary">+62 812-3456-7890</span>
                 </div>
-                <div class="flex items-center gap-2 mb-7">
+                <div class="flex items-center gap-2 mb-3 md:mb-7">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="w-5 sm:w-auto"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -37,7 +37,7 @@
 
                     <span class="text-sm sm:text-base font-medium text-dark-primary">breadfactorypbl@gmail.com</span>
                 </div>
-                <div class="flex items-center gap-2 mb-7">
+                <div class="flex items-center gap-2 mb-3 md:mb-7">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="w-5 sm:w-auto"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"

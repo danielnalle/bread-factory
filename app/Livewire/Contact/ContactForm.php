@@ -34,11 +34,15 @@ class ContactForm extends Component
             'pesan' => $this->pesan,
         ];
 
-        Mail::to('breadfactorypbl@gmail.com')->send(new ContactUsMail($details));
+        try {
+            Mail::to('breadfactorypbl@gmail.com')->send(new ContactUsMail($details));
 
-        flash('Pesan Anda telah terkirim!', 'success');
+            $this->dispatch("alert", ['type' => 'success', 'message' => "Pesan anda berhasil dikirim!"]);
+        } catch (\Exception $e) {
+            $this->dispatch("alert", ['type' => 'error', 'message' => "Pesan anda gagal dikirim!"]);
+        }
+
         $this->reset();
-        return redirect()->route('contact');
     }
 
     public function render()

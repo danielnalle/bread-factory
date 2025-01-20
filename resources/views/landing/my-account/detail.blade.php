@@ -5,25 +5,57 @@
             <!-- Header -->
             <div class="bg-white px-3 sm:px-5 py-3 sm:py-5 shadow-sm rounded-lg mb-5">
                 <h1 class="text-primary font-main text-xl sm:text-2xl font-semibold pb-3 border-b">Checkout</h1>
-                <div class="mt-5">
-                    <h3 class="font-medium text-sm sm:text-base text-primary mb-2">Alamat Pengiriman</h3>
-                    <div class="flex gap-5 items-center">
-                        <div class="flex flex-wrap gap-2">
-                            <p class="text-sm sm:text-base font-semibold text-dark-primary">
-                                {{ $customer_name }} ({{ $customer->phone }})
-                            </p>
-                            <p class="text-sm sm:text-base font-medium text-dark-secondary">{{ $customer->address }}</p>
+                <div class="flex flex-wrap gap-2 md:gap-10">
+                    <div class="w-full md:w-1/2">
+                        <div class="mt-5">
+                            <h3 class="font-medium text-sm sm:text-base text-primary mb-2">Alamat Pengiriman</h3>
+                            <div class="flex gap-5 items-center">
+                                <div class="flex flex-wrap gap-2">
+                                    <p class="text-sm sm:text-base font-semibold text-dark-primary">
+                                        {{ $customer_name }} ({{ $customer->phone }})
+                                    </p>
+                                    <p class="text-sm sm:text-base font-medium text-dark-secondary">
+                                        {{ $customer->address }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <label for="catatan"
+                                class="block mb-2.5 text-base font-medium text-primary dark:text-white">Catatan</label>
+                            <textarea name="catatan" disabled
+                                class="border border-gray-300 bg-gray-100 text-dark-primary text-sm rounded-lg focus:ring-primary
+                        focus:border-primary w-full block p-2.5 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600
+                        dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                                id="catatan" rows="4" maxlength="1000">{{ $order->note }}</textarea>
                         </div>
                     </div>
-                </div>
-                <div class="mt-5">
-                    <label for="catatan"
-                        class="block mb-2.5 text-base font-medium text-primary dark:text-white">Catatan</label>
-                    <textarea name="catatan" disabled
-                        class="border border-gray-300 bg-gray-100 text-dark-primary text-sm rounded-lg focus:ring-primary
-                        focus:border-primary w-full md:w-1/2 block p-2.5 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600
-                        dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                        id="catatan" rows="4" maxlength="1000">{{ $order->note }}</textarea>
+                    <div>
+                        <div class="mt-5">
+                            <h3 class="font-medium text-sm sm:text-base text-primary mb-2">No Pesanan</h3>
+                            <div class="flex gap-5 items-center">
+                                <p class="text-sm sm:text-base text-dark-secondary">
+                                    {{ $order->no_order }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="font-medium text-sm sm:text-base text-primary mb-2">Status Pesanan</h3>
+                            <div class="flex gap-5 items-center">
+                                <p class="text-sm sm:text-base text-dark-secondary">
+                                    {{ $order->orderStatus->name }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="font-medium text-sm sm:text-base text-primary mb-2">Status Pembayaran</h3>
+                            <div class="flex gap-5 items-center">
+                                <p class="text-sm sm:text-base text-dark-secondary">
+                                    {{ $order->paymentStatus->name }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="bg-white px-3 sm:px-5 py-3 sm:py-5 shadow-sm rounded-lg mb-5">

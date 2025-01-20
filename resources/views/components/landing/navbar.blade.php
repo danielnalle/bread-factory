@@ -102,55 +102,9 @@
                             </ul>
                         </div>
                     </div>
-                    {{-- <button type="button"
-                        class="flex text-sm rounded-full md:me-0 focus:ring-2 focus:ring-primary dark:focus:ring-gray-600"
-                        id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-                        data-dropdown-placement="bottom-end">
-                        <span class="sr-only">Open user menu</span>
-                        @if (auth()->user()->image)
-                            <img class="w-8 h-8 rounded-full object-cover border"
-                                src="{{ Storage::url(auth()->user()->image) }}" alt="user photo">
-                        @else
-                            <img class="w-8 h-8 rounded-full object-cover border"
-                                src="{{ Storage::url('user-profile/default.jpg') }}" alt="user photo">
-                        @endif
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div class="z-50 hidden text-base w-full max-w-44 list-none" id="user-dropdown">
-                        <div class="bg-white mt-2 divide-y divide-gray-100 rounded-lg shadow-lg">
-                            <div class="px-4 pb-2 pt-3">
-                                <span class="block text-sm font-medium text-dark-primary dark:text-white">Hy,
-                                    {{ auth()->user()->name }}</span>
-                            </div>
-                            <ul class="py-2" aria-labelledby="user-menu-button">
-                                @if (auth()->user()->role != 'customer')
-                                    <li>
-                                        <a href="{{ route('dashboard') }}"
-                                            class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Dashboard</a>
-                                    </li>
-                                @endif
-                                <li>
-                                    <a href="{{ route('my-account.account') }}"
-                                        class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Akun</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('my-account.orders') }}"
-                                        class="block px-4 py-2 text-sm font-medium text-primary hover:bg-gray-100">Pesanan</a>
-                                </li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="POST" class="w-full">
-                                        @csrf
-                                        <button type="submit"
-                                            class="px-4 py-2 text-sm font-medium w-full text-start text-primary hover:bg-gray-100">Log
-                                            Out</button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> --}}
                 @else
                     <a href="{{ route('login') }}"
-                        class="text-white text-sm bg-primary tracking-wide ml-6 hover:bg-primary-hover font-normal rounded-full px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
+                        class="text-white text-sm bg-primary tracking-wide hover:bg-primary-hover font-normal rounded-full px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="mr-2"
                             xmlns="http://www.w3.org/2000/svg">
                             <mask id="path-1-outside-1_470_5810" maskUnits="userSpaceOnUse" x="1.5" y="8.375"
