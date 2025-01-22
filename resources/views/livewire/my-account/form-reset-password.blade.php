@@ -1,15 +1,17 @@
 <form wire:submit='save'>
-    <div class="mb-5">
-        <label for="currPass"
-            class="block mb-2.5 text-xs sm:text-sm font-medium text-dark-secondary dark:text-white">Password
-            Saat Ini</label>
-        <input type="password" id="currPass"
-            class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full p-3 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-            wire:model='currPass' />
-        @error('currPass')
-            <span class="text-red-600 text-sm">{{ $message }}</span>
-        @enderror
-    </div>
+    @if (auth()->user()->password)
+        <div class="mb-5">
+            <label for="currPass"
+                class="block mb-2.5 text-xs sm:text-sm font-medium text-dark-secondary dark:text-white">Password
+                Saat Ini</label>
+            <input type="password" id="currPass"
+                class=" border border-gray-300 text-dark-primary text-sm sm:text-base rounded-lg focus:ring-primary focus:border-primary block w-full p-3 placeholder-dark-secondary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+                wire:model='currPass' />
+            @error('currPass')
+                <span class="text-red-600 text-sm">{{ $message }}</span>
+            @enderror
+        </div>
+    @endif
     <div class="mb-5">
         <label for="password"
             class="block mb-2.5 text-xs sm:text-sm font-medium text-dark-secondary dark:text-white">Password

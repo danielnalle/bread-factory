@@ -31,7 +31,7 @@
         @enderror
     </div>
     <button type="submit"
-        class="text-white bg-primary w-full hover:bg-primary-hover font-normal rounded-lg text-sm sm:text-base py-3 justify-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover tracking-widest mb-6">
+        class="text-white bg-primary w-full hover:bg-primary-hover font-normal mb-6 rounded-lg text-sm sm:text-base py-3 justify-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover tracking-widest">
         SIGN UP
     </button>
 

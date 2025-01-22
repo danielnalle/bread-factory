@@ -58,6 +58,26 @@
         class="text-white bg-primary w-full hover:bg-primary-hover font-normal rounded-lg text-sm sm:text-base py-3 justify-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover tracking-widest">
         SIGN IN
     </button>
+    <p class="text-center my-2">Atau</p>
+    <a href="{{ route('login.google') }}"
+        class="text-dark-primary border bg-white w-full hover:bg-gray-100 font-normal rounded-lg text-sm sm:text-base py-3 justify-center inline-flex items-center">
+        <svg width="20" class="me-2" viewBox="0 0 90 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M89.2935 47.2632C89.2935 44.1669 89.0402 41.082 88.5106 38.0291H45.6434V55.5161H70.1928C69.178 61.1578 65.9023 66.1488 61.1167 69.3115V80.6721H75.7728C84.3529 72.7825 89.2935 61.0914 89.2935 47.2632Z"
+                fill="#4285F4" />
+            <path
+                d="M45.6437 91.6469C57.9078 91.6469 68.2414 87.625 75.7731 80.6831L61.117 69.3225C57.0364 72.0884 51.7868 73.664 45.6437 73.664C33.7887 73.664 23.7305 65.676 20.1245 54.9212H5.03806V66.6229C12.7575 81.9726 28.462 91.6469 45.6437 91.6469Z"
+                fill="#34A853" />
+            <path
+                d="M20.1356 54.9209C18.228 49.2906 18.228 43.175 20.1356 37.534V25.843H5.03842C-1.41369 38.6793 -1.41369 53.797 5.03842 66.634L20.1356 54.9209Z"
+                fill="#FBBC04" />
+            <path
+                d="M45.6437 18.8025C52.1287 18.7033 58.3816 21.1388 63.0795 25.6124L76.06 12.654C67.8331 4.94142 56.9372 0.699022 45.6437 0.820342C28.462 0.820342 12.7469 10.5054 5.03806 25.8436L20.1352 37.5453C23.7305 26.7798 33.7887 18.8025 45.6437 18.8025Z"
+                fill="#EA4335" />
+        </svg>
+
+        Masuk dengan Google
+    </a>
 
     {{-- Login Customer --}}
     <div class="font-normal text-sm sm:text-base text-dark-secondary text-center mt-6">
