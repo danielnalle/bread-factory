@@ -26,16 +26,20 @@ class FormResetPassword extends Component
     public function save()
     {
         $rules = [
-            'currPass' => 'required',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required',
         ];
+        if ($this->user->password) {
+            $rules['currPass'] = 'required';
+        }
         $this->validate($rules);
 
-        // Verifikasi password lama
-        if (!Hash::check($this->currPass, $this->user->password)) {
-            flash('Password lama tidak sesuai', 'error');
-            return redirect()->route('my-account.account');
+        if ($this->user->password) {
+            // Verifikasi password lama
+            if (!Hash::check($this->currPass, $this->user->password)) {
+                flash('Password lama tidak sesuai', 'error');
+                return redirect()->route('my-account.account');
+            }
         }
 
         $this->user->update([
