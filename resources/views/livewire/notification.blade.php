@@ -57,7 +57,7 @@
                                 wire:click='goToDetail({{ $notification }})' @click="open = false" @focus="open = true"
                                 @focusout="open = false">
                                 <span
-                                    class="block font-medium text-sm text-gray-800 dark:text-gray-100">{{ $notification->data['title'] }}📣</span>
+                                    class="block font-medium text-sm text-gray-800 dark:text-gray-100">{{ $notification->data['title'] }}</span>
 
                                 <span class="block text-sm mb-2">{{ $notification->data['message'] }}</span>
                                 <span

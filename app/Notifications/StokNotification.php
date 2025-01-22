@@ -7,22 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class OrderNotification extends Notification
+class StokNotification extends Notification
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public $order;
+    public $bread;
     public $title;
-    public $message;
-    public function __construct($order, $title, $message)
+    public function __construct($bread, $title)
     {
-        $this->order = $order;
+        $this->bread = $bread;
         $this->title = $title;
-        $this->message = $message;
     }
+
 
     /**
      * Get the notification's delivery channels.
@@ -53,11 +52,9 @@ class OrderNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'order_id' => $this->order->id,
-            'user_id' => $this->order->cart->user->id,
-            'title' => $this->title . '📣',
-            'message' => $this->order->cart->user->name . ' ' . $this->message,
-            'no_order' => $this->order->no_order,
+            'bread' => $this->bread,
+            'title' => $this->title . '⚠️',
+            'message' => 'Stok ' . strtolower($this->bread->name) . ' sudah habis! Harap segera di restock.',
         ];
     }
 }

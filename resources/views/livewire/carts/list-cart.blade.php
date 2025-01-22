@@ -204,10 +204,10 @@
                                 class="text-sm">{{ number_format($totalPrice, 0, ',', '.') }}</span>
                         </p>
                     </div>
-                    <a href="{{ route('checkout') }}"
+                    <button type="button" wire:click='goToCheckout'
                         class="text-white leading-relaxed w-fit text-sm md:text-base bg-primary font-medium hover:bg-primary-hover rounded-full px-7 py-2 text-center inline-flex justify-center items-center dark:bg-primary dark:hover:bg-primary-hover ">
                         Checkout ({{ count($carts) }})
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -226,10 +226,10 @@
                             class="text-base">{{ number_format($totalPrice, 0, ',', '.') }}</span>
                     </span>
                 </div>
-                <a href="{{ route('checkout') }}"
+                <button type="button" wire:click='goToCheckout'
                     class="text-white leading-relaxed text-sm md:text-base bg-primary font-medium hover:bg-primary-hover rounded-full px-7 py-2 text-center inline-flex justify-center items-center dark:bg-primary dark:hover:bg-primary-hover ">
                     Checkout
-                </a>
+                </button>
             </div>
         </div>
     </div>

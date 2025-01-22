@@ -36,14 +36,19 @@ class Notification extends Component
     {
         $notif = Auth::user()->notifications->find($notification['id']);
         if ($notif) {
-            $notif->markAsRead();
-            return redirect()->route('orders.detail', $notification['data']['no_order']);
+            if ($notif->type != "App\Notifications\StokNotification") {
+                $notif->markAsRead();
+                return redirect()->route('orders.detail', $notification['data']['no_order']);
+            } else {
+                $notif->markAsRead();
+                return redirect()->route('breads.edit', $notification['data']['bread']['id']);
+            }
         }
     }
 
     public function loadNotifications()
     {
-        $this->notifications = Auth::user()->unreadNotifications->where('type', 'App\Notifications\OrderNotification')->take(5);
+        $this->notifications = Auth::user()->unreadNotifications->where('type', '!=', 'App\Notifications\OrderStatusNotification')->take(5);
     }
     public function render()
     {

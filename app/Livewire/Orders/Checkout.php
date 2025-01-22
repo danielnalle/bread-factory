@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\User;
 use App\Notifications\OrderNotification;
 use App\Notifications\OrderStatusNotification;
+use App\Notifications\StokNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
@@ -46,7 +47,7 @@ class Checkout extends Component
             DB::beginTransaction();
 
             $activeCart = $this->cart->id;
-
+            $cartItems = CartDetail::where('cart_id', $activeCart)->get();
             // Ambil nomor pesanan terakhir
             $lastOrder = Cart::where('user_id', Auth::id())->where('is_active', false)
                 ->latest('id')
@@ -65,13 +66,15 @@ class Checkout extends Component
                 'note' => $this->note,
             ]);
 
-            $cartItems = CartDetail::where('cart_id', $activeCart)->get();
-
             foreach ($cartItems as $item) {
                 $bread = Bread::find($item->bread_id);
                 if ($bread) {
                     $bread->quantity -= $item->quantity;
                     $bread->save();
+                    if ($bread->quantity < $bread->min_order) {
+                        $userAdmin = User::where('role', 'admin')->get();
+                        Notification::send($userAdmin, new StokNotification($bread, 'Peringatan Stok'));
+                    }
                 }
             }
 

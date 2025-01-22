@@ -26,7 +26,13 @@
                             <p>Stok tersedia</p>
                         </div>
                         <div class="w-full">
-                            <p>{{ $bread->quantity }}</p>
+                            <p>
+                                @if ($bread->quantity < $bread->min_order)
+                                    {{ 'Habis' }}
+                                @else
+                                    {{ $bread->quantity }}
+                                @endif
+                            </p>
                         </div>
                     </li>
                     <li class="flex gap-2 w-full">

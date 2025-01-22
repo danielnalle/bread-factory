@@ -53,9 +53,14 @@ class AddToCart extends Component
             return;
         }
 
-        if ($this->amount > $this->bread->quantity) {
-            $this->errMessage = 'Jumlah produk tidak boleh melebihi dari stok';
+        if ($this->bread->quantity < $this->bread->min_order) {
+            $this->errMessage = 'Stok roti habis!';
             return;
+        } else {
+            if ($this->amount > $this->bread->quantity) {
+                $this->errMessage = 'Jumlah produk tidak boleh melebihi dari stok';
+                return;
+            }
         }
 
         // Cari atau buat cart untuk user
@@ -69,6 +74,10 @@ class AddToCart extends Component
             ->first();
 
         if ($cartDetail) {
+            if ($cartDetail->quantity + $this->amount > $this->bread->quantity) {
+                $this->errMessage = 'Jumlah produk dikeranjang akan melebih stok! Periksa keranjang Sekarang';
+                return;
+            }
             // Jika produk sudah ada, tambahkan quantity
             $cartDetail->update([
                 'quantity' => $cartDetail->quantity += $this->amount,

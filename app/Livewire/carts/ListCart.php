@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Carts;
 
+use App\Models\Bread;
 use App\Models\Cart;
 use App\Models\CartDetail;
 use Illuminate\Support\Facades\Auth;
@@ -65,6 +66,23 @@ class ListCart extends Component
             $this->loadCart();
         }
         $this->calculateTotalPrice();
+    }
+
+    public function goToCheckout()
+    {
+        $activeCart = $this->cart->id;
+        $cartItems = CartDetail::where('cart_id', $activeCart)->get();
+        $breads = Bread::whereIn('id', $cartItems->pluck('bread_id'))->get();
+
+        foreach ($cartItems as $item) {
+            $bread = $breads->firstWhere('id', $item->bread_id);
+            if ($bread && $item->quantity > $bread->quantity) {
+                $this->errorsPerBread[$item->id] = 'Jumlah produk tidak boleh melebihi dari stok';
+                return;
+            }
+        }
+
+        return redirect()->route('checkout');
     }
 
     public function removeItem($id)
