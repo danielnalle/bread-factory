@@ -1,12 +1,8 @@
 <?php
-
-
 // Controllers
-use App\Models\User;
 use App\Models\Order;
 use App\Models\Customer;
 use App\Models\CartDetail;
-use App\Models\OrderStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -14,16 +10,16 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BreadController;
 use App\Http\Controllers\BreadTypeController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Middleware\EnsureUserIsAdmin;
-use App\Http\Middleware\EnsureUserIsCustomer;
 use App\Http\Middleware\EnsureUserIsTeam;
 use App\Models\Bread;
 use App\Models\Cart;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/utility/404', function () {
     return view('errors/404');
@@ -33,6 +29,10 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
 });
+
+Route::get('/auth/redirect', [SocialiteController::class, 'redirect'])->name('login.google');
+
+Route::get('/auth/google/callback', [SocialiteController::class, 'callback'])->name('auth.callback');
 
 Route::get('/email/verify', function (Request $request) {
     if ($request->user()->hasVerifiedEmail()) {
@@ -130,6 +130,7 @@ Route::get('/breads/detail/{bread}', function (Bread $bread) {
 })->name('detail-breads');
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/cart', function () {
