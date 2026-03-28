@@ -1,5 +1,75 @@
 import "./bootstrap";
 import "flowbite";
+import Swal from "sweetalert2";
+
+window.Swal = Swal;
+
+window.addEventListener("alert", (event) => {
+    let data = event.detail[0];
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        },
+    });
+    Toast.fire({
+        icon: data.type,
+        title: data.message,
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const message = localStorage.getItem("flash_message");
+    const status = localStorage.getItem("flash_status");
+    if (message) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            },
+        });
+        Toast.fire({
+            icon: status,
+            title: message,
+        });
+        localStorage.removeItem("flash_message");
+        localStorage.removeItem("flash_status");
+    }
+});
+
+window.addEventListener("deleteConfirm", (event) => {
+    Swal.fire({
+        html: document.getElementById("popup-modal").innerHTML,
+        showConfirmButton: false,
+        customClass: {
+            popup: "swal2-no-padding",
+        },
+        backdrop: true,
+        willOpen: () => {
+            document.querySelectorAll(".data-modal-hide").forEach((button) => {
+                button.addEventListener("click", () => Swal.close());
+            });
+
+            const confirmButton = document.querySelectorAll(".confirm-delete");
+            confirmButton.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    Livewire.dispatch(event.detail[0].trigger);
+                    Swal.close();
+                });
+            });
+        },
+    });
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     // Light switcher
@@ -15,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (n !== i) {
                         el.checked = checked;
                     }
+                    s;
                 });
                 document.documentElement.classList.add(
                     "[&_*]:!transition-none"
@@ -46,50 +117,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("alpine:init", () => {
     Alpine.data("fileUpload", () => ({
-        fileName: "",
-        fileSrc: "",
-
-        // Handle "Browse" button click
         browseFile() {
-            document.getElementById("fileInput").click();
+            document.getElementById("image").click();
         },
 
-        // Handle Drag Over
         dragOverHandler(event) {
-            event.preventDefault();
             event.currentTarget.classList.add("border-primary");
         },
 
-        // Handle Drag Leave
         dragLeaveHandler(event) {
-            event.preventDefault();
             event.currentTarget.classList.remove("border-primary");
         },
 
-        // Handle File Drop
         dropHandler(event) {
-            event.preventDefault();
             event.currentTarget.classList.remove("border-primary");
-            const files = event.dataTransfer.files;
-            if (files.length > 0) {
-                this.fileName = files[0].name;
-                this.displayFile(files[0]);
+        },
+    }));
+});
+document.addEventListener("alpine:init", () => {
+    Alpine.data("userImgUpload", () => ({
+        browseFile() {
+            document.getElementById("imgProfile").click();
+        },
+        submitForm() {
+            console.log("behasil");
+            const submitButton = document.getElementById("btn-save");
+
+            if (submitButton) {
+                // submitButton.click();
+                console.log("button di click");
             }
         },
+    }));
+});
 
-        // Handle File Selection via Input
-        handleFiles(event) {
-            const files = event.target.files;
-            if (files.length > 0) {
-                this.fileName = files[0].name;
-                this.displayFile(files[0]);
-            }
+document.addEventListener("alpine:init", () => {
+    Alpine.data("stickyHandler", () => ({
+        checkSticky() {
+            const stickyElements = [
+                document.getElementById("sticky-element"),
+                document.getElementById("sticky-element-mobile"),
+            ];
+            stickyElements.forEach((element) => {
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.bottom >= window.innerHeight) {
+                        element.classList.add("shadow-custom-sticky");
+                        element.classList.remove("shadow-sm");
+                    } else {
+                        element.classList.remove("shadow-custom-sticky");
+                        element.classList.add("shadow-sm");
+                    }
+                }
+            });
         },
-
-        // Display File (Preview)
-        displayFile(file) {
-            this.fileName = file.name;
-            this.fileSrc = URL.createObjectURL(file);
+        init() {
+            window.addEventListener("scroll", this.checkSticky);
+            this.checkSticky(); // Check on load
         },
     }));
 });

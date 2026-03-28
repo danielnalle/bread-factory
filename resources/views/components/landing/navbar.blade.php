@@ -1,39 +1,110 @@
-<div
-    class="bg-gradient-to-b from-[rgba(0,0,0,0.3)] via-[rgba(0,0,0,0.2)] via-[rgba(0,0,0,0.1)] to-[rgba(0,0,0,0)] w-full z-[999] fixed top-0 left-0">
+<div x-data="{ scrolled: false }" x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 64)" @if (in_array(Request::segment(1), ['']))
+    :class="scrolled ? 'bg-white text-primary border-b-2 shadow-sm' :
+        'bg-gradient-to-b from-[rgba(0,0,0,0.4)] via-[rgba(0,0,0,0.2)] to-[rgba(0,0,0,0)] border-none'"
+    @endif
+    class="w-full z-40 @if (!in_array(Request::segment(1), ['']))
+{{ 'bg-white border-b-2 shadow-sm' }}
+@endif text-white fixed top-0 left-0 right-0 transition-all duration-300">
 
     <nav class="px-5 md:px-24 xl:px-44">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
-            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <div class="max-w-screen-xl relative flex flex-wrap items-center justify-between mx-auto py-4">
+            <a href="/" class="flex items-center p-0">
                 <span
-                    class="self-center text-2xl font-main text-gray-200 hover:text-white tracking-widest font-bold whitespace-nowrap dark:text-white">Bakeru</span>
+                    @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'text-primary' :
+                    'text-gray-200 hover:text-white'" @endif
+                    class="text-2xl font-main @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @endif tracking-widest font-bold whitespace-nowrap dark:text-white">Bakeru</span>
             </a>
-            <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                <div class="flex items-center justify-between">
+            <div class="flex items-center md:order-2">
+                @if (auth()->user())
+                    @livewire('landing.landing-notification', [
+                        'home' => in_array(Request::segment(1), ['']),
+                    ])
+                @endif
+                <a href="{{ route('carts') }}"
+                    @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'text-primary' :
+                    'text-gray-200 hover:text-white'" @endif
+                    class="flex relative items-center mr-4 xs:mr-5 justify-between fill-current @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @else{{ 'text-gray-200' }} @endif">
                     <svg width="24" height="24" viewBox="0 0 28 28" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M7.38236 9.73873L8.08586 18.1061C8.13719 18.7501 8.66336 19.2331 9.30619 19.2331H9.31086H22.0404H22.0427C22.6505 19.2331 23.1697 18.7804 23.256 18.1796L24.3644 10.5274C24.39 10.3454 24.3445 10.1634 24.2337 10.0164C24.124 9.86823 23.963 9.77257 23.781 9.7469C23.5372 9.75623 13.4187 9.74223 7.38236 9.73873ZM9.30385 20.9831C7.76735 20.9831 6.46652 19.7837 6.34169 18.2496L5.27302 5.5399L3.51486 5.23657C3.03769 5.15257 2.71919 4.70107 2.80086 4.2239C2.88486 3.74673 3.34569 3.4364 3.81236 3.51107L6.23902 3.93107C6.62986 3.9999 6.92735 4.32424 6.96119 4.7209L7.23535 7.98874C23.8907 7.99574 23.9444 8.0039 24.0249 8.01324C24.6747 8.10774 25.2464 8.44724 25.636 8.9699C26.0257 9.4914 26.189 10.1342 26.0957 10.7782L24.9885 18.4292C24.7797 19.8852 23.515 20.9831 22.045 20.9831H22.0392H9.31319H9.30385Z"
-                            fill="white" />
+                            fill="currentColor" />
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M20.1688 14.051H16.9348C16.4506 14.051 16.0598 13.659 16.0598 13.176C16.0598 12.693 16.4506 12.301 16.9348 12.301H20.1688C20.6518 12.301 21.0438 12.693 21.0438 13.176C21.0438 13.659 20.6518 14.051 20.1688 14.051Z"
-                            fill="white" />
+                            fill="currentColor" />
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M9.36172 26.2976C8.52872 26.2976 7.85205 25.6198 7.85205 24.7868C7.85205 23.9538 8.52872 23.2771 9.36172 23.2771C10.1959 23.2771 10.8737 23.9538 10.8737 24.7868C10.8737 25.6198 10.1959 26.2976 9.36172 26.2976Z"
-                            fill="white" />
+                            fill="currentColor" />
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M21.9618 26.2976C21.1288 26.2976 20.4521 25.6198 20.4521 24.7868C20.4521 23.9538 21.1288 23.2771 21.9618 23.2771C22.796 23.2771 23.4738 23.9538 23.4738 24.7868C23.4738 25.6198 22.796 26.2976 21.9618 26.2976Z"
-                            fill="white" />
+                            fill="currentColor" />
                     </svg>
+                    @if (auth()->user() &&
+                            auth()->user()->carts()->where('is_active', true)->withCount('cart_details')->get()->sum('cart_details_count') != 0)
+                        <div
+                            class="absolute flex items-center justify-center px-2 h-[24px] text-[12px] font-medium bg-primary text-white rounded-full -top-3 start-3 dark:border-gray-900">
+                            {{ auth()->user()->carts()->where('is_active', true)->withCount('cart_details')->get()->sum('cart_details_count') }}
+                        </div>
+                    @endif
+                </a>
+                @if (auth()->user())
+                    <div class="relative inline-flex mr-4 xs:mr-5 md:mr-0" x-data="{ open: false }">
+                        <button class="inline-flex justify-center items-center group" aria-haspopup="true"
+                            @click.prevent="open = !open" :aria-expanded="open">
+                            @if (auth()->user()->image)
+                                <img class="w-8 h-8 rounded-full border object-cover"
+                                    src="{{ Storage::url(auth()->user()->image) }}" width="32" height="32"
+                                    alt="User Profile" />
+                            @else
+                                <img class="w-8 h-8 rounded-full border object-cover"
+                                    src="{{ Storage::url('user-profile/default.jpg') }}" width="32" height="32"
+                                    alt="User Profile" />
+                            @endif
 
-                    {{-- <button type="button"
-                        class="flex ml-5 text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                        id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-                        data-dropdown-placement="bottom">
-                        <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full" src="{{ asset('images/user-36-05.jpg') }}" alt="user photo">
-                    </button> --}}
-                    <button type="submit"
-                        class="text-white text-sm bg-primary tracking-wide ml-6 hover:bg-primary-hover font-normal rounded-full px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
+                        </button>
+                        <div class="origin-top-right z-10 absolute top-12 min-w-44 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 py-2 rounded-lg shadow-lg overflow-hidden mt-1 right-0"
+                            @click.outside="open = false" @keydown.escape.window="open = false" x-show="open"
+                            x-transition:enter="transition ease-out duration-200 transform"
+                            x-transition:enter-start="opacity-0 -translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-out duration-200" x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0" x-cloak>
+                            <div class="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200 dark:border-gray-700/60">
+                                <div class="font-medium text-dark-primary text-sm dark:text-gray-100">Hy,
+                                    {{ Str::limit(auth()->user()->name, 14, '...') }}
+                                </div>
+                            </div>
+                            <ul class="flex flex-col w-full">
+                                @if (auth()->user()->role != 'customer')
+                                    <li class="w-full cursor-pointer">
+                                        <a class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3"
+                                            href="{{ route('dashboard') }}" @click="open = false" @focus="open = true"
+                                            @focusout="open = false">Dashboard</a>
+                                    </li>
+                                @endif
+                                <li class="w-full cursor-pointer">
+                                    <a class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3"
+                                        href="{{ route('my-account.account') }}" @click="open = false"
+                                        @focus="open = true" @focusout="open = false">Akun</a>
+                                </li>
+                                <li class="w-full cursor-pointer">
+                                    <a class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3"
+                                        href="{{ route('my-account.orders') }}" @click="open = false"
+                                        @focus="open = true" @focusout="open = false">Pesanan</a>
+                                </li>
+                                <li class="w-full cursor-pointer">
+                                    <form action="{{ route('logout') }}" method="POST" class="w-full">
+                                        @csrf
+                                        <button type="submit" @focus="open = true" @focusout="open = false"
+                                            class="font-medium text-sm text-primary hover:text-primary-hover flex items-center py-1.5 px-3">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                @else
+                    <a href="{{ route('login') }}"
+                        class="text-white text-sm bg-primary tracking-wide hover:bg-primary-hover font-normal rounded-full px-5 py-2.5 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-hover ">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="mr-2"
                             xmlns="http://www.w3.org/2000/svg">
                             <mask id="path-1-outside-1_470_5810" maskUnits="userSpaceOnUse" x="1.5" y="8.375"
@@ -74,67 +145,50 @@
                                 fill="white" mask="url(#path-5-outside-3_470_5810)" />
                         </svg>
                         Login
-                    </button>
-                </div>
-                <!-- Dropdown menu -->
-                {{-- <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-                    id="user-dropdown">
-                    <div class="px-4 py-3">
-                        <span class="block text-sm text-gray-900 dark:text-white">Yogi Pradnyana</span>
-                        <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">Administrator</span>
-                    </div>
-                    <ul class="py-2" aria-labelledby="user-menu-button">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                out</a>
-                        </li>
-                    </ul>
-                </div> --}}
+                    </a>
+                @endif
                 <button data-collapse-toggle="navbar-user" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden dark:text-gray-400"
+                    @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'text-primary' :
+                    'text-gray-200 hover:text-white'" @endif
+                    class="inline-flex items-center w-8 h-8 justify-center fill-current text-sm @if (!in_array(Request::segment(1), [''])) {{ 'text-primary' }} @endif rounded-lg md:hidden"
                     aria-controls="navbar-user" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 17 14">
-                        <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
             </div>
-            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 bg-white bg-opacity-80 rounded-lg mt-2 md:rounded-none md:mt-0 md:bg-transparent"
+            <div class="md:items-center absolute top-20 md:static md:justify-between hidden w-full md:flex md:w-auto md:order-1 bg-white md:bg-none shadow-spread md:shadow-none rounded-lg mt-2 md:rounded-none md:mt-0 md:bg-transparent"
                 id="navbar-user">
                 <ul
-                    class="flex flex-col font-regular text-sm tracking-wide p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 ">
+                    class="flex flex-col text-base tracking-wide p-4 md:p-0 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 ">
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-white md:text-gray-200 md:hover:text-white bg-primary rounded md:bg-transparent md:p-0"
+                        <a href="{{ route('landing-page') }}"
+                            @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'md:text-primary md:hover:text-opacity-80' :
+                    'md:text-gray-200 md:hover:text-white'" @endif
+                            class="block py-2 px-3 font-normal text-primary @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @endif  @if (in_array(Request::segment(1), [''])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0"
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 md:text-gray-200 md:hover:text-white rounded md:bg-transparent md:p-0">Produk</a>
+                        <a href="{{ route('roti') }}"
+                            @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'md:text-primary md:hover:text-opacity-80' :
+                    'md:text-gray-200 md:hover:text-white'" @endif
+                            class="block py-2 px-3 text-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @endif @if (in_array(Request::segment(1), ['breads'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Roti</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 md:text-gray-200 md:hover:text-white rounded md:bg-transparent md:p-0">Tentang
+                        <a href="{{ route('about') }}"
+                            @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'md:text-primary md:hover:text-opacity-80' :
+                    'md:text-gray-200 md:hover:text-white'" @endif
+                            class="block py-2 px-3 text-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @endif @if (in_array(Request::segment(1), ['about'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Tentang
                             Kami</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 md:text-gray-200 md:hover:text-white rounded md:bg-transparent md:p-0">Kontak</a>
+                        <a href="{{ route('contact') }}"
+                            @if (in_array(Request::segment(1), [''])) :class="scrolled ? 'md:text-primary md:hover:text-opacity-80' :
+                    'md:text-gray-200 md:hover:text-white'" @endif
+                            class="block py-2 px-3 text-primary font-normal @if (!in_array(Request::segment(1), [''])) {{ 'md:text-primary md:hover:text-opacity-80' }} @endif @if (in_array(Request::segment(1), ['contact'])) {{ 'bg-primary text-white' }} @endif rounded md:bg-transparent md:p-0">Kontak</a>
                     </li>
                 </ul>
             </div>

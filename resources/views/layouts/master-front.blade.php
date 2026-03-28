@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Landing Page</title>
 
     <!-- Fonts -->
@@ -17,30 +18,68 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- Alpine JS --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Styles -->
     @livewireStyles
 </head>
 
 <body class="font-secondary antialiased">
+    @if (flash()->message)
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    },
+                });
+                Toast.fire({
+                    icon: '{{ flash()->class }}',
+                    title: "{{ flash()->message }}",
+                });
+            });
+        </script>
+    @endif
+    @if (flash()->message && flash()->class == 'add-to-cart')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "{{ flash()->message }}",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    customClass: {
+                        title: "text-xl mb-5"
+                    },
+                    didOpen: () => {
+                        document.body.style.overflow = "auto"; // Paksa scroll bar tetap terlihat
+                    }
+                });
+            });
+        </script>
+    @endif
 
-    <div class="container max-w-full relative">
+    <div class="container max-w-full relative h-screen flex flex-col">
 
 
         <x-landing.navbar />
 
-
-        <main>
+        <main class="flex-grow">
             {{ $slot }}
         </main>
 
+        <x-landing.footer />
 
 
     </div>
 
-    @livewireScriptConfig
+    @livewireScripts
 </body>
 
 </html>

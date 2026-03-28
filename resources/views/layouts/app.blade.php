@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard</title>
 
     <!-- Fonts -->
@@ -16,9 +17,6 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    {{-- Alpine JS --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Styles -->
     @livewireStyles
@@ -37,7 +35,6 @@
 
 <body class="font-secondary antialiased bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400"
     :class="{ 'sidebar-expanded': sidebarExpanded }" x-data="{ sidebarOpen: false, sidebarExpanded: localStorage.getItem('sidebar-expanded') == 'true' }" x-init="$watch('sidebarExpanded', value => localStorage.setItem('sidebar-expanded', value))">
-
     <script>
         if (localStorage.getItem('sidebar-expanded') == 'true') {
             document.querySelector('body').classList.add('sidebar-expanded');
@@ -45,6 +42,27 @@
             document.querySelector('body').classList.remove('sidebar-expanded');
         }
     </script>
+    @if (flash()->message)
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    },
+                });
+                Toast.fire({
+                    icon: '{{ flash()->class }}',
+                    title: "{{ flash()->message }}",
+                });
+            });
+        </script>
+    @endif
 
     <!-- Page wrapper -->
     <div class="flex h-[100dvh] overflow-hidden">
@@ -68,7 +86,8 @@
     </div>
 
 
-    @livewireScriptConfig
+    @livewireScripts
+
 </body>
 
 </html>

@@ -9,35 +9,18 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('admin/users/users');
+        return view('dashboard/users/users');
     }
 
     public function create()
     {
-        return view('admin/users/create');
+        return view('dashboard/users/create');
     }
-    public function edit()
+    public function edit($id)
     {
-        return view('admin/users/edit');
-    }
-
-    public function store(Request $request)
-    {
-        // Validasi data
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:employees',
-            'position' => 'required|string|max:255',
+        $user = User::where('id', $id)->first();
+        return view('dashboard/users/edit', [
+            'user' => $user,
         ]);
-
-        // Simpan data pegawai
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'position' => $request->position,
-        ]);
-
-        // Redirect dengan pesan sukses
-        return redirect()->route('admin.employees.index')->with('success', 'Pegawai berhasil ditambahkan!');
     }
 }

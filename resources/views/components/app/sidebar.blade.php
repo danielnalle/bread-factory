@@ -4,9 +4,7 @@
         :class="sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'" aria-hidden="true" x-cloak></div>
 
     <!-- Sidebar -->
-    <div id="sidebar"
-    {{-- Scroll bar sidebar --}}
-    {{-- overflow-y-scroll lg:overflow-y-auto --}}
+    <div id="sidebar" {{-- Scroll bar sidebar --}} {{-- overflow-y-scroll lg:overflow-y-auto --}}
         class="flex lg:!flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-[100dvh] no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-white dark:bg-dark-primary p-4 transition-all duration-200 ease-in-out {{ $variant === 'v2' ? 'border-r border-gray-200 dark:border-gray-700/60' : 'rounded-r-2xl shadow-sm' }}"
         :class="sidebarOpen ? 'max-lg:translate-x-0' : 'max-lg:-translate-x-64'" @click.outside="sidebarOpen = false"
         @keydown.escape.window="sidebarOpen = false">
@@ -22,7 +20,7 @@
                 </svg>
             </button>
             <!-- Logo -->
-            <a class="block" href="{{ route('admin') }}">
+            <a class="block" href="{{ route('landing-page') }}">
                 <span class=" text-2xl font-main font-extrabold dark:text-white text-primary">Bakeru</span>
             </a>
         </div>
@@ -39,11 +37,11 @@
                 <ul class="mt-3">
                     <!-- Dashboard -->
                     <li
-                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['admin'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
-                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['admin'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
-                            href="{{ route('admin') }}">
+                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['dashboard'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
+                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['dashboard'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
+                            href="{{ route('dashboard') }}">
                             <div class="flex items-center">
-                                <svg class="shrink-0 fill-current @if (in_array(Request::segment(1), ['admin'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
+                                <svg class="shrink-0 fill-current @if (in_array(Request::segment(1), ['dashboard'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
                                     width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <mask id="mask0_291_7918" style="mask-type:luminance" maskUnits="userSpaceOnUse"
@@ -132,7 +130,7 @@
                     </li>
                     <!-- Manajemen Tim -->
                     <li
-                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['users'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
+                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 @if (auth()->user()->role == 'pegawai') {{ 'hidden' }}@else {{ 'static' }} @endif last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['users'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
                         <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['users'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
                             href="{{ route('users') }}">
                             <div class="flex items-center">
@@ -162,13 +160,13 @@
                     <span class="lg:hidden lg:sidebar-expanded:block 2xl:block">Katalog</span>
                 </h3>
                 <ul class="mt-3">
-                    <!-- Produk -->
+                    <!-- Roti -->
                     <li
-                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['products'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
-                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['products'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
-                            href="{{ route('products') }}">
+                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(2), ['breads'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
+                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(2), ['breads'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
+                            href="{{ route('breads') }}">
                             <div class="flex items-center">
-                                <svg class="shrink-0 fill-current @if (in_array(Request::segment(1), ['products'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
+                                <svg class="shrink-0 fill-current @if (in_array(Request::segment(2), ['breads'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
                                     width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <mask id="path-1-outside-1_295_7954" maskUnits="userSpaceOnUse" x="0.666992"
@@ -225,17 +223,17 @@
                                 </svg>
 
                                 <span
-                                    class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Produk</span>
+                                    class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Roti</span>
                             </div>
                         </a>
                     </li>
-                    <!-- Kategori -->
+                    <!-- Jenis Roti -->
                     <li
-                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['categories'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
-                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['categories'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
-                            href="{{ route('categories') }}">
+                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['bread-types'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
+                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['bread-types'])) {{ 'hover:text-gray-900 dark:hover:text-white' }} @endif"
+                            href="{{ route('bread_types') }}">
                             <div class="flex items-center">
-                                <svg class="shrink-0 @if (in_array(Request::segment(1), ['categories'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
+                                <svg class="shrink-0 @if (in_array(Request::segment(1), ['bread-types'])) {{ 'text-primary' }}@else{{ 'text-dark-tertiary dark:text-gray-500' }} @endif"
                                     width="20" height="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -247,7 +245,8 @@
                                 </svg>
 
                                 <span
-                                    class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Kategori</span>
+                                    class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Jenis
+                                    Roti</span>
                             </div>
                         </a>
                     </li>
@@ -307,33 +306,9 @@
                                     <span
                                         class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Pesanan</span>
                                 </div>
-                                <!-- Badge -->
-                                <div class="flex flex-shrink-0 ml-2">
-                                    <span
-                                        class="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-primary px-2 rounded">1</span>
-                                </div>
+                                @livewire('sidebar-app.badges-order')
                             </div>
 
-                        </a>
-                    </li>
-                    <!-- Metode Pembayaran -->
-                    <li
-                        class="pl-4 pr-3 py-2 rounded-lg mb-0.5 last:mb-0 bg-[linear-gradient(135deg,var(--tw-gradient-stops))] @if (in_array(Request::segment(1), ['payment-method'])) {{ 'from-primary/[0.12] dark:from-primary/[0.24] to-primary/[0.04]' }} @endif">
-                        <a class="block text-dark-primary dark:text-gray-100 truncate transition @if (!in_array(Request::segment(1), ['payment-method'])) {{ 'hover:text-gray-900 dark:hover:text-whitwe' }} @endif"
-                            href="{{ route('payment-method') }}">
-                            <div class="flex items-center">
-                                <svg class="shrink-0 @if (in_array(Request::segment(1), ['payment-method'])) {{ 'text-primary' }}@else{{ 'text-gray-400 dark:text-gray-500' }} @endif"
-                                    width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M2.25 8.25H21.75M2.25 9H21.75M5.25 14.25H11.25M5.25 16.5H8.25M4.5 19.5H19.5C20.0967 19.5 20.669 19.2629 21.091 18.841C21.5129 18.419 21.75 17.8467 21.75 17.25V6.75C21.75 6.15326 21.5129 5.58097 21.091 5.15901C20.669 4.73705 20.0967 4.5 19.5 4.5H4.5C3.90326 4.5 3.33097 4.73705 2.90901 5.15901C2.48705 5.58097 2.25 6.15326 2.25 6.75V17.25C2.25 17.8467 2.48705 18.419 2.90901 18.841C3.33097 19.2629 3.90326 19.5 4.5 19.5Z"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                                <span
-                                    class="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Metode
-                                    Pembayaran</span>
-                            </div>
                         </a>
                     </li>
                 </ul>

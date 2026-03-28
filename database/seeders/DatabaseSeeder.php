@@ -2,9 +2,18 @@
 
 namespace Database\Seeders;
 
+use App\Models\Bread;
+use App\Models\Cart;
+use App\Models\CartDetail;
+use App\Models\BreadType;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\OrderStatus;
+use App\Models\PaymentStatus;
+use Faker\Provider\ar_EG\Payment;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,9 +24,30 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+        $this->call([UserSeeder::class, BreadTypeSeeder::class, BreadSeeder::class]);
+        DB::table('order_status')->insert([
+            ['name' => 'Baru', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['name' => 'Sedang Diproses', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['name' => 'Dalam Pengiriman', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['name' => 'Sampai di Tujuan', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['name' => 'Selesai', 'created_at' => NOW(), 'updated_at' => NOW()],
+            ['name' => 'Ditolak', 'created_at' => NOW(), 'updated_at' => NOW()],
+        ]);
+
+        PaymentStatus::create([
+            'name' => 'Belum dibayar',
+        ]);
+
+        PaymentStatus::create([
+            'name' => 'Bayar',
+        ]);
+
+        PaymentStatus::create([
+            'name' => 'Sudah dibayar',
         ]);
     }
 }

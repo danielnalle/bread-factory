@@ -8,15 +8,15 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('admin/customers/customers');
+        return view('dashboard/customers/customers');
     }
 
     public function create()
     {
-        return view('admin/customers/create');
+        return view('dashboard/customers/create');
     }
     public function edit()
     {
-        return view('admin/customers/edit');
+        return view('dashboard/customers/edit');
     }
 }

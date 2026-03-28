@@ -34,7 +34,7 @@
 
 <body class="font-secondary antialiased bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400">
 
-    <main class="bg-white dark:bg-gray-900">
+    <main class="bg-[#F7F7F9] dark:bg-gray-900">
 
 
 
@@ -45,7 +45,28 @@
 
     </main>
 
-    @livewireScriptConfig
+    @livewireScripts
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const alert = document.getElementById('alert');
+
+            // Menampilkan alert dengan transisi
+            setTimeout(() => {
+                alert.classList.remove('opacity-0', 'scale-90');
+                alert.classList.add('opacity-100', 'scale-100');
+            }, 100); // Delay sedikit untuk efek transisi.
+
+            setTimeout(() => {
+                alert.classList.remove('opacity-100', 'scale-100');
+                alert.classList.add('opacity-0', 'scale-90');
+            }, 10000); // Durasi tampilan 5 detik.
+
+            setTimeout(() => {
+                alert.classList.add('hidden');
+            }, 10200); // Durasi tampilan 5 detik.
+        });
+    </script>
+
 </body>
 
 </html>
